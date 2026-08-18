@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đề Thi Thử Tốt Nghiệp THPT 2026 - Môn Công Nghệ Nông Nghiệp</title>
+  <style>
+    :root {
+      --primary: #059669;
+      --primary-dark: #047857;
+      --primary-light: #d1fae5;
+      --bg: #f0fdf4;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --correct: #16a34a;
+      --wrong: #dc2626;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .exam-header {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border-top: 6px solid var(--primary);
+    }
+
+    .exam-title-box {
+      text-align: center;
+      border-bottom: 2px dashed var(--border);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+    .exam-title-box h3 { font-size: 1rem; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
+    .exam-title-box h1 { font-size: 1.5rem; color: var(--primary-dark); margin: 6px 0; }
+    .exam-title-box p { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; }
+
+    .student-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      background: #f8fafc;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .form-group { display: flex; flex-direction: column; gap: 4px; }
+    .form-group label { font-size: 0.85rem; font-weight: 700; color: #334155; }
+    .form-group input {
+      padding: 8px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .sticky-bar {
+      position: sticky;
+      top: 10px;
+      z-index: 100;
+      background: #1e293b;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    .timer-display { font-size: 1.1rem; font-weight: 700; color: #fef08a; }
+
+    .section-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    }
+    .section-title {
+      font-size: 1.15rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--primary-light);
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .q-card {
+      background: #fafafa;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 20px;
+    }
+    .q-text { font-weight: 600; font-size: 1rem; color: #1e293b; margin-bottom: 12px; }
+
+    .img-box {
+      text-align: center;
+      margin: 12px 0;
+      background: white;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+    }
+    .img-box img, .img-box svg { max-width: 100%; height: auto; border-radius: 6px; }
+
+    .table-custom {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 0.9rem;
+      background: white;
+    }
+    .table-custom th, .table-custom td {
+      border: 1px solid #cbd5e1;
+      padding: 8px 12px;
+      text-align: center;
+    }
+    .table-custom th { background: #f1f5f9; font-weight: 600; }
+
+    /* MC Options */
+    .options-grid { display: grid; gap: 8px; }
+    .opt-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: white;
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .opt-label:hover { border-color: var(--primary); background: #ecfdf5; }
+    .opt-label input[type="radio"] { width: 18px; height: 18px; accent-color: var(--primary); }
+
+    /* True/False Styling */
+    .tf-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    .tf-table td { padding: 10px; border-bottom: 1px solid #f1f5f9; }
+    .tf-table tr:last-child td { border-bottom: none; }
+    .tf-btn-group { display: flex; gap: 8px; }
+    .tf-btn {
+      padding: 6px 16px;
+      border: 1px solid #cbd5e1;
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .tf-btn.active-true { background: #22c55e; color: white; border-color: #16a34a; }
+    .tf-btn.active-false { background: #ef4444; color: white; border-color: #dc2626; }
+
+    /* Results Review */
+    .explanation-box {
+      margin-top: 12px;
+      padding: 12px;
+      background: #f0fdf4;
+      border-left: 4px solid var(--correct);
+      border-radius: 0 8px 8px 0;
+      font-size: 0.9rem;
+      color: #166534;
+      display: none;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 16px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+    }
+    .btn-submit:hover { background: var(--primary-dark); }
+
+    .score-modal {
+      background: #ecfdf5;
+      border: 2px solid #a7f3d0;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 24px;
+      display: none;
+    }
+    .score-modal h2 { font-size: 2rem; color: #065f46; }
+    .score-detail { margin-top: 10px; font-size: 1rem; color: #047857; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- HEADER THI -->
+  <div class="exam-header">
+    <div class="exam-title-box">
+      <h3>SỞ GIÁO DỤC VÀ ĐÀO TẠO HÀ TĨNH</h3>
+      <h1>ĐỀ THI THỬ TỐT NGHIỆP THPT NĂM 2026</h1>
+      <p>Môn: CÔNG NGHỆ NÔNG NGHIỆP — Mã đề: 001</p>
+    </div>
+    <div class="student-info-grid">
+      <div class="form-group">
+        <label>Họ và tên học sinh:</label>
+        <input type="text" id="sName" placeholder="Nhập họ và tên...">
+      </div>
+      <div class="form-group">
+        <label>Số báo danh / Mã số HS:</label>
+        <input type="text" id="sSbd" placeholder="Nhập SBD...">
+      </div>
+      <div class="form-group">
+        <label>Lớp / Trường:</label>
+        <input type="text" id="sClass" placeholder="Nhập lớp...">
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY TIMER & CONTROL -->
+  <div class="sticky-bar">
+    <div><strong>BÀI THI TRẮC NGHIỆM TRỰC TUYẾN</strong></div>
+    <div class="timer-display" id="timer">⏱️ Thời gian: 50:00</div>
+  </div>
+
+  <!-- SCORE DISPLAY -->
+  <div id="scoreModal" class="score-modal">
+    <p>🎉 KẾT QUẢ BÀI THI CỦA BẠN</p>
+    <h2 id="finalScore">0 / 10 ĐIỂM</h2>
+    <div class="score-detail" id="scoreBreakdown"></div>
+  </div>
+
+  <form id="quizForm">
+    <!-- PHẦN 1 -->
+    <div class="section-card">
+      <div class="section-title">PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn (24 câu - 6.0 điểm)</div>
+      <div id="part1Container"></div>
+    </div>
+
+    <!-- PHẦN 2 -->
+    <div class="section-card">
+      <div class="section-title">PHẦN II. Câu trắc nghiệm Đúng / Sai (4 câu - 4.0 điểm)</div>
+      <div id="part2Container"></div>
+    </div>
+
+    <button type="button" class="btn-submit" id="submitBtn" onclick="submitExam()">NỘP BÀI THI & XEM LỜI GIẢI CHI TIẾT</button>
+  </form>
+</div>
+
+<script>
+  // DỮ LIỆU ĐỀ THI TỪ FILE NGUỒN (SỞ GD&ĐT HÀ TĨNH - ĐỀ SỐ 12)
+  const part1Data = [
+    {
+      id: 1,
+      q: "Câu 1. Công nghệ nào sau đây được áp dụng trong hình dưới?",
+      svgImg: `<svg width="320" height="150" viewBox="0 0 320 150" xmlns="http://www.w3.org/2000/svg">
+        <rect width="320" height="150" fill="#f8fafc" rx="8"/>
+        <rect x="20" y="50" width="280" height="90" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+        <line x1="20" y1="50" x2="300" y2="50" stroke="#334155" stroke-width="4"/>
+        <!-- Plants -->
+        <circle cx="70" cy="30" r="20" fill="#22c55e"/>
+        <circle cx="160" cy="30" r="20" fill="#22c55e"/>
+        <circle cx="250" cy="30" r="20" fill="#22c55e"/>
+        <!-- Roots lơ lửng -->
+        <path d="M70,50 Q65,80 75,100" stroke="#d97706" stroke-width="2" fill="none"/>
+        <path d="M160,50 Q155,80 165,100" stroke="#d97706" stroke-width="2" fill="none"/>
+        <path d="M250,50 Q245,80 255,100" stroke="#d97706" stroke-width="2" fill="none"/>
+        <!-- Pump & Spray -->
+        <rect x="140" y="120" width="40" height="18" fill="#475569" rx="3"/>
+        <text x="160" y="133" fill="white" font-size="10" text-anchor="middle">BƠM</text>
+        <line x1="160" y1="120" x2="160" y2="85" stroke="#334155" stroke-width="3"/>
+        <line x1="100" y1="85" x2="220" y2="85" stroke="#334155" stroke-width="3"/>
+        <!-- Nozzles -->
+        <circle cx="100" cy="85" r="4" fill="#dc2626"/>
+        <circle cx="220" cy="85" r="4" fill="#dc2626"/>
+        <text x="160" y="80" fill="#0284c7" font-size="11" font-weight="bold" text-anchor="middle">PHUN SƯƠNG DINH DƯỠNG</text>
+      </svg>`,
+      opts: ["A. Công nghệ thủy canh tĩnh.", "B. Công nghệ khí canh tĩnh.", "C. Công nghệ khí canh hồi lưu.", "D. Công nghệ thủy canh hồi lưu."],
+      ans: 2,
+      exp: "Đáp án C: Mô hình thể hiện hệ thống khí canh hồi lưu, trong đó bơm hút dung dịch dinh dưỡng từ bình chứa phun dưới dạng sương trực tiếp vào rễ cây lơ lửng, phần dinh dưỡng thừa chảy tuần hoàn về lại bình chứa."
+    },
+    {
+      id: 2,
+      q: "Câu 2. Phương thức khai thác trắng không nên áp dụng ở khu vực nào?",
+      opts: ["A. Nơi địa hình có độ dốc lớn, lượng mưa ít.", "B. Nơi địa hình có độ dốc thấp, lượng mưa nhiều.", "C. Nơi địa hình có độ dốc lớn, lượng mưa nhiều.", "D. Nơi địa hình có độ dốc thấp, lượng mưa ít."],
+      ans: 2,
+      exp: "Đáp án C: Khai thác trắng (chặt sạch toàn bộ rừng) ở địa hình dốc lớn và mưa nhiều sẽ gây sạt lở đất nghiêm trọng, xói mòn và lũ quét."
+    },
+    {
+      id: 3,
+      q: "Câu 3. Đa số các vùng nông thôn hiện nay, về mùa đông lạnh giá, trâu bò thường bị thiếu thức ăn. Để khắc phục thực trạng trên người chăn nuôi nên chuẩn bị sẵn thức ăn nào sau đây?",
+      opts: ["A. Cám cò.", "B. Cỏ tươi.", "C. Khoai, sắn.", "D. Rơm, rạ."],
+      ans: 3,
+      exp: "Đáp án D: Rơm, rạ là nguồn thức ăn thô khô dễ tích trữ khối lượng lớn từ vụ hè thu để làm thức ăn dự trữ phòng chống rét mùa đông cho trâu bò."
+    },
+    {
+      id: 4,
+      q: "Câu 4. Bệnh thủy sản nào sau đây có thể lây truyền từ thủy sản sang người?",
+      opts: ["A. Bệnh lồi mắt ở cá rô phi.", "B. Bệnh gan thận mủ ở cá tra.", "C. Bệnh hoại tử thần kinh trên cá biển.", "D. Bệnh sán lá gan."],
+      ans: 3,
+      exp: "Đáp án D: Bệnh sán lá gan lây truyền sang người khi ăn thực phẩm thủy sản (như gỏi cá) chưa được nấu chín."
+    },
+    {
+      id: 5,
+      q: "Câu 5. Bệnh lồi mắt ở cá rô phi là do tác nhân nào sau đây gây ra?",
+      opts: ["A. Liên cầu khuẩn Streptococcus Agalactiae.", "B. Virus Betanodavirus có vật chất di truyền RNA.", "C. Vi khuẩn Edwardsiella ictaluri.", "D. Virus Baculovirus có vật chất di truyền DNA."],
+      ans: 0,
+      exp: "Đáp án A: Bệnh lồi mắt, xuất huyết ở cá rô phi do vi khuẩn Streptococcus agalactiae gây ra."
+    },
+    {
+      id: 6,
+      q: "Câu 6. Cho bảng số liệu về sản lượng gỗ khai thác trên toàn quốc giai đoạn 2008 – 2020. Nhận định nào sau đây không đúng?",
+      tableHtml: `<table class="table-custom">
+        <tr><th>Năm</th><th>Từ rừng tự nhiên (m³)</th><th>Từ rừng trồng tập trung (m³)</th><th>Từ cao su, cây phân tán (m³)</th><th>Tổng (m³)</th></tr>
+        <tr><td>2008</td><td>180.000</td><td>3.562.000</td><td>-</td><td>3.742.000</td></tr>
+        <tr><td>2015</td><td>5.500</td><td>13.000.000</td><td>6.200.000</td><td>19.205.500</td></tr>
+        <tr><td>2020</td><td>-</td><td>20.500.000</td><td>9.000.000</td><td>29.500.000</td></tr>
+      </table>`,
+      opts: ["A. Sản lượng gỗ khai thác từ rừng trồng tập trung tăng trong giai đoạn 2008-2020.", "B. Sản lượng gỗ khai thác từ rừng tự nhiên tăng trong giai đoạn 2008-2020.", "C. Sản lượng gỗ khai thác từ rừng tự nhiên giảm trong giai đoạn 2008-2020.", "D. Sản lượng gỗ khai thác từ cây phân tán tăng trong giai đoạn 2008-2020."],
+      ans: 1,
+      exp: "Đáp án B không đúng: Sản lượng gỗ khai thác từ rừng tự nhiên giảm mạnh từ 180.000 m³ (2008) xuống 5.500 m³ (2015) và dừng khai thác hoàn toàn vào năm 2020."
+    },
+    {
+      id: 7,
+      q: "Câu 7. Yêu cầu nào sau đây không đúng về quản lý dịch bệnh đối với một trang trại chăn nuôi theo tiêu chuẩn VietGAP?",
+      opts: ["A. Có quy trình phòng bệnh phù hợp với từng đối tượng nuôi.", "B. Có nguồn cung tài chính từ các công ty lớn cùng ngành.", "C. Có đầy đủ trang thiết bị và quy trình vệ sinh, tiêu độc, khử trùng.", "D. Có bác sĩ thú y theo dõi sức khỏe vật nuôi."],
+      ans: 1,
+      exp: "Đáp án B: Tiêu chuẩn VietGAP quy định về quy trình kỹ thuật chăn nuôi an toàn sinh học, không bắt buộc hay yêu cầu về nguồn cung tài chính."
+    },
+    {
+      id: 8,
+      q: "Câu 8. Công nghệ sinh học nào được ứng dụng để phát hiện sớm bệnh thuỷ sản?",
+      opts: ["A. Công nghệ tạo kháng sinh thảo dược.", "B. Công nghệ thu mẫu virus.", "C. Kĩ thuật tách chiết RNA tổng số.", "D. Kĩ thuật PCR."],
+      ans: 3,
+      exp: "Đáp án D: Kĩ thuật PCR (Polymerase Chain Reaction) giúp chẩn đoán, phát hiện sớm ADN/ARN của mầm bệnh virus, vi khuẩn ở mức độ chính xác cực cao."
+    },
+    {
+      id: 9,
+      q: "Câu 9. Dưới đây là bảng công thức thức ăn theo nhu cầu dinh dưỡng của lợn con 30-60 ngày tuổi. Nhận định nào sau đây là đúng?",
+      tableHtml: `<table class="table-custom">
+        <tr><th>Thành phần</th><td>Bột gạo</td><td>Bột ngô</td><td>Bột cá</td><td>Đậu tương</td><td>Đường</td><td>Bột xương</td><td>Vitamin</td><td>Khoáng</td><td>Muối</td></tr>
+        <tr><th>Tỷ lệ (%)</th><td>26,7%</td><td>30%</td><td>20%</td><td>10%</td><td>10%</td><td>2%</td><td>0,3%</td><td>0,5%</td><td>0,5%</td></tr>
+      </table>`,
+      opts: ["A. Giai đoạn lợn con nhu cầu năng lượng và protein cao nhất.", "B. Giai đoạn lợn con nhu cầu năng lượng và khoáng cao nhất.", "C. Giai đoạn lợn con nhu cầu protein và khoáng ít nhất.", "D. Giai đoạn lợn con nhu cầu protein và vitamin ít nhất."],
+      ans: 0,
+      exp: "Đáp án A: Lợn con từ 30-60 ngày tuổi đang phát triển khung xương và cơ bắp rất nhanh nên nhu cầu về Năng lượng (từ tinh bột ngô, gạo) và Protein (từ bột cá, đậu tương) chiếm tỷ lệ cao nhất."
+    },
+    {
+      id: 10,
+      q: "Câu 10. Ao nuôi tôm của bác Nam ở Nghi Xuân – Hà Tĩnh xuất hiện bệnh đốm trắng, cần sử dụng biện pháp nào sau đây để điều trị hạn chế thiệt hại cho người nuôi tôm?",
+      opts: ["A. Khử trùng và cách ly ngay với các ao khác, diệt virus trước khi thải nước.", "B. Thu hoạch trước những lứa tôm đến tuổi trưởng thành.", "C. Mua các con giống khác đạt chất lượng bổ sung vào ao nuôi.", "D. Tháo nước ao tôm bị bệnh ra ngoài tránh lây lan cho ao khác."],
+      ans: 0,
+      exp: "Đáp án A: Bệnh đốm trắng do virus chưa có thuốc chữa, cần cách ly ngay và xử lý hóa chất diệt virus triệt để nước ao trước khi xả ra môi trường để tránh phát tán dịch."
+    },
+    {
+      id: 11,
+      q: "Câu 11. Biểu đồ thể hiện tình hình thủy sản Hà Tĩnh 11 tháng năm 2025: Tổng sản lượng 58.379 tấn (tăng 4,71%), Khai thác 41.430 tấn (tăng 5,20%), Nuôi trồng 16.949 tấn (tăng 3,52%). Nhận định nào sau đây đúng?",
+      opts: ["A. Tổng sản lượng thủy sản của tỉnh Hà Tĩnh 11 tháng đầu năm 2025 tăng 5,20%.", "B. Sản lượng nuôi trồng thủy sản của tỉnh Hà Tĩnh 11 tháng đầu năm 2025 tăng 5,32%.", "C. Sản lượng khai thác thủy sản nhiều hơn sản lượng nuôi trồng là 24.481 tấn.", "D. Sản lượng khai thác thủy sản ít hơn sản lượng nuôi trồng là 24.481 tấn."],
+      ans: 2,
+      exp: "Đáp án C: Sản lượng khai thác (41.430 tấn) lớn hơn sản lượng nuôi trồng (16.949 tấn) là: 41.430 - 16.949 = 24.481 tấn."
+    },
+    {
+      id: 12,
+      q: "Câu 12. Biện pháp khai thác thủy sản nào sau đây bị nghiêm cấm?",
+      opts: ["A. Các dụng cụ đánh bắt thủ công.", "B. Dùng câu, lưới tay.", "C. Lưới kéo, lưới vây.", "D. Dùng thuốc nổ, kích điện."],
+      ans: 3,
+      exp: "Đáp án D: Dùng thuốc nổ, xung điện mang tính tận diệt sinh học và hủy hoại môi trường sinh thái thủy sinh nên bị nghiêm cấm theo Luật Thủy sản."
+    },
+    {
+      id: 13,
+      q: "Câu 13. Nội dung nào sau đây là ứng dụng công nghệ sinh học trong chăn nuôi?",
+      opts: ["A. Sử dụng công nghệ biogas trong xử lý chất thải chăn nuôi.", "B. Sử dụng vôi bột khử trùng chuồng nuôi.", "C. Sử dụng nước xà phòng khử trùng chuồng nuôi.", "D. Khơi thông cống, rãnh ở khu vực chăn nuôi."],
+      ans: 0,
+      exp: "Đáp án A: Hầm Biogas ứng dụng các vi sinh vật lên men kị khí để phân hủy chất thải chăn nuôi tạo ra khí sinh học (CH4)."
+    },
+    {
+      id: 14,
+      q: "Câu 14. Loại máy nào sau đây là ứng dụng cơ giới hóa trong thu hoạch cây trồng?",
+      opts: ["A. Máy cày.", "B. Máy gieo hạt cầm tay.", "C. Máy xới, vun.", "D. Máy gặt liên hợp."],
+      ans: 3,
+      exp: "Đáp án D: Máy gặt gặt đập liên hợp là thiết bị cơ giới hóa phục vụ công đoạn thu hoạch lúa/nông sản."
+    },
+    {
+      id: 15,
+      q: "Câu 15. Trong các loại cây trồng sau đây, cây nào không cần lên luống để trồng?",
+      opts: ["A. Rau cải, mướp.", "B. Lúa, rau muống.", "C. Cà chua, khoai lang.", "D. Su hào, hoa cúc."],
+      ans: 1,
+      exp: "Đáp án B: Lúa và rau muống nước trồng gieo/cấy trực tiếp dưới ruộng phẳng ngập nước không cần đánh luống."
+    },
+    {
+      id: 16,
+      q: "Câu 16. Nội dung nào sau đây là vai trò của rừng phòng hộ đầu nguồn?",
+      opts: ["A. Điều tiết nước, hạn chế lũ lụt, chống xói mòn, bảo vệ đất.", "B. Chắn cát, chắn sóng, chắn gió, chống xâm nhập mặn.", "C. Ngăn sóng, bảo vệ công trình ven biển, cố định cát lắng đọng.", "D. Điều hòa không khí, bảo vệ môi trường sinh thái ở khu dân cư."],
+      ans: 0,
+      exp: "Đáp án A: Rừng phòng hộ đầu nguồn nằm ở thượng nguồn các sông suối, giữ vai trò giữ nước, giảm dòng chảy lũ, bảo vệ đất khỏi xói mòn."
+    },
+    {
+      id: 17,
+      q: "Câu 17. Khai thác dần là gì?",
+      opts: ["A. Là chặt toàn bộ cây rừng ở một khu vực nhất định trong một mùa khai thác.", "B. Là chặt toàn bộ cây rừng ở một khu vực nhất định, chia làm nhiều lần khai thác.", "C. Là chọn chặt những cây già yếu, có phẩm chất và sức sống kém.", "D. Là chọn chặt những cây khỏe mạnh đến tuổi thành thục."],
+      ans: 1,
+      exp: "Đáp án B: Khai thác dần là chặt sạch cây rừng trong một diện tích nhất định nhưng kéo dài qua nhiều đợt chặt (trong 5-10 năm)."
+    },
+    {
+      id: 18,
+      q: "Câu 18. Yêu cầu nào sau đây không đúng khi xây dựng chuồng nuôi theo tiêu chuẩn VietGAP?",
+      opts: ["A. Sàn và lối đi được làm bằng vật liệu an toàn, không trơn trượt.", "B. Hệ thống tường, mái, rèm che đảm bảo không bị dột, thấm, gió lùa.", "C. Hệ thống cung cấp thức ăn và nước uống chung cho các loại vật nuôi.", "D. Dụng cụ, thiết bị phải đảm bảo an toàn và dễ vệ sinh, khử trùng."],
+      ans: 2,
+      exp: "Đáp án C: Không được dùng chung hệ thống thức ăn, nước uống cho nhiều loại vật nuôi khác nhau để tránh lây nhiễm chéo bệnh dịch."
+    },
+    {
+      id: 19,
+      q: "Câu 19. Cua biển thuộc nhóm động vật thủy sản nào?",
+      opts: ["A. Nhóm cá.", "B. Nhóm giáp xác.", "C. Nhóm nhuyễn thể.", "D. Lưỡng cư."],
+      ans: 1,
+      exp: "Đáp án B: Cua, tôm thuộc ngành Chân khớp, lớp Giáp xác (Crustacea)."
+    },
+    {
+      id: 20,
+      q: "Câu 20. Màu nước phù hợp cho ao nuôi thủy sản nước ngọt là màu:",
+      opts: ["A. Xanh đậm.", "B. Xanh nõn chuối.", "C. Vàng nâu.", "D. Đỏ nâu."],
+      ans: 1,
+      exp: "Đáp án B: Nước ao màu xanh nõn chuối (xanh đọt chuối) chỉ ra ao có sự phát triển cân đối của tảo có lợi (tảo khuê, tảo đục) làm thức ăn tự nhiên tốt cho cá."
+    },
+    {
+      id: 21,
+      q: "Câu 21. Tuổi thành thục sinh dục của tôm phụ thuộc vào yếu tố nào sau đây?",
+      opts: ["A. Tuổi và nhiệt độ môi trường.", "B. Khối lượng cơ thể.", "C. Tuổi và khối lượng cơ thể.", "D. Nhiệt độ môi trường."],
+      ans: 2,
+      exp: "Đáp án C: Tuổi thành thục sinh dục phụ thuộc vào cả độ tuổi và kích thước/khối lượng cơ thể đạt chuẩn của tôm."
+    },
+    {
+      id: 22,
+      q: "Câu 22. Cho các sản phẩm: (1) Sim rừng; (2) Sắn; (3) Gỗ lim; (4) Mật ong rừng; (5) Lúa mì. Sản phẩm nào là của ngành Lâm nghiệp?",
+      opts: ["A. (1), (2), (4).", "B. (1), (3), (4).", "C. (2), (3), (4).", "D. (3), (4), (5)."],
+      ans: 1,
+      exp: "Đáp án B: Sim rừng (lâm sản ngoài gỗ), Gỗ lim (gỗ rừng) và Mật ong rừng (lâm sản) thuộc ngành Lâm nghiệp. Sắn và Lúa mì thuộc Trồng trọt."
+    },
+    {
+      id: 23,
+      q: "Câu 23. Trong quy trình ương nuôi cá, giai đoạn từ cá hương lên cá giống, ý nào sau đây không đúng?",
+      opts: ["A. Thời gian ương nuôi của giai đoạn này là 4 tháng.", "B. Mật độ thả cá tùy theo loài và khả năng quản lý của người nuôi.", "C. Ở miền Nam có thể ương nuôi giai đoạn này quanh năm.", "D. Ở miền Bắc có 2 vụ chính trong năm để ương nuôi giai đoạn này."],
+      ans: 0,
+      exp: "Đáp án A không đúng: Thời gian ương nuôi từ cá hương lên cá giống thông thường chỉ khoảng 45 - 60 ngày (1,5 - 2 tháng)."
+    },
+    {
+      id: 24,
+      q: "Câu 24. Vì sao ao nuôi mật độ cao thường có hàm lượng ammonia cao?",
+      opts: ["A. Vì mật độ nuôi cao nên bị thiếu oxygen.", "B. Vì chất thải, chất bài tiết của động vật thủy sản.", "C. Vì nuôi thâm canh đơn giống nên không hấp thụ chất thải.", "D. Vì thiếu thiết bị sục đáy cho ao nuôi."],
+      ans: 1,
+      exp: "Đáp án B: Ammonia (NH3) trong ao nuôi phát sinh chủ yếu từ bài tiết đạm của động vật thủy sản và phân hủy chất thải hữu cơ, thức ăn dư thừa."
+    }
+  ];
+
+  const part2Data = [
+    {
+      id: 1,
+      title: "Câu 1. Nấm hương là lâm sản ngoài gỗ có giá trị dinh dưỡng và kinh tế cao...",
+      statements: [
+        { text: "a) Nấm hương là sản phẩm của lâm nghiệp.", correct: true, exp: "Đúng. Nấm hương khai thác từ tự nhiên hoặc trồng dưới tán rừng là lâm sản ngoài gỗ." },
+        { text: "b) Nên hái hết kể cả nấm nở to hoặc sắp tàn, để nấm phát triển đợt mới.", correct: false, exp: "Sai. Việc hái cạn kiệt làm mất khả năng phát tán bào tử tái sinh tự nhiên của nấm." },
+        { text: "c) Cần tuyên truyền nâng cao ý thức bảo vệ và khai thác hợp lý.", correct: true, exp: "Đúng. Giúp bảo tồn nguồn gen và phát triển lâm sản bền vững." },
+        { text: "d) Cần áp dụng kĩ thuật khai thác phù hợp đảm bảo hài hòa kinh tế - môi trường.", correct: true, exp: "Đúng. Đúng nguyên tắc phát triển lâm nghiệp bền vững." }
+      ]
+    },
+    {
+      id: 2,
+      title: "Câu 2. Bảng tỉ lệ thành phần dinh dưỡng thức ăn thủy sản (Cá rô phi giống: 35% Protein, 6% Xơ; Tôm thẻ chân trắng: 40% Protein; Cá chim vây vàng: 43-46% Protein...)",
+      statements: [
+        { text: "a) Tôm thẻ chân trắng cần bổ sung 40% protein trong thức ăn.", correct: true, exp: "Đúng. Theo bảng số liệu, hàm lượng protein của tôm thẻ chân trắng là 40%." },
+        { text: "b) Cá rô phi giống cần bổ sung 6g chất xơ thô trong thức ăn.", correct: false, exp: "Sai. Bảng ghi tỷ lệ là 6% (tỷ lệ phần trăm) chứ không phải khối lượng 6g tuyệt đối." },
+        { text: "c) Cá chim vây vàng không cần bổ sung chất vô cơ.", correct: false, exp: "Sai. Ký hiệu '-' trong bảng nghĩa là chưa xác định/thiếu dữ liệu, không có nghĩa là không cần." },
+        { text: "d) Protein chiếm tỉ lệ % cao nhất trong thành phần dinh dưỡng.", correct: true, exp: "Đúng. Trong tất cả các loài, Protein luôn có % lớn nhất (35% - 46%)." }
+      ]
+    },
+    {
+      id: 3,
+      title: "Câu 3. Bệnh đốm trắng trên tôm do Baculovirus gây ra...",
+      statements: [
+        { text: "a) Bệnh đốm trắng trên tôm do vi khuẩn Baculovirus gây ra.", correct: false, exp: "Sai. Baculovirus là VIRUS, không phải vi khuẩn." },
+        { text: "b) Bệnh đốm trắng chưa có thuốc đặc trị nên phòng bệnh là biện pháp chủ yếu.", correct: true, exp: "Đúng. Hiện nay bệnh do virus ở tôm chưa có thuốc điều trị đặc hiệu." },
+        { text: "c) Mua tôm giống ở cơ sở uy tín, có chứng nhận kiểm dịch.", correct: true, exp: "Đúng. Đây là biện pháp phòng bệnh từ nguồn giống hàng đầu." },
+        { text: "d) Khi phát hiện tôm bị bệnh, cần tiêu hủy tôm chết và khử trùng ao.", correct: true, exp: "Đúng. Tránh lây lan mầm bệnh virus ra vùng nuôi xung quanh." }
+      ]
+    },
+    {
+      id: 4,
+      title: "Câu 4. Kim ngạch xuất khẩu thủy sản Việt Nam (2000: 1.479 triệu USD, 2018: 8.787, 2019: 8.542, 2020: 8.412, 2021: 8.886, 10 tháng 2022: 9.389)",
+      statements: [
+        { text: "a) Kim ngạch xuất khẩu thủy sản 10 tháng 2022 đạt 9,5 tỷ USD.", correct: false, exp: "Sai. Số liệu trong đồ thị là 9.389 triệu USD (tương đương 9,389 tỷ USD), không phải 9.5 tỷ USD." },
+        { text: "b) Kim ngạch xuất khẩu tăng liên tục qua từng năm từ 2019 đến 2021.", correct: false, exp: "Sai. Năm 2020 (8.412 triệu USD) giảm so với năm 2019 (8.542 triệu USD)." },
+        { text: "c) Các hiệp định thương mại tự do giúp tăng kim ngạch xuất khẩu.", correct: true, exp: "Đúng. Hiệp định FTA làm giảm thuế quan, mở rộng thị trường xuất khẩu." },
+        { text: "d) Bờ biển dài và diện tích nuôi lớn là tiền đề tăng sản lượng xuất khẩu.", correct: true, exp: "Đúng. Đây là điều kiện tự nhiên thuận lợi của Việt Nam." }
+      ]
+    }
+  ];
+
+  // RENDER PHẦN 1
+  function renderPart1() {
+    const c = document.getElementById('part1Container');
+    c.innerHTML = part1Data.map((item, idx) => `
+      <div class="q-card" id="p1-card-${idx}">
+        <div class="q-text">${item.q}</div>
+        ${item.svgImg ? `<div class="img-box">${item.svgImg}</div>` : ''}
+        ${item.tableHtml ? item.tableHtml : ''}
+        <div class="options-grid">
+          ${item.opts.map((opt, oIdx) => `
+            <label class="opt-label" id="lbl-p1-${idx}-${oIdx}">
+              <input type="radio" name="p1_${idx}" value="${oIdx}">
+              <span>${opt}</span>
+            </label>
+          `).join('')}
+        </div>
+        <div class="explanation-box" id="exp-p1-${idx}">
+          ${item.exp}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // RENDER PHẦN 2
+  function renderPart2() {
+    const c = document.getElementById('part2Container');
+    c.innerHTML = part2Data.map((item, idx) => `
+      <div class="q-card" id="p2-card-${idx}">
+        <div class="q-text">${item.title}</div>
+        <table class="tf-table">
+          ${item.statements.map((st, sIdx) => `
+            <tr>
+              <td style="width: 70%;">${st.text}</td>
+              <td style="width: 30%; text-align: right;">
+                <div class="tf-btn-group">
+                  <button type="button" class="tf-btn" id="tf-${idx}-${sIdx}-true" onclick="setTF(${idx}, ${sIdx}, true)">ĐÚNG</button>
+                  <button type="button" class="tf-btn" id="tf-${idx}-${sIdx}-false" onclick="setTF(${idx}, ${sIdx}, false)">SAI</button>
+                </div>
+              </td>
+            </tr>
+          `).join('')}
+        </table>
+        <div class="explanation-box" id="exp-p2-${idx}">
+          <strong>Lời giải chi tiết:</strong><br>
+          ${item.statements.map(s => `• <em>${s.text}</em>: <strong>${s.correct ? 'ĐÚNG' : 'SAI'}</strong> — ${s.exp}`).join('<br>')}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // LƯU TRỮ ĐÁP ÁN ĐÚNG SAI
+  let userTF = {}; // { "0-0": true, "0-1": false }
+  function setTF(qIdx, sIdx, val) {
+    userTF[`${qIdx}-${sIdx}`] = val;
+    const btnT = document.getElementById(`tf-${qIdx}-${sIdx}-true`);
+    const btnF = document.getElementById(`tf-${qIdx}-${sIdx}-false`);
+    if (val) {
+      btnT.className = 'tf-btn active-true';
+      btnF.className = 'tf-btn';
+    } else {
+      btnT.className = 'tf-btn';
+      btnF.className = 'tf-btn active-false';
+    }
+  }
+
+  // TIMER LOGIC (50 PHÚT)
+  let timeLeft = 3000;
+  let timerInterval = setInterval(() => {
+    let m = Math.floor(timeLeft / 60);
+    let s = timeLeft % 60;
+    document.getElementById('timer').innerText = `⏱️ Thời gian: ${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      alert('Đã hết 50 phút làm bài!');
+      submitExam();
+    }
+    timeLeft--;
+  }, 1000);
+
+  // NỘP BÀI VÀ CHẤM ĐIỂM
+  function submitExam() {
+    clearInterval(timerInterval);
+
+    // Chấm Phần I (24 câu - 6 điểm -> 0.25 điểm / câu)
+    let p1Score = 0;
+    part1Data.forEach((item, idx) => {
+      const selected = document.querySelector(`input[name="p1_${idx}"]:checked`);
+      const expBox = document.getElementById(`exp-p1-${idx}`);
+      expBox.style.display = 'block';
+
+      item.opts.forEach((_, oIdx) => {
+        const lbl = document.getElementById(`lbl-p1-${idx}-${oIdx}`);
+        if (oIdx === item.ans) {
+          lbl.style.background = '#dcfce7';
+          lbl.style.borderColor = '#16a34a';
+          lbl.style.fontWeight = 'bold';
+        }
+      });
+
+      if (selected && parseInt(selected.value) === item.ans) {
+        p1Score += 0.25;
+      } else if (selected) {
+        const wrongLbl = document.getElementById(`lbl-p1-${idx}-${selected.value}`);
+        wrongLbl.style.background = '#fee2e2';
+        wrongLbl.style.borderColor = '#dc2626';
+      }
+    });
+
+    // Chấm Phần II (4 câu - 4 điểm -> theo thang chuẩn THPT: 1 ý đúng 0.1đ, 2 ý 0.25đ, 3 ý 0.5đ, 4 ý 1.0đ)
+    let p2Score = 0;
+    const scoreMap = { 0: 0, 1: 0.1, 2: 0.25, 3: 0.5, 4: 1.0 };
+
+    part2Data.forEach((item, idx) => {
+      let correctCount = 0;
+      document.getElementById(`exp-p2-${idx}`).style.display = 'block';
+
+      item.statements.forEach((st, sIdx) => {
+        const userAns = userTF[`${idx}-${sIdx}`];
+        if (userAns === st.correct) {
+          correctCount++;
+        }
+      });
+
+      p2Score += scoreMap[correctCount];
+    });
+
+    let totalScore = (p1Score + p2Score).toFixed(2);
+
+    // HIỂN THỊ KẾT QUẢ
+    const modal = document.getElementById('scoreModal');
+    modal.style.display = 'block';
+    document.getElementById('finalScore').innerText = `${totalScore} / 10 ĐIỂM`;
+    document.getElementById('scoreBreakdown').innerHTML = `
+      Phần I (Trắc nghiệm): <strong>${p1Score.toFixed(2)} / 6.0 điểm</strong><br>
+      Phần II (Đúng/Sai): <strong>${p2Score.toFixed(2)} / 4.0 điểm</strong>
+    `;
+
+    document.getElementById('submitBtn').style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  renderPart1();
+  renderPart2();
+</script>
+</body>
+</html>

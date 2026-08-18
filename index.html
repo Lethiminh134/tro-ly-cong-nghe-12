@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trợ Lý Học Tập Công Nghệ Nông Nghiệp 12</title>
+    <style>
+        /* CSS Variables cho theme */
+        :root {
+            --primary-color: #2E7D32; /* Xanh lá cây đậm */
+            --primary-light: #4CAF50;
+            --bg-color: #F1F8E9; /* Xanh nhạt */
+            --card-bg: #FFFFFF;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --border-color: #E0E0E0;
+            --correct-color: #4CAF50;
+            --incorrect-color: #F44336;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Tabs Navigation */
+        .tabs {
+            display: flex;
+            background: var(--card-bg);
+            border-radius: 8px 8px 0 0;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            background: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            background-color: #f9f9f9;
+            color: var(--primary-color);
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Topic Cards (Theory) */
+        .topic-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .topic-header {
+            background-color: #E8F5E9;
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--primary-color);
+        }
+
+        .topic-body {
+            padding: 1rem;
+            display: none;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .topic-body p, .topic-body ul {
+            margin-bottom: 1rem;
+        }
+        
+        .topic-body ul {
+            padding-left: 1.5rem;
+        }
+
+        /* Quizzes & Exams */
+        .question-block {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .options-list {
+            list-style: none;
+        }
+
+        .option-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-label:hover {
+            background-color: #f5f5f5;
+        }
+
+        .option-label input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+            accent-color: var(--primary-color);
+        }
+
+        /* Buttons */
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+            display: block;
+            margin: 2rem auto 0;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .btn:hover {
+            background-color: #1B5E20;
+        }
+
+        /* Select Dropdown */
+        .select-topic {
+            width: 100%;
+            padding: 0.8rem;
+            font-size: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            margin-bottom: 2rem;
+            outline: none;
+        }
+
+        /* Results Area */
+        .result-box {
+            display: none;
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .result-box.show {
+            display: block;
+            background-color: #E8F5E9;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-light);
+        }
+
+        .feedback {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            font-weight: normal;
+        }
+        
+        .correct-ans {
+            color: var(--correct-color);
+            font-weight: bold;
+        }
+        
+        .wrong-ans {
+            color: var(--incorrect-color);
+            text-decoration: line-through;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+            }
+            .tab-btn {
+                border-bottom: 1px solid var(--border-color);
+            }
+            .tab-btn.active {
+                border-bottom: none;
+            }
+            .tab-content {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>TRỢ LÝ HỌC TẬP</h1>
+        <p>Môn Công Nghệ 12 - Định Hướng Nông Nghiệp</p>
+    </header>
+
+    <div class="container">
+        <!-- Tabs Navigation -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('tab-theory', this)">LÝ THUYẾT THEO CHỦ ĐỀ</button>
+            <button class="tab-btn" onclick="switchTab('tab-quiz', this)">CÂU HỎI TRẮC NGHIỆM</button>
+            <button class="tab-btn" onclick="switchTab('tab-exam', this)">ĐỀ THI THỬ TỐT NGHIỆP</button>
+        </div>
+
+        <!-- Tab 1: Lý Thuyết -->
+        <div id="tab-theory" class="tab-content active">
+            <h2 style="margin-bottom: 1.5rem; color: var(--primary-color); text-align: center;">Tóm Tắt Lý Thuyết</h2>
+            <div id="theory-container">
+                <!-- Nội dung lý thuyết sẽ được render bằng JS -->
+            </div>
+        </div>
+
+        <!-- Tab 2: Trắc nghiệm theo chủ đề -->
+        <div id="tab-quiz" class="tab-content">
+            <h2 style="margin-bottom: 1.5rem; color: var(--primary-color); text-align: center;">Luyện Tập Theo Chủ Đề</h2>
+            <select class="select-topic" id="topic-select" onchange="loadTopicQuiz()">
+                <option value="">-- Chọn chủ đề để luyện tập --</option>
+                <option value="lam-nghiep">Chủ đề 1: Lâm Nghiệp</option>
+                <option value="thuy-san">Chủ đề 2: Thủy Sản</option>
+            </select>
+            
+            <div id="topic-quiz-container">
+                <p style="text-align: center; color: var(--text-muted);">Vui lòng chọn chủ đề ở trên để bắt đầu.</p>
+            </div>
+            <button id="btn-check-topic" class="btn" style="display: none;" onclick="checkTopicQuiz()">Kiểm tra đáp án</button>
+            <div id="topic-result" class="result-box"></div>
+        </div>
+
+        <!-- Tab 3: Đề thi thử tốt nghiệp -->
+        <div id="tab-exam" class="tab-content">
+            <h2 style="margin-bottom: 0.5rem; color: var(--primary-color); text-align: center;">Đề Thi Thử Tốt Nghiệp THPT</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: var(--text-muted);">Môn: Công Nghệ (Nông Nghiệp) - Thời gian: 15 phút</p>
+            
+            <div id="exam-container">
+                <!-- Đề thi sẽ được render bằng JS -->
+            </div>
+            
+            <button class="btn" onclick="submitExam()">Nộp Bài & Chấm Điểm</button>
+            <div id="exam-result" class="result-box"></div>
+        </div>
+    </div>
+
+    <script>
+        // --- DATA LÝ THUYẾT ---
+        const theoryData = [
+            {
+                title: "Chủ đề 1: Giới thiệu chung về Lâm nghiệp",
+                content: `
+                    <p><strong>1. Vai trò của lâm nghiệp:</strong></p>
+                    <ul>
+                        <li>Cung cấp lâm sản cho tiêu dùng và xuất khẩu (gỗ, củi, dược liệu...).</li>
+                        <li>Bảo vệ môi trường sinh thái: Điều hòa khí hậu, bảo vệ nguồn nước, chống xói mòn, giảm thiểu thiên tai.</li>
+                        <li>Tạo việc làm, tăng thu nhập cho người dân miền núi.</li>
+                    </ul>
+                    <p><strong>2. Nhiệm vụ của trồng rừng:</strong></p>
+                    <ul>
+                        <li>Trồng rừng phòng hộ: Chắn gió, chắn cát, bảo vệ đầu nguồn.</li>
+                        <li>Trồng rừng sản xuất: Cung cấp nguyên liệu cho công nghiệp.</li>
+                        <li>Trồng rừng đặc dụng: Bảo tồn thiên nhiên, đa dạng sinh học (Vườn quốc gia).</li>
+                    </ul>`
+            },
+            {
+                title: "Chủ đề 2: Kỹ thuật nuôi trồng Thủy sản",
+                content: `
+                    <p><strong>1. Đặc điểm môi trường nước nuôi thủy sản:</strong></p>
+                    <ul>
+                        <li>Có khả năng hòa tan nhiều chất vô cơ và hữu cơ.</li>
+                        <li>Khả năng điều hòa nhiệt độ tốt hơn không khí.</li>
+                        <li>Thành phần oxy hòa tan thấp hơn nhiều so với không khí (cần sục khí).</li>
+                    </ul>
+                    <p><strong>2. Các loại thức ăn tự nhiên và nhân tạo:</strong></p>
+                    <ul>
+                        <li><strong>Thức ăn tự nhiên:</strong> Thực vật phù du, động vật phù du, động vật đáy.</li>
+                        <li><strong>Thức ăn nhân tạo:</strong> Thức ăn tinh (cám, bột cá), thức ăn xanh, thức ăn hỗn hợp viên.</li>
+                    </ul>`
+            }
+        ];
+
+        // --- DATA TRẮC NGHIỆM THEO CHỦ ĐỀ ---
+        const topicQuizData = {
+            "lam-nghiep": [
+                { id: "ln1", q: "Rừng phòng hộ có chức năng chính là gì?", options: ["Cung cấp gỗ xuất khẩu", "Bảo vệ nguồn nước, chống xói mòn đất", "Nghiên cứu khoa học", "Bảo tồn nguồn gen quý hiếm"], a: 1 },
+                { id: "ln2", q: "Đâu không phải là nhiệm vụ của lâm nghiệp?", options: ["Khai thác trắng toàn bộ rừng tự nhiên", "Trồng rừng vành đai ven biển", "Bảo vệ và phát triển rừng", "Chế biến lâm sản"], a: 0 }
+            ],
+            "thuy-san": [
+                { id: "ts1", q: "Yếu tố nào sau đây quyết định sự hô hấp của tôm cá?", options: ["Độ pH", "Nhiệt độ nước", "Oxy hòa tan", "Độ mặn"], a: 2 },
+                { id: "ts2", q: "Thức ăn tự nhiên của cá bao gồm:", options: ["Cám gạo, bột bắp", "Thực vật phù du, động vật phù du", "Thức ăn viên nén", "Phế phụ phẩm lò mổ"], a: 1 }
+            ]
+        };
+
+        // --- DATA ĐỀ THI THỬ TỐT NGHIỆP ---
+        const examData = [
+            { id: "ex1", q: "Hoạt động nào sau đây thuộc lĩnh vực lâm nghiệp?", options: ["Nuôi cá tra xuất khẩu", "Trồng cao su lấy mủ", "Trồng rừng ngập mặn chắn sóng", "Chế biến nước mắm"], a: 2 },
+            { id: "ex2", q: "Để cải tạo môi trường ao nuôi thủy sản bị chua (pH thấp), người ta thường dùng biện pháp nào?", options: ["Bón phân chuồng", "Bón vôi bột (CaO)", "Sục khí liên tục", "Che lưới cản nắng"], a: 1 },
+            { id: "ex3", q: "Vườn quốc gia Cúc Phương thuộc loại rừng nào?", options: ["Rừng sản xuất", "Rừng phòng hộ", "Rừng đặc dụng", "Rừng ngập mặn"], a: 2 },
+            { id: "ex4", q: "Bệnh đóng rong ở tôm thường do nguyên nhân chính nào gây ra?", options: ["Thiếu thức ăn", "Nước ao ô nhiễm, nhiều chất hữu cơ", "Nhiệt độ nước quá thấp", "Độ mặn quá cao"], a: 1 },
+            { id: "ex5", q: "Mục đích của việc ương cá giống là gì?", options: ["Cho cá sinh sản", "Chế biến thành thực phẩm", "Nuôi cá từ giai đoạn bột lên hương và giống", "Tiêu diệt mầm bệnh trong ao"], a: 2 }
+        ];
+
+        // --- CHUYỂN TAB ---
+        function switchTab(tabId, element) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            element.classList.add('active');
+        }
+
+        // --- RENDER LÝ THUYẾT ---
+        function renderTheory() {
+            const container = document.getElementById('theory-container');
+            let html = '';
+            theoryData.forEach((item, index) => {
+                html += `
+                    <div class="topic-card">
+                        <div class="topic-header" onclick="toggleTheory(${index})">
+                            <span>${item.title}</span>
+                            <span id="icon-${index}">▼</span>
+                        </div>
+                        <div class="topic-body" id="theory-body-${index}">
+                            ${item.content}
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function toggleTheory(index) {
+            const body = document.getElementById(`theory-body-${index}`);
+            const icon = document.getElementById(`icon-${index}`);
+            if (body.style.display === 'block') {
+                body.style.display = 'none';
+                icon.innerText = '▼';
+            } else {
+                body.style.display = 'block';
+                icon.innerText = '▲';
+            }
+        }
+
+        // --- RENDER CÂU HỎI DẠNG CHUNG ---
+        function generateQuizHTML(questions, prefix) {
+            let html = '';
+            questions.forEach((q, index) => {
+                html += `
+                    <div class="question-block" id="block-${prefix}-${index}">
+                        <div class="question-text">Câu ${index + 1}: ${q.q}</div>
+                        <ul class="options-list">
+                            ${q.options.map((opt, optIndex) => `
+                                <li class="option-item">
+                                    <label class="option-label">
+                                        <input type="radio" name="${prefix}-q${index}" value="${optIndex}">
+                                        ${opt}
+                                    </label>
+                                </li>
+                            `).join('')}
+                        </ul>
+                        <div id="feedback-${prefix}-${index}" class="feedback"></div>
+                    </div>
+                `;
+            });
+            return html;
+        }
+
+        // --- XỬ LÝ TRẮC NGHIỆM CHỦ ĐỀ ---
+        let currentTopicQuestions = [];
+        
+        function loadTopicQuiz() {
+            const topic = document.getElementById('topic-select').value;
+            const container = document.getElementById('topic-quiz-container');
+            const btn = document.getElementById('btn-check-topic');
+            const resultBox = document.getElementById('topic-result');
+            
+            resultBox.classList.remove('show');
+
+            if (!topic) {
+                container.innerHTML = '<p style="text-align: center; color: var(--text-muted);">Vui lòng chọn chủ đề ở trên để bắt đầu.</p>';
+                btn.style.display = 'none';
+                currentTopicQuestions = [];
+                return;
+            }
+
+            currentTopicQuestions = topicQuizData[topic];
+            container.innerHTML = generateQuizHTML(currentTopicQuestions, 'topic');
+            btn.style.display = 'block';
+        }
+
+        function checkTopicQuiz() {
+            let score = 0;
+            currentTopicQuestions.forEach((q, index) => {
+                const selected = document.querySelector(`input[name="topic-q${index}"]:checked`);
+                const feedbackEl = document.getElementById(`feedback-topic-${index}`);
+                
+                if (selected && parseInt(selected.value) === q.a) {
+                    score++;
+                    feedbackEl.innerHTML = `<span class="correct-ans">✓ Chính xác!</span>`;
+                } else {
+                    const correctText = q.options[q.a];
+                    feedbackEl.innerHTML = `<span class="wrong-ans">✗ Sai.</span> <span style="color:var(--text-muted); font-size: 0.9em;">Đáp án đúng là: <b>${correctText}</b></span>`;
+                }
+            });
+
+            const resultBox = document.getElementById('topic-result');
+            resultBox.innerHTML = `Bạn trả lời đúng ${score}/${currentTopicQuestions.length} câu.`;
+            resultBox.classList.add('show');
+        }
+
+        // --- XỬ LÝ ĐỀ THI THỬ ---
+        function renderExam() {
+            const container = document.getElementById('exam-container');
+            container.innerHTML = generateQuizHTML(examData, 'exam');
+        }
+
+        function submitExam() {
+            let score = 0;
+            const total = examData.length;
+            let unAnswered = 0;
+
+            examData.forEach((q, index) => {
+                const selected = document.querySelector(`input[name="exam-q${index}"]:checked`);
+                if(!selected) unAnswered++;
+            });
+
+            if(unAnswered > 0) {
+                const confirmSubmit = confirm(`Bạn còn ${unAnswered} câu chưa làm. Bạn có chắc chắn muốn nộp bài?`);
+                if(!confirmSubmit) return;
+            }
+
+            examData.forEach((q, index) => {
+                const selected = document.querySelector(`input[name="exam-q${index}"]:checked`);
+                const feedbackEl = document.getElementById(`feedback-exam-${index}`);
+                
+                // Disable inputs after submit
+                document.querySelectorAll(`input[name="exam-q${index}"]`).forEach(input => input.disabled = true);
+
+                if (selected && parseInt(selected.value) === q.a) {
+                    score++;
+                    feedbackEl.innerHTML = `<span class="correct-ans">✓ Đúng</span>`;
+                } else {
+                    const correctText = q.options[q.a];
+                    feedbackEl.innerHTML = `<span class="wrong-ans">✗ Sai</span>. <span style="color:var(--text-muted); font-size: 0.9em;">Đáp án đúng: <b>${correctText}</b></span>`;
+                }
+            });
+
+            const resultBox = document.getElementById('exam-result');
+            const scoreIn10 = ((score / total) * 10).toFixed(1);
+            
+            let message = "";
+            if(scoreIn10 >= 8) message = "Rất xuất sắc! Chúc mừng bạn.";
+            else if (scoreIn10 >= 5) message = "Khá tốt, hãy ôn tập thêm nhé.";
+            else message = "Bạn cần xem lại phần lý thuyết kỹ hơn.";
+
+            resultBox.innerHTML = `
+                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">Điểm của bạn: <span style="color: #E53935; font-size: 2rem;">${scoreIn10}</span> / 10</div>
+                <div style="font-size: 1rem; color: var(--text-muted);">Số câu đúng: ${score}/${total}</div>
+                <div style="margin-top: 1rem; font-weight: normal;">${message}</div>
+            `;
+            resultBox.classList.add('show');
+            
+            // Cuộn xuống kết quả
+            resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // --- KHỞI TẠO ỨNG DỤNG ---
+        window.onload = function() {
+            renderTheory();
+            renderExam();
+        };
+    </script>
+</body>
+</html>

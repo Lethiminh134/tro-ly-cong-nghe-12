@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đề Thi Tham Khảo Số 12 - Môn Công Nghệ Nông Nghiệp THPT 2026</title>
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2b6cb0;
+            --accent-color: #2f855a;
+            --bg-color: #f7fafc;
+            --card-bg: #ffffff;
+            --text-color: #2d3748;
+            --border-color: #e2e8f0;
+            --correct-bg: #c6f6d5;
+            --correct-border: #38a169;
+            --incorrect-bg: #fed7d7;
+            --incorrect-border: #e53e3e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Control Panel Header */
+        .action-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #edf2f7;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .action-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .action-btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-1px);
+        }
+
+        .action-btn.submit-btn {
+            background-color: var(--accent-color);
+        }
+
+        .action-btn.submit-btn:hover {
+            background-color: #22543d;
+        }
+
+        .score-display {
+            font-weight: bold;
+            font-size: 16px;
+            color: var(--primary-color);
+        }
+
+        /* Exam Header Format */
+        .exam-header {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .exam-header td {
+            vertical-align: top;
+            padding: 4px;
+        }
+
+        .header-left {
+            text-align: center;
+            width: 45%;
+            font-size: 14px;
+        }
+
+        .header-right {
+            text-align: center;
+            width: 55%;
+            font-size: 14px;
+        }
+
+        .header-title {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .student-info {
+            border: 1px dashed #cbd5e0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            background-color: #f8fafc;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .student-info label {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .student-info input {
+            border: none;
+            border-bottom: 1px solid #718096;
+            background: transparent;
+            padding: 2px 8px;
+            width: 60%;
+            outline: none;
+        }
+
+        /* Section Styling */
+        .section-title {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 30px 0 20px 0;
+        }
+
+        .section-desc {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #4a5568;
+            font-size: 14px;
+        }
+
+        /* Question Styles */
+        .question-card {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: border-color 0.2s;
+        }
+
+        .question-card.correct {
+            background-color: var(--correct-bg);
+            border-color: var(--correct-border);
+        }
+
+        .question-card.incorrect {
+            background-color: var(--incorrect-bg);
+            border-color: var(--incorrect-border);
+        }
+
+        .question-text {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 12px;
+            color: #1a202c;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .options-single {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+            transition: background 0.15s;
+            font-size: 14px;
+        }
+
+        .option-item:hover {
+            background-color: #f7fafc;
+        }
+
+        .option-item input[type="radio"] {
+            margin-top: 3px;
+            cursor: pointer;
+        }
+
+        /* True/False Table Styles */
+        .tf-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+            font-size: 14px;
+        }
+
+        .tf-table th, .tf-table td {
+            border: 1px solid #cbd5e0;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        .tf-table th {
+            background-color: #edf2f7;
+            text-align: center;
+        }
+
+        .tf-table td.tf-check {
+            text-align: center;
+            width: 70px;
+        }
+
+        /* Visual Media Container */
+        .media-container {
+            text-align: center;
+            margin: 15px 0;
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #edf2f7;
+        }
+
+        .media-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .media-caption {
+            font-size: 12px;
+            color: #718096;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        /* Standard Data Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 13.5px;
+        }
+
+        .data-table th, .data-table td {
+            border: 1px solid #cbd5e0;
+            padding: 8px 10px;
+            text-align: center;
+        }
+
+        .data-table th {
+            background-color: #ebf8ff;
+            color: #2b6cb0;
+            font-weight: bold;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .explanation {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #fffaf0;
+            border-left: 4px solid #dd6b20;
+            font-size: 13px;
+            color: #7b341e;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Footer */
+        .exam-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border-color);
+            color: #718096;
+            font-size: 13px;
+        }
+
+        /* Print Settings */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                max-width: 100%;
+            }
+            .action-bar {
+                display: none;
+            }
+            .question-card {
+                page-break-inside: avoid;
+                border: none;
+                padding: 10px 0;
+            }
+            .explanation {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Interactive Control Bar -->
+    <div class="action-bar">
+        <div>
+            <button class="action-btn" onclick="window.print()">🖨️ In đề thi</button>
+            <button class="action-btn" onclick="resetForm()">🔄 Làm lại</button>
+        </div>
+        <div class="score-display" id="scoreDisplay">Trạng thái: Chưa nộp bài</div>
+        <button class="action-btn submit-btn" onclick="gradeExam()">✅ Nộp bài & Chấm điểm</button>
+    </div>
+
+    <!-- Exam Header -->
+    <table class="exam-header">
+        <tr>
+            <td class="header-left">
+                <div class="header-title">UBND TỈNH HÀ TĨNH</div>
+                <div class="header-title">SỞ GIÁO DỤC VÀ ĐÀO TẠO</div>
+                <div style="margin-top: 4px; font-weight: bold;">ĐỀ THAM KHẢO SỐ 12</div>
+                <div style="font-size: 12px; font-style: italic;">(Đề thi có 04 trang)</div>
+            </td>
+            <td class="header-right">
+                <div class="header-title">KỲ THI TỐT NGHIỆP THPT NĂM 2026</div>
+                <div style="font-weight: bold; margin-top: 2px;">Môn thi: CÔNG NGHỆ NÔNG NGHIỆP</div>
+                <div style="font-size: 13px; margin-top: 2px;">Thời gian làm bài: 50 phút (không kể thời gian phát đề)</div>
+                <div style="font-weight: bold; margin-top: 4px;">Mã đề: 001</div>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Student Info -->
+    <div class="student-info">
+        <div><label>Họ và tên thí sinh:</label> <input type="text" placeholder="......................................................"></div>
+        <div><label>Số báo danh:</label> <input type="text" placeholder="......................................................"></div>
+    </div>
+
+    <form id="examForm">
+        <!-- ================= PHẦN I ================= -->
+        <div class="section-title">PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn</div>
+        <div class="section-desc">Thí sinh trả lời từ câu 1 đến câu 24. Mỗi câu hỏi thí sinh chỉ chọn một phương án.</div>
+
+        <!-- Câu 1 -->
+        <div class="question-card" id="q1_card">
+            <div class="question-text">Câu 1. Công nghệ nào sau đây được áp dụng trong hình dưới?</div>
+            <div class="media-container">
+                <svg width="500" height="220" viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Chamber Outer Tank -->
+                    <rect x="20" y="20" width="460" height="180" rx="8" fill="#f1f5f9" stroke="#475569" stroke-width="3"/>
+                    <!-- Lid -->
+                    <rect x="10" y="15" width="480" height="12" rx="3" fill="#334155"/>
+                    <!-- Solution Level -->
+                    <path d="M 22 140 Q 120 135, 250 140 T 478 140 L 478 198 L 22 198 Z" fill="#38bdf8" opacity="0.6"/>
+                    <text x="360" y="175" fill="#0369a1" font-weight="bold" font-size="14">DINH DƯỠNG</text>
+
+                    <!-- Plant 1 -->
+                    <g transform="translate(80, 15)">
+                        <!-- Net pot -->
+                        <polygon points="-15,0 15,0 10,25 -10,25" fill="#64748b"/>
+                        <!-- Leaves -->
+                        <circle cx="0" cy="-20" r="22" fill="#22c55e"/>
+                        <circle cx="-15" cy="-15" r="18" fill="#16a34a"/>
+                        <circle cx="15" cy="-15" r="18" fill="#15803d"/>
+                        <!-- Roots -->
+                        <path d="M-5,25 Q-12,50 -3,70 M0,25 Q2,55 -1,75 M5,25 Q10,48 4,68" stroke="#d97706" stroke-width="2" fill="none"/>
+                    </g>
+
+                    <!-- Plant 2 -->
+                    <g transform="translate(250, 15)">
+                        <!-- Net pot -->
+                        <polygon points="-15,0 15,0 10,25 -10,25" fill="#64748b"/>
+                        <!-- Leaves -->
+                        <circle cx="0" cy="-20" r="22" fill="#22c55e"/>
+                        <circle cx="-15" cy="-15" r="18" fill="#16a34a"/>
+                        <circle cx="15" cy="-15" r="18" fill="#15803d"/>
+                        <!-- Roots -->
+                        <path d="M-5,25 Q-10,50 -4,75 M0,25 Q0,55 2,70 M5,25 Q12,48 6,78" stroke="#d97706" stroke-width="2" fill="none"/>
+                    </g>
+
+                    <!-- Plant 3 -->
+                    <g transform="translate(420, 15)">
+                        <!-- Net pot -->
+                        <polygon points="-15,0 15,0 10,25 -10,25" fill="#64748b"/>
+                        <!-- Leaves -->
+                        <circle cx="0" cy="-20" r="22" fill="#22c55e"/>
+                        <circle cx="-15" cy="-15" r="18" fill="#16a34a"/>
+                        <circle cx="15" cy="-15" r="18" fill="#15803d"/>
+                        <!-- Roots -->
+                        <path d="M-5,25 Q-8,48 -2,72 M0,25 Q3,52 0,74 M5,25 Q8,50 3,68" stroke="#d97706" stroke-width="2" fill="none"/>
+                    </g>
+
+                    <!-- Pump -->
+                    <rect x="225" y="165" width="50" height="30" rx="4" fill="#1e293b"/>
+                    <text x="250" y="185" fill="#ffffff" font-weight="bold" font-size="12" text-anchor="middle">BƠM</text>
+
+                    <!-- Pipes & Nozzles -->
+                    <path d="M 250 165 L 250 105 L 160 105 M 250 105 L 340 105" stroke="#334155" stroke-width="6" fill="none"/>
+                    
+                    <!-- Nozzle 1 -->
+                    <polygon points="155,100 165,100 160,110" fill="#dc2626"/>
+                    <!-- Spray droplets 1 -->
+                    <g fill="#0284c7" opacity="0.8">
+                        <circle cx="140" cy="85" r="2.5"/><circle cx="130" cy="75" r="2"/><circle cx="145" cy="65" r="3"/>
+                        <circle cx="175" cy="85" r="2.5"/><circle cx="185" cy="75" r="2"/><circle cx="170" cy="65" r="3"/>
+                    </g>
+                    <!-- Spray arrows 1 -->
+                    <path d="M 150 95 L 135 80" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+                    <path d="M 170 95 L 185 80" stroke="#2563eb" stroke-width="2"/>
+
+                    <!-- Nozzle 2 -->
+                    <polygon points="335,100 345,100 340,110" fill="#dc2626"/>
+                    <!-- Spray droplets 2 -->
+                    <g fill="#0284c7" opacity="0.8">
+                        <circle cx="320" cy="85" r="2.5"/><circle cx="310" cy="75" r="2"/><circle cx="325" cy="65" r="3"/>
+                        <circle cx="355" cy="85" r="2.5"/><circle cx="365" cy="75" r="2"/><circle cx="350" cy="65" r="3"/>
+                    </g>
+                    <!-- Spray arrows 2 -->
+                    <path d="M 330 95 L 315 80" stroke="#2563eb" stroke-width="2"/>
+                    <path d="M 350 95 L 365 80" stroke="#2563eb" stroke-width="2"/>
+
+                    <text x="250" y="95" fill="#15803d" font-weight="bold" font-size="14" text-anchor="middle">PHUN SƯƠNG</text>
+                </svg>
+                <div class="media-caption">Hình 1. Sơ đồ hệ thống trồng cây</div>
+            </div>
+            <div class="options-grid">
+                <label class="option-item"><input type="radio" name="q1" value="A"> A. Công nghệ thủy canh tĩnh.</label>
+                <label class="option-item"><input type="radio" name="q1" value="B"> B. Công nghệ khí canh tĩnh.</label>
+                <label class="option-item"><input type="radio" name="q1" value="C"> C. Công nghệ khí canh hồi lưu.</label>
+                <label class="option-item"><input type="radio" name="q1" value="D"> D. Công nghệ thủy canh hồi lưu.</label>
+            </div>
+            <div class="explanation" id="exp_q1">Đáp án đúng: C. Hình ảnh thể hiện hệ thống khí canh với máy bơm đẩy dung dịch dinh dưỡng qua đầu phun sương vào bộ rễ và chảy tuần hoàn về bể chứa (hồi lưu).</div>
+        </div>
+
+        <!-- Câu 2 -->
+        <div class="question-card" id="q2_card">
+            <div class="question-text">Câu 2. Phương thức khai thác trắng không nên áp dụng ở khu vực nào?</div>
+            <div class="options-single">
+                <label class="option-item"><input type="radio" name="q2" value="A"> A. Nơi địa hình có độ dốc lớn, lượng mưa ít.</label>
+                <label class="option-item"><input type="radio" name="q2" value="B"> B. Nơi địa hình có độ dốc thấp, lượng mưa nhiều.</label>
+                <label class="option-item"><input type="radio" name="q2" value="C"> C. Nơi địa hình có độ dốc lớn, lượng mưa nhiều.</label>
+                <label class="option-item"><input type="radio" name="q2" value="D"> D. Nơi địa hình có độ dốc thấp, lượng mưa ít.</label>
+            </div>
+            <div class="explanation" id="exp_q2">Đáp án đúng: C. Khai thác trắng (chặt sạch cây) ở vùng dốc lớn, mưa nhiều sẽ gây xói mòn, rửa trôi đất trầm trọng và dễ gây lũ quét, sạt lở.</div>
+        </div>
+
+        <!-- Câu 3 -->
+        <div class="question-card" id="q3_card">
+            <div class="question-text">Câu 3. Đa số các vùng nông thôn hiện nay, về mùa đông lạnh giá, trâu bò thường bị thiếu thức ăn. Để khắc phục thực trạng trên người chăn nuôi nên chuẩn bị sẵn thức ăn nào sau đây?</div>
+            <div class="options-grid">
+                <label class="option-item"><input type="radio" name="q3" value="A"> A. Cám cò.</label>
+                <label class="option-item"><input type="radio" name="q3" value="B"> B. Cỏ tươi.</label>
+                <label class="option-item"><input type="radio" name="q3" value="C"> C. Khoai, sắn.</label>
+                <label class="option-item"><input type="radio" name="q3" value="D"> D. Rơm, rạ.</label>
+            </div>
+            <div class="explanation" id="exp_q3">Đáp án đúng: D. Rơm, rạ là thức ăn thô khô dễ tích trữ, dự trữ khối lượng lớn cho gia súc ăn cỏ trong mùa đông lạnh.</div>
+        </div>
+
+        <!-- Câu 4 -->
+        <div class="question-card" id="q4_card">
+            <div class="question-text">Câu 4. Bệnh thủy sản nào sau đây có thể lây truyền từ thủy sản sang người?</div>
+            <div class="options-single">
+                <label class="option-item"><input type="radio" name="q4" value="A"> A. Bệnh lồi mắt ở cá rô phi.</label>
+                <label class="option-item"><input type="radio" name="q4" value="B"> B. Bệnh gan thận mủ ở cá tra.</label>
+                <label class="option-item"><input type="radio" name="q4" value="C"> C. Bệnh hoại tử thần kinh trên cá biển.</label>
+                <label class="option-item"><input type="radio" name="q4" value="D"> D. Bệnh sán lá gan.</label>
+            </div>
+            <div class="explanation" id="exp_q4">Đáp án đúng: D. Bệnh sán lá gan là bệnh truyền nhiễm từ động vật thủy sản (cá, ốc) sang người do thói quen ăn gỏi cá/thực phẩm chưa nấu chín.</div>
+        </div>
+
+        <!-- Câu 5 -->
+        <div class="question-card" id="q5_card">
+            <div class="question-text">Câu 5. Bệnh lồi mắt ở cá rô phi là do tác nhân nào sau đây gây ra?</div>
+            <div class="options-single">
+                <label class="option-item"><input type="radio" name="q5" value="A"> A. Liên cầu khuẩn Streptococcus Agalactiae.</label>
+                <label class="option-item"><input type="radio" name="q5" value="B"> B. Virus Betanodavirus có vật chất di truyền RNA.</label>
+                <label class="option-item"><input type="radio" name="q5" value="C"> C. Vi khuẩn Edwardsiella ictaluri.</label>
+                <label class="option-item"><input type="radio" name="q5" value="D"> D. Virus Baculovirus có vật chất di truyền DNA.</label>
+            </div>
+            <div class="explanation" id="exp_q5">Đáp án đúng: A. Bệnh lồi mắt, xuất huyết ở cá rô phi do vi khuẩn Streptococcus agalactiae gây ra.</div>
+        </div>
+
+        <!-- Câu 6 -->
+        <div class="question-card" id="q6_card">
+            <div class="question-text">Câu 6. Cho bảng số liệu về sản lượng gỗ khai thác trên toàn quốc giai đoạn 2008 – 2020.</div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th rowspan="2">Năm</th>
+                        <th colspan="4">Sản lượng gỗ khai thác (m³)</th>
+                    </tr>
+                    <tr>
+                        <th>Từ rừng tự nhiên</th>
+                        <th>Từ rừng trồng tập trung</th>
+                        <th>Từ cao su, cây phân tán</th>
+                        <th>Tổng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>2008</strong></td>
+                        <td>180.000</td>
+                        <td>3.562.000</td>
+                        <td>-</td>
+                        <td>3.742.000</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2015</strong></td>
+                        <td>5.500</td>
+                        <td>13.000.000</td>
+                        <td>6.200.000</td>
+                        <td>19.205.500</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2020</strong></td>
+                        <td>-</td>
+                        <td>20.500.000</td>
+                        <td>9.000.000</td>
+                        <td>29.500.000</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="font-size: 12px; font-style: italic; text-align: right; margin-bottom: 10px;">Nguồn: Nguyễn Bá Ngãi và Nguyễn Quốc Trị (2020)</div>
+            <div class="question-text">Nhận định nào sau đây không đúng?</div>
+            <div class="options-single">
+                <label class="option-item"><input type="radio" name="q6" value="A"> A. Sản lượng gỗ khai thác từ rừng trồng tập trung tăng trong giai đoạn 2008-2020.</label>
+                <label class="option-item"><input type="radio" name="q6" value="B"> B. Sản lượng gỗ khai thác từ rừng tự nhiên tăng trong giai đoạn 2008-2020.</label>
+                <label class="option-item"><input type="radio" name="q6" value="C"> C. Sản lượng gỗ khai thác từ rừng tự nhiên giảm trong giai đoạn 2008-2020.</label>
+                <label class="option-item"><input type="radio" name="q6" value="D"> D. Sản lượng gỗ khai thác từ cây phân tán tăng trong giai đoạn 2008-2020.</label>
+            </div>
+            <div class="explanation" id="exp_q6">Đáp án đúng: B. Thực tế sản lượng gỗ khai thác từ rừng tự nhiên giảm mạnh từ 180.000 m³ năm 2008 xuống 5.500 m³ năm 2015 và đóng cửa rừng (bằng 0) năm 2020, nên nhận định B (tăng) là KHÔNG đúng.</div>
+        </div>
+
+        <!-- Câu 7 -->
+        <div class="question-card" id="q7_card">
+            <div class="question-text">Câu 7. Yêu cầu nào sau đây không đúng về quản lý dịch bệnh đối với một trang trại chăn nuôi theo tiêu chuẩn VietGAP?</div>
+            <div class="options-single">
+                <label class="option-item"><input type="radio" name="q7" value="A"> A. Có quy trình phòng bệnh phù hợp với từng đối tượng nuôi.</label>
+                <label class="option-item"><input type="radio" name="q7" value="B"> B. Có nguồn cung tài chính từ các công ty lớn cùng ngành.</label>
+                <label class="option-item"><input type="radio" name="q7" value="C"> C. Có đầy đủ trang thiết bị và quy trình vệ sinh, tiêu độc, khử trùng.</label>
+                <label class="option-item"><input type="radio" name="q7" value="D"> D. Có bác sĩ thú y theo dõi sức khỏe vật nuôi.</label>
+            </div>
+            <div class="explanation" id="exp_q7">Đáp án đúng: B. Việc có nguồn tài chính từ công ty lớn không nằm trong tiêu chuẩn quản lý an toàn dịch bệnh chăn nuôi VietGAP.</div>
+        </div>
+
+        <!-- Câu 8 -->
+        <div class="question-card" id="q8_card">
+            <div class="question-text">Câu 8. Công nghệ sinh học nào được ứng dụng để phát hiện sớm bệnh thuỷ sản?</div>
+            <div class="options-grid">
+                <label class="option-item"><input type="radio" name="q8" value="A"> A. Công nghệ tạo kháng sinh thảo dược.</label>
+                <label class="option-item"><input type="radio" name="q8" value="B"> B. Công nghệ thu mẫu virus.</label>
+                <label class="option-item"><input type="radio" name="q8" value="C"> C. Kĩ thuật tách chiết RNA tổng số.</label>
+                <label class="option-item"><input type="radio" name="q8" value="D"> D. Kĩ thuật PCR.</label>
+            </div>
+            <div class="explanation" id="exp_q8">Đáp án đúng: D. Kĩ thuật PCR (Polymerase Chain Reaction) giúp nhân bản ADN/ARN của tác nhân gây bệnh để chẩn đoán chính xác và phát hiện sớm dịch bệnh thủy sản.</div>
+        </div>
+
+        <!-- Câu 9 -->
+        <div class="question-card" id="q9_card">
+            <div class="question-text">Câu 9. Dưới đây là bảng công thức thức ăn theo nhu cầu dinh dưỡng của lợn con 30-60 ngày tuổi.</div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Thành phần</th>
+                        <th>Bột gạo</th>
+                        <th>Bột ngô</th>
+                        <th>Bột cá</th>
+                        <th>Đậu tương</th>
+                        <th>Đường</th>
+                        <th>Bột xương</th>
+                        <th>Vitamin</th>
+                        <th>Khoáng</th>
+                        <th>Muối</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Tỷ lệ (%)</strong></td>
+                        <td>26,7 %</td>
+                        <td>30 %</td>
+                        <td>20 %</td>
+                        <td>10 %</td>
+                        <td>10 %</td>
+                        <td>2 %</td>
+                        <td>0,3 %</td>
+                        <td>0,5 %</td>
+                        <td>0,5 %</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="font-size: 12px; font-style: italic; text-align: right; margin-bottom: 10px;">Nguồn: caytrongvatnuoi.com</div>
+            <div class="question-text">Nhận định nào sau đây là đúng?</div>
+            <div class="options-single">
+                <label class="option-item"><input type="radio" name="q9" value="A"> A. Giai đoạn lợn con nhu cầu năng lượng và protein cao nhất.</label>
+                <label class="option-item"><input type="radio" name="q9" value="B"> B. Giai đoạn lợn con nhu cầu năng lượng và khoáng cao nhất.</label>
+                <label class="option-item"><input type="radio" name="q9" value="C"> C. Giai đoạn lợn con nhu cầu protein và khoáng ít nhất.</label>
+                <label class="option-item"><input type="radio" name="q9" value="D"> D. Giai đoạn lợn con nhu cầu protein và vitamin ít nhất.</label>
+            </div>
+            <div class="explanation" id="exp_q9">Đáp án đúng: A. Lợn con lớn rất nhanh nên cần hàm lượng năng lượng cao (bột ngô + bột gạo = 56.7%) và protein cao (bột cá + đậu tương = 30%).</div>
+        </div>
+
+        <!-- Câu 10 -->
+        <div class="question-card" id="q10_card">
+            <div class="question-text">Câu 10. Ao nuôi tôm của bác Nam ở Nghi Xuân – Hà Tĩnh xuất hiện bệnh đốm trắng, cần sử dụng biện pháp nào sau đây để điều trị hạn chế thiệt hại cho người nuôi tôm?</div>
+            <div class="options-single">
+                <label class="option-item"><input type="radio" name="q10" value="A"> A. Khử trùng và cách ly ngay với các ao khác, diệt virus trước khi thải nước.</label>
+                <label class="option-item"><input type="radio" name="q10" value="B"> B. Thu hoạch trước những lứa tôm đến tuổi trưởng thành.</label>
+                <label class="option-item"><input type="radio" name="q10" value="C"> C. Mua các con giống khác đạt chất lượng bổ sung vào ao nuôi.</label>
+                <label class="option-item"><input type="radio" name="q10" value="D"> D. Tháo nước ao tôm bị bệnh ra ngoài tránh lây lan cho ao khác.</label>
+            </div>
+            <div class="explanation" id="exp_q10">Đáp án đúng: A. Phải dập dịch bằng cách tiêu độc, khử trùng diệt virus trong ao và tuyệt đối không xả xả nước mầm bệnh chưa xử lý ra ngoài.</div>
+        </div>
+
+        <!-- Câu 11 -->
+        <div class="question-card" id="q11_card">
+            <div class="question-text">Câu 11. Biểu đồ dưới đây thể hiện tình hình nuôi trồng thủy sản của Hà Tĩnh trong 11 tháng năm 2025 so với cùng kỳ năm 2024.</div>
+            
+            <div class="media-container">
+                <svg width="600" height="180" viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Main Title -->
+                    <text x="300" y="25" fill="#0284c7" font-size="20" font-weight="bold" text-anchor="middle">Thuỷ sản 11 tháng năm 2025</text>
+                    <text x="300" y="45" fill="#0369a1" font-size="13" font-style="italic" text-anchor="middle">So với cùng kỳ năm trước</text>
+
+                    <!-- Card 1: Tổng sản lượng -->
+                    <g transform="translate(20, 60)">
+                        <rect width="170" height="90" rx="10" fill="#f0f9ff" stroke="#0284c7" stroke-width="2"/>
+                        <text x="85" y="25" fill="#0369a1" font-size="12" font-weight="bold" text-anchor="middle">Tổng sản lượng thuỷ sản</text>
+                        <text x="85" y="58" fill="#5b21b6" font-size="18" font-weight="bold" text-anchor="middle">58.379 tấn</text>
+                        <rect x="110" y="66" width="50" height="18" rx="4" fill="#dbeafe"/>
+                        <text x="135" y="79" fill="#1d4ed8" font-size="11" font-weight="bold" text-anchor="middle">↗ 4,71%</text>
+                    </g>
+
+                    <!-- Card 2: Khai thác -->
+                    <g transform="translate(215, 60)">
+                        <rect width="170" height="90" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+                        <text x="85" y="25" fill="#15803d" font-size="12" font-weight="bold" text-anchor="middle">Sản lượng Khai thác</text>
+                        <text x="85" y="58" fill="#ea580c" font-size="18" font-weight="bold" text-anchor="middle">41.430 tấn</text>
+                        <rect x="110" y="66" width="50" height="18" rx="4" fill="#dcfce7"/>
+                        <text x="135" y="79" fill="#15803d" font-size="11" font-weight="bold" text-anchor="middle">↗ 5,20%</text>
+                    </g>
+
+                    <!-- Card 3: Nuôi trồng -->
+                    <g transform="translate(410, 60)">
+                        <rect width="170" height="90" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+                        <text x="85" y="25" fill="#c2410c" font-size="12" font-weight="bold" text-anchor="middle">Sản lượng Nuôi trồng</text>
+                        <text x="85" y="58" fill="#d97706" font-size="18" font-weight="bold" text-anchor="middle">16.949 tấn</text>
+                        <rect x="110" y="66" width="50" height="18" rx="4" fill="#ffedd5"/>
+                        <text x="135" y="79" fill="#c2410c" font-size="11" font-weight="bold" text-anchor="middle">↗ 3,52%</text>
+                    </g>
+                </svg>
+                <div class="media-caption">Nguồn: Cục Thống kê tỉnh Hà Tĩnh, ngày 01/12/2025</div>
+            </div>
+
+            <div class="question-text">Nhận định nào sau đây là đúng?</div>
+            <div class="options-single">
+                <label class="option-item"><input type="radio" name="q11" value="A"> A. Tổng sản lượng thủy sản của tỉnh Hà Tĩnh 11 tháng đầu năm 2025 tăng 5,20%.</label>
+                <label class="option-item"><input type="radio" name="q11" value="B"> B. Sản lượng nuôi trồng thủy sản của tỉnh Hà Tĩnh 11 tháng đầu năm 2025 tăng 5,32%.</label>
+                <label class="option-item"><input type="radio" name="q11" value="C"> C. Sản lượng khai thác thủy sản nhiều hơn sản lượng nuôi trồng là 24.481 tấn.</label>
+                <label class="option-item"><input type="radio" name="q11" value="D"> D. Sản lượng khai thác thủy sản ít hơn sản lượng nuôi trồng là 24.481 tấn.</label>
+            </div>
+            <div class="explanation" id="exp_q11">Đáp án đúng: C. Lấy sản lượng khai thác (41.430 tấn) trừ sản lượng nuôi trồng (16.949 tấn) = 24.481 tấn. Khai thác nhiều hơn nuôi trồng 24.481 tấn.</div>
+        </div>
+
+        <!-- Câu 12 -->
+        <div class="question-card" id="q12_card">
+            <div class="question-text">Câu 12. Biện pháp khai thác thủy sản nào sau đây bị nghiêm cấm?</div>
+            <div class="options-grid">
+                <label class="option-item"><input type="radio" name="q12" value="A"> A. Các dụng cụ đánh bắt thủ công.</label>
+                <label class="option-item"><input type="radio" name="q12" value="B"> B. Dùng câu, lưới tay.</label>
+                <label class="option-item"><input type="radio" name="q12" value="C"> C. Lưới kéo, lưới vây.</label>
+                <label class="option-item"><input type="radio" name="q12" value="D"> D. Dùng thuốc nổ, kích điện.</label>
+            </div>
+            <div class="explanation" id="exp_q12">Đáp án đúng: D. Dùng thuốc nổ, kích điện hủy hoại triệt để môi trường sống và nguồn lợi thủy sản, bị nghiêm cấm theo luật.</div>
+        </div>
+
+        <!-- Câu 13 -->
+        <div class="question-card" id="q13_card">
+            <div class="question-text">Câu 13. Nội dung nào sau đây là ứng dụng công nghệ sinh học trong chăn nuôi?</div>
+            <div class="options-single">
+                <label class="option-item"><input type="radio" name="q13" value="A"> A. Sử dụng công nghệ biogas trong xử lý chất thải chăn nuôi.</label>
+                <label class="option-item"><input type="radio" name="q13" value="B"> B. Sử dụng vôi bột khử trùng chuồng nuôi.</label>
+                <label class="option-item"><input type="radio" name="q13" value="C"> C. Sử dụng nước xà phòng khử trùng chuồng nuôi.</label>
+                <label class="option-item"><input type="radio" name="q13" value="D"> D. Khơi thông cống, rãnh ở khu vực chăn nuôi.</label>
+            </div>
+            <div class="explanation" id="exp_q13">Đáp án đúng: A. Biogas là ứng dụng vi sinh vật phân giải kị khí chất thải hữu cơ để sản xuất khí sinh học.</div>
+        </div>
+
+        <!-- Câu 14 -->
+        <div class="question-card" id="q14_card">
+            <div class="question-text">Câu 14. Loại máy nào sau đây là ứng dụng cơ giới hóa trong thu hoạch cây trồng?</div>
+            <div class="options-grid">
+                <label class="option-item"><input type="radio" name="q14" value="A"> A. Máy cày.</label>
+                <label class="option-item"><input type="radio" name="q14" value="B"> B. Máy gieo hạt cầm tay.</label>
+                <label class="option-item"><input type="radio" name="q14" value="C"> C. Máy xới, vun.</label>
+                <label class="option-item"><input type="radio" name="q14" value="D"> D. Máy gặt liên hợp.</label>
+            </div>
+            <div class="explanation" id="exp_q14">Đáp án đúng: D. Máy gặt đập liên hợp là máy phục vụ khâu thu hoạch nông sản.</div>
+        </div>
+
+        <!-- Câu 15 -->
+        <div class="question-card" id="q15_card">
+            <div class="question-text">Câu 15. Trong các loại cây trồng sau đây, cây nào không cần lên luống để trồng?</div>
+            <div class="options-grid">
+                <label class="option-item"><input type="radio" name="q15" value="A"> A. Rau cải, mướp.</label>
+                <label class="option-item"><input type="radio" name="q15" value="B"> B. Lúa, rau muống.</label>
+                <label class="option-item"><input type="radio" name="q15" value="C"> C. Cà chua, khoai lang.</label>
+                <label class="option-item"><input type="radio" name="q15" value="D"> D. Su hào, hoa cúc.</label>
+            </div>
+            <div class="explanation" id="exp_q15">Đáp án đúng: B. Lúa và rau muống nước trồng trên ruộng ngập nước/bằng phẳng không cần tạo luống cao như các cây rau màu khô.</div>
+        </div>
+
+        <!-- Câu 16 -->
+        <div class="question-card" id="q16_card">
+            <div class="question-text">Câu 16. Nội dung nào sau đây là vai trò của rừng phòng hộ đầu nguồn?</div>
+            <div class="options-single">
+                <label class="option-item"><input type="radio" name="q16" value="A"> A. Điều tiết nước, hạn chế lũ lụt, chống xói mòn, bảo vệ đất.</label>
+                <label class="option-item"><input type="radio" name="q16" value="B"> B. Chắn cát, chắn sóng, chắn gió, chống xâm nhập mặn.</label>
+                <label class="option-item"><input type="radio" name="q16" value="C"> C. Ngăn sóng, bảo vệ công trình ven biển, cố định cát lắng đọng.</label>
+                <label class="option-item"><input type="radio" name="q16" value="D"> D. Điều hòa không khí, bảo vệ môi trường sinh thái ở khu dân cư.</label>
+            </div>
+            <div class="explanation" id="exp_q16">Đáp án đúng: A. Rừng đầu nguồn nằm ở thượng nguồn sông suối có nhiệm vụ giữ đất, điều tiết nguồn nước, chống xói mòn và giảm lũ lụt.</div>
+        </div>
+
+        <!-- Câu 17 -->
+        <div class="question-card" id="q17_card">
+            <div class="question-text">Câu 17. Khai thác dần là gì?</div>
+            <div class="options-single">
+                <label class="option-item"><input type="radio" name="q17" value="A"> A. Là chặt toàn bộ cây rừng ở một khu vực nhất định trong một mùa khai thác.</label>
+                <label class="option-item"><input type="radio" name="q17" value="B"> B. Là chặt toàn bộ cây rừng ở một khu vực nhất định, chia làm nhiều lần khai thác.</label>
+                <label class="option-item"><input type="radio" name="q17" value="C"> C. Là chọn chặt những cây già yếu, có phẩm chất và sức sống kém.</label>
+                <label class="option-item"><input type="radio" name="q17" value="D"> D. Là chọn chặt những cây khỏe mạnh đến tuổi thành thục.</label>
+            </div>
+            <div class="explanation" id="exp_q17">Đáp án đúng: B. Khai thác dần là chặt sạch toàn bộ rừng ở một khu vực nhưng tiến hành qua 3-4 lần chặt trong một khoảng thời gian luân kỳ.</div>
+        </div>
+
+        <!-- Câu 18 -->
+        <div class="question-card" id="q18_card">
+            <div class="question-text">Câu 18. Yêu cầu nào sau đây không đúng khi xây dựng chuồng nuôi theo tiêu chuẩn VietGAP?</div>
+            <div class="options-single">
+                <label class="option-item"><input type="radio" name="q18" value="A"> A. Sàn và lối đi được làm bằng vật liệu an toàn, không trơn trượt.</label>
+                <label class="option-item"><input type="radio" name="q18" value="B"> B. Hệ thống tường, mái, rèm che đảm bảo không bị dột, thấm, gió lùa.</label>
+                <label class="option-item"><input type="radio" name="q18" value="C"> C. Hệ thống cung cấp thức ăn và nước uống chung cho các loại vật nuôi.</label>
+                <label class="option-item"><input type="radio" name="q18" value="D"> D. Dụng cụ, thiết bị phải đảm bảo an toàn và dễ vệ sinh, khử trùng.</label>
+            </div>
+            <div class="explanation" id="exp_q18">Đáp án đúng: C. Mỗi loại vật nuôi/lứa tuổi nuôi phải có máng ăn nước uống riêng phù hợp để tránh lây nhiễm chéo.</div>
+        </div>
+
+        <!-- Câu 19 -->
+        <div class="question-card" id="q19_card">
+            <div class="question-text">Câu 19. Cua biển ở hình dưới đây thuộc nhóm động vật thủy sản nào?</div>
+            <div class="media-container">
+                <svg width="220" height="180" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Carapace -->
+                    <path d="M 40 80 Q 100 30 160 80 Q 140 120 100 125 Q 60 120 40 80 Z" fill="#2d5a27" stroke="#1b3818" stroke-width="2"/>
+                    <!-- Spines on carapace -->
+                    <path d="M 40 80 L 32 75 L 43 85 L 34 83 L 47 90" stroke="#1b3818" stroke-width="1.5" fill="none"/>
+                    <path d="M 160 80 L 168 75 L 157 85 L 166 83 L 153 90" stroke="#1b3818" stroke-width="1.5" fill="none"/>
+                    <!-- Eyes -->
+                    <circle cx="88" cy="45" r="3" fill="#000"/>
+                    <circle cx="112" cy="45" r="3" fill="#000"/>
+                    <!-- Claws Left -->
+                    <path d="M 50 75 Q 10 50 20 20 Q 40 20 55 55 Z" fill="#3b7a33" stroke="#1b3818" stroke-width="2"/>
+                    <path d="M 20 20 Q 35 5 45 25 Z" fill="#4a9441" stroke="#1b3818" stroke-width="1.5"/>
+                    <!-- Claws Right -->
+                    <path d="M 150 75 Q 190 50 180 20 Q 160 20 145 55 Z" fill="#3b7a33" stroke="#1b3818" stroke-width="2"/>
+                    <path d="M 180 20 Q 165 5 155 25 Z" fill="#4a9441" stroke="#1b3818" stroke-width="1.5"/>
+                    <!-- Legs Left -->
+                    <path d="M 55 95 Q 20 100 15 115" stroke="#2d5a27" stroke-width="4" fill="none"/>
+                    <path d="M 60 105 Q 25 115 20 130" stroke="#2d5a27" stroke-width="4" fill="none"/>
+                    <path d="M 70 115 Q 35 130 30 145" stroke="#2d5a27" stroke-width="4" fill="none"/>
+                    <!-- Paddle leg left -->
+                    <path d="M 80 120 Q 55 145 50 155 Q 65 155 85 130 Z" fill="#2d5a27"/>
+                    <!-- Legs Right -->
+                    <path d="M 145 95 Q 180 100 185 115" stroke="#2d5a27" stroke-width="4" fill="none"/>
+                    <path d="M 140 105 Q 175 115 180 130" stroke="#2d5a27" stroke-width="4" fill="none"/>
+                    <path d="M 130 115 Q 165 130 170 145" stroke="#2d5a27" stroke-width="4" fill="none"/>
+                    <!-- Paddle leg right -->
+                    <path d="M 120 120 Q 145 145 150 155 Q 135 155 115 130 Z" fill="#2d5a27"/>
+                </svg>
+                <div class="media-caption">Hình 2. Cua biển (Scylla serrata)</div>
+            </div>
+            <div class="options-grid">
+                <label class="option-item"><input type="radio" name="q19" value="A"> A. Nhóm cá.</label>
+                <label class="option-item"><input type="radio" name="q19" value="B"> B. Nhóm giáp xác.</label>
+                <label class="option-item"><input type="radio" name="q19" value="C"> C. Nhóm nhuyễn thể.</label>
+                <label class="option-item"><input type="radio" name="q19" value="D"> D. Lưỡng cư.</label>
+            </div>
+            <div class="explanation" id="exp_q19">Đáp án đúng: B. Cua, tôm thuộc ngành Động vật chân khớp, lớp Giáp xác (Crustacea).</div>
+        </div>
+
+        <!-- Câu 20 -->
+        <div class="question-card" id="q20_card">
+            <div class="question-text">Câu 20. Màu nước phù hợp cho ao nuôi thủy sản nước ngọt là màu</div>
+            <div class="options-grid">
+                <label class="option-item"><input type="radio" name="q20" value="A"> A. xanh đậm.</label>
+                <label class="option-item"><input type="radio" name="q20" value="B"> B. xanh nõn chuối.</label>
+                <label class="option-item"><input type="radio" name="q20" value="C"> C. vàng nâu.</label>
+                <label class="option-item"><input type="radio" name="q20" value="D"> D. đỏ nâu.</label>
+            </div>
+            <div class="explanation" id="exp_q20">Đáp án đúng: B. Nước ao có màu xanh nõn chuối thể hiện sự phát triển cân đối của tảo lục, giàu oxy hòa tan và sinh vật làm thức ăn tự nhiên tốt cho cá.</div>
+        </div>
+
+        <!-- Câu 21 -->
+        <div class="question-card" id="q21_card">
+            <div class="question-text">Câu 21. Tuổi thành thục sinh dục của tôm phụ thuộc vào yếu tố nào sau đây?</div>
+            <div class="options-single">
+                <label class="option-item"><input type="radio" name="q21" value="A"> A. Tuổi và nhiệt độ môi trường.</label>
+                <label class="option-item"><input type="radio" name="q21" value="B"> B. Khối lượng cơ thể.</label>
+                <label class="option-item"><input type="radio" name="q21" value="C"> C. Tuổi và khối lượng cơ thể.</label>
+                <label class="option-item"><input type="radio" name="q21" value="D"> D. Nhiệt độ môi trường.</label>
+            </div>
+            <div class="explanation" id="exp_q21">Đáp án đúng: C. Thành thục sinh dục ở tôm phụ thuộc chính vào độ tuổi phát triển và kích thước / khối lượng cơ thể của tôm.</div>
+        </div>
+
+        <!-- Câu 22 -->
+        <div class="question-card" id="q22_card">
+            <div class="question-text">Câu 22. Cho các sản phẩm sau: (1) Sim rừng; (2) Sắn; (3) Gỗ lim; (4) Mật ong rừng; (5) Lúa mì. Sản phẩm nào là của ngành Lâm nghiệp?</div>
+            <div class="options-grid">
+                <label class="option-item"><input type="radio" name="q22" value="A"> A. (1), (2), (4).</label>
+                <label class="option-item"><input type="radio" name="q22" value="B"> B. (1), (3), (4).</label>
+                <label class="option-item"><input type="radio" name="q22" value="C"> C. (2), (3), (4).</label>
+                <label class="option-item"><input type="radio" name="q22" value="D"> D. (3), (4), (5).</label>
+            </div>
+            <div class="explanation" id="exp_q22">Đáp án đúng: B. Sim rừng (1), gỗ lim (3), mật ong rừng (4) là lâm sản/lâm sản ngoài gỗ. Sắn (2) và lúa mì (5) là sản phẩm trồng trọt nông nghiệp.</div>
+        </div>
+
+        <!-- Câu 23 -->
+        <div class="question-card" id="q23_card">
+            <div class="question-text">Câu 23. Trong quy trình ương nuôi cá, giai đoạn từ cá hương lên cá giống, ý nào sau đây không đúng?</div>
+            <div class="options-single">
+                <label class="option-item"><input type="radio" name="q23" value="A"> A. Thời gian ương nuôi của giai đoạn này là 4 tháng.</label>
+                <label class="option-item"><input type="radio" name="q23" value="B"> B. Mật độ thả cá tùy theo loài và khả năng quản lý của người nuôi.</label>
+                <label class="option-item"><input type="radio" name="q23" value="C"> C. Ở miền Nam có thể ương nuôi giai đoạn này quanh năm.</label>
+                <label class="option-item"><input type="radio" name="q23" value="D"> D. Ở miền Bắc có 2 vụ chính trong năm để ương nuôi giai đoạn này.</label>
+            </div>
+            <div class="explanation" id="exp_q23">Đáp án đúng: A. Thời gian ương từ cá hương lên cá giống thường chỉ khoảng 45–60 ngày (1.5 - 2 tháng), không kéo dài tới 4 tháng.</div>
+        </div>
+
+        <!-- Câu 24 -->
+        <div class="question-card" id="q24_card">
+            <div class="question-text">Câu 24. Vì sao ao nuôi mật độ cao thường có hàm lượng ammonia cao?</div>
+            <div class="options-single">
+                <label class="option-item"><input type="radio" name="q24" value="A"> A. Vì mật độ nuôi cao nên bị thiếu oxygen.</label>
+                <label class="option-item"><input type="radio" name="q24" value="B"> B. Vì chất thải, chất bài tiết của động vật thủy sản.</label>
+                <label class="option-item"><input type="radio" name="q24" value="C"> C. Vì nuôi thâm canh đơn giống nên không hấp thụ chất thải.</label>
+                <label class="option-item"><input type="radio" name="q24" value="D"> D. Vì thiếu thiết bị sục đáy cho ao nuôi.</label>
+            </div>
+            <div class="explanation" id="exp_q24">Đáp án đúng: B. Ammonia (NH3/NH4+) hình thành trực tiếp từ sự phân hủy chất thải, phân và chất bài tiết qua mang của động vật thủy sản cùng thức ăn dư thừa.</div>
+        </div>
+
+        <!-- ================= PHẦN II ================= -->
+        <div class="section-title">PHẦN II. Câu trắc nghiệm đúng sai</div>
+        <div class="section-desc">Thí sinh trả lời từ câu 1 đến câu 4. Trong mỗi ý a), b), c), d) ở mỗi câu, thí sinh chọn đúng hoặc sai.</div>
+
+        <!-- Câu 1 (Đúng/Sai) -->
+        <div class="question-card" id="q2_1_card">
+            <div class="question-text">Câu 1. Nấm hương là lâm sản ngoài gỗ có giá trị dinh dưỡng và kinh tế cao, là đặc sản quý tiêu biểu của rừng Võ Nhai – Thái Nguyên. Nấm Hương được mệnh danh là “hoàng hậu thực vật”, là “vua của các loại rau” vì là loại thực vật giàu protein nhất. Đồng thời, chứa một hàm lượng chất khoáng rất phong phú như kali chiếm tới 64% của toàn bộ chất khoáng, các loại vitamin B2, D, PP, có protein, chất xơ, lipid, polisacarit có tác dụng nâng cao sức đề kháng của cơ thể.</div>
+            <table class="tf-table">
+                <thead>
+                    <tr>
+                        <th>Phát biểu</th>
+                        <th>Đúng</th>
+                        <th>Sai</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>a) Nấm hương là sản phẩm của lâm nghiệp.</td>
+                        <td class="tf-check"><input type="radio" name="q2_1_a" value="Đúng"></td>
+                        <td class="tf-check"><input type="radio" name="q2_1_a" value="Sai"></td>
+                    </tr>
+                    <tr>
+                        <td>b) Nên hái hết kể cả nấm nở to hoặc sắp tàn, để nấm phát triển đợt mới, góp phần bảo vệ và khai thác tài nguyên rừng bền vững.</td>
+                        <td class="tf-check"><input type="radio" name="q2_1_b" value="Đúng"></td>
+                        <td class="tf-check"><input type="radio" name="q2_1_b" value="Sai"></td>
+                    </tr>
+                    <tr>
+                        <td>c) Cần tuyên truyền, phổ biến cho người dân để nâng cao ý thức bảo vệ và khai thác hợp lý, tránh làm ảnh hưởng đến môi trường sống của nấm.</td>
+                        <td class="tf-check"><input type="radio" name="q2_1_c" value="Đúng"></td>
+                        <td class="tf-check"><input type="radio" name="q2_1_c" value="Sai"></td>
+                    </tr>
+                    <tr>
+                        <td>d) Cần áp dụng các biện pháp, kĩ thuật khai thác phù hợp để đảm bảo hài hòa giữa lợi ích kinh tế với lợi ích bảo vệ môi trường và bảo tồn tài nguyên rừng.</td>
+                        <td class="tf-check"><input type="radio" name="q2_1_d" value="Đúng"></td>
+                        <td class="tf-check"><input type="radio" name="q2_1_d" value="Sai"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="explanation" id="exp_q2_1">Đáp án: a - Đúng; b - Sai (Hái cạn kiệt tàn phá bào tử và môi trường tái sinh); c - Đúng; d - Đúng.</div>
+        </div>
+
+        <!-- Câu 2 (Đúng/Sai) -->
+        <div class="question-card" id="q2_2_card">
+            <div class="question-text">Câu 2. Dưới đây là bảng tỉ lệ thành phần dinh dưỡng trong thức ăn của một số loại thủy sản nuôi.</div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th rowspan="2">Loại cá</th>
+                        <th colspan="4">Tỉ lệ các thành phần dinh dưỡng trong thức ăn (%)</th>
+                    </tr>
+                    <tr>
+                        <th>Protein</th>
+                        <th>Lipid</th>
+                        <th>Chất xơ thô</th>
+                        <th>Chất vô cơ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Cá rô phi giống</strong></td>
+                        <td>35</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>12 – 14</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tôm thẻ chân trắng</strong></td>
+                        <td>40</td>
+                        <td>5</td>
+                        <td>4</td>
+                        <td>–</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cá chim vây vàng</strong></td>
+                        <td>43 – 46</td>
+                        <td>9 – 10</td>
+                        <td>3</td>
+                        <td>–</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="tf-table">
+                <thead>
+                    <tr>
+                        <th>Phát biểu</th>
+                        <th>Đúng</th>
+                        <th>Sai</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>a) Tôm thẻ chân trắng cần bổ sung 40% protein trong thức ăn.</td>
+                        <td class="tf-check"><input type="radio" name="q2_2_a" value="Đúng"></td>
+                        <td class="tf-check"><input type="radio" name="q2_2_a" value="Sai"></td>
+                    </tr>
+                    <tr>
+                        <td>b) Cá rô phi giống cần bổ sung 6g chất xơ thô trong thức ăn.</td>
+                        <td class="tf-check"><input type="radio" name="q2_2_b" value="Đúng"></td>
+                        <td class="tf-check"><input type="radio" name="q2_2_b" value="Sai"></td>
+                    </tr>
+                    <tr>
+                        <td>c) Cá chim vây vàng không cần bổ sung chất vô cơ trong thành phần thức ăn.</td>
+                        <td class="tf-check"><input type="radio" name="q2_2_c" value="Đúng"></td>
+                        <td class="tf-check"><input type="radio" name="q2_2_c" value="Sai"></td>
+                    </tr>
+                    <tr>
+                        <td>d) Protein chiếm tỉ lệ % cao nhất trong thành phần dinh dưỡng trong thức ăn.</td>
+                        <td class="tf-check"><input type="radio" name="q2_2_d" value="Đúng"></td>
+                        <td class="tf-check"><input type="radio" name="q2_2_d" value="Sai"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="explanation" id="exp_q2_2">Đáp án: a - Đúng (bảng ghi 40%); b - Sai (đơn vị là % tỉ lệ, không phải 6g tuyệt đối); c - Sai (dấu - nghĩa là chưa thống kê trong bảng chứ không phải không cần); d - Đúng (Protein luôn chiếm tỉ lệ cao nhất 35 - 46%).</div>
+        </div>
+
+        <!-- Câu 3 (Đúng/Sai) -->
+        <div class="question-card" id="q2_3_card">
+            <div class="question-text">Câu 3. Bệnh đốm trắng trên tôm do Baculovirus gây ra, là bệnh đặc biệt nguy hiểm trên tôm nuôi nước mặn, lợ. Virus đốm trắng có thể nhiễm trên nhiều loài giáp xác nuôi như tôm sú, tôm thẻ chân trắng, tôm hùm. Tôm bị bệnh có các biểu hiện như: giảm ăn đột ngột, hoạt động kém, bơi lờ đờ ở mặt nước hoặc dạt vào bờ, vỏ tôm xuất hiện đốm trắng dạng chìm, kích thước 0,5-2 mm, tập trung nhiều ở giáp đầu ngực, thân tôm chuyển màu hơi hồng tím, ruột tôm không có thức ăn. Bệnh bùng phát mạnh vào thời điểm giao mùa trong năm, tôm chết hàng loạt, tỉ lệ chết từ 90 đến 100% sau 3 đến 10 ngày nhiễm bệnh.</div>
+            <table class="tf-table">
+                <thead>
+                    <tr>
+                        <th>Phát biểu</th>
+                        <th>Đúng</th>
+                        <th>Sai</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>a) Bệnh đốm trắng trên tôm do vi khuẩn Baculovirus gây ra.</td>
+                        <td class="tf-check"><input type="radio" name="q2_3_a" value="Đúng"></td>
+                        <td class="tf-check"><input type="radio" name="q2_3_a" value="Sai"></td>
+                    </tr>
+                    <tr>
+                        <td>b) Bệnh đốm trắng chưa có thuốc đặc trị nên phòng bệnh là biện pháp chủ yếu để hạn chế dịch bệnh.</td>
+                        <td class="tf-check"><input type="radio" name="q2_3_b" value="Đúng"></td>
+                        <td class="tf-check"><input type="radio" name="q2_3_b" value="Sai"></td>
+                    </tr>
+                    <tr>
+                        <td>c) Mua tôm giống ở cơ sở uy tín, lựa chọn tôm khoẻ và có chứng nhận kiểm dịch để đảm bảo tôm giống không mang mầm bệnh.</td>
+                        <td class="tf-check"><input type="radio" name="q2_3_c" value="Đúng"></td>
+                        <td class="tf-check"><input type="radio" name="q2_3_c" value="Sai"></td>
+                    </tr>
+                    <tr>
+                        <td>d) Khi phát hiện tôm bị bệnh, cần tiêu huỷ tôm chết theo đúng quy định, xả hết nước ao nuôi, khử trùng ao trước khi nuôi lứa mới.</td>
+                        <td class="tf-check"><input type="radio" name="q2_3_d" value="Đúng"></td>
+                        <td class="tf-check"><input type="radio" name="q2_3_d" value="Sai"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="explanation" id="exp_q2_3">Đáp án: a - Sai (Baculovirus là VIRUS, không phải vi khuẩn); b - Đúng; c - Đúng; d - Sai (Tuyệt đối KHÔNG xả trực tiếp nước bệnh ra ngoài sông/kênh khi chưa khử trùng diệt mầm bệnh).</div>
+        </div>
+
+        <!-- Câu 4 (Đúng/Sai) -->
+        <div class="question-card" id="q2_4_card">
+            <div class="question-text">Câu 4. Đồ thị dưới đây thể hiện kim ngạch xuất khẩu thủy sản của Việt Nam từ năm 2000 đến 2022 (đơn vị: Triệu USD)</div>
+            
+            <div class="media-container">
+                <svg width="680" height="260" viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Title & Unit -->
+                    <text x="20" y="20" fill="#475569" font-size="12" font-weight="bold">(Triệu USD)</text>
+                    
+                    <!-- Y Axis line -->
+                    <line x1="50" y1="30" x2="50" y2="210" stroke="#cbd5e0" stroke-width="2"/>
+                    <!-- X Axis line -->
+                    <line x1="50" y1="210" x2="660" y2="210" stroke="#cbd5e0" stroke-width="2"/>
+
+                    <!-- Bars -->
+                    <!-- 2000: 1.479 -->
+                    <rect x="65" y="183" width="35" height="27" fill="#3b82f6"/>
+                    <text x="82" y="177" font-size="10" font-weight="bold" text-anchor="middle">1.479</text>
+                    <text x="82" y="228" font-size="10" text-anchor="middle">2000</text>
+
+                    <!-- 2005: 2.733 -->
+                    <rect x="115" y="160" width="35" height="50" fill="#f97316"/>
+                    <text x="132" y="154" font-size="10" font-weight="bold" text-anchor="middle">2.733</text>
+                    <text x="132" y="228" font-size="10" text-anchor="middle">2005</text>
+
+                    <!-- 2010: 5.017 -->
+                    <rect x="165" y="118" width="35" height="92" fill="#94a3b8"/>
+                    <text x="182" y="112" font-size="10" font-weight="bold" text-anchor="middle">5.017</text>
+                    <text x="182" y="228" font-size="10" text-anchor="middle">2010</text>
+
+                    <!-- 2015: 6.569 -->
+                    <rect x="215" y="90" width="35" height="120" fill="#eab308"/>
+                    <text x="232" y="84" font-size="10" font-weight="bold" text-anchor="middle">6.569</text>
+                    <text x="232" y="228" font-size="10" text-anchor="middle">2015</text>
+
+                    <!-- 2016: 7.039 -->
+                    <rect x="265" y="81" width="35" height="129" fill="#2563eb"/>
+                    <text x="282" y="75" font-size="10" font-weight="bold" text-anchor="middle">7.039</text>
+                    <text x="282" y="228" font-size="10" text-anchor="middle">2016</text>
+
+                    <!-- 2017: 8.349 -->
+                    <rect x="315" y="57" width="35" height="153" fill="#65a30d"/>
+                    <text x="332" y="51" font-size="10" font-weight="bold" text-anchor="middle">8.349</text>
+                    <text x="332" y="228" font-size="10" text-anchor="middle">2017</text>
+
+                    <!-- 2018: 8.787 -->
+                    <rect x="365" y="49" width="35" height="161" fill="#0284c7"/>
+                    <text x="382" y="43" font-size="10" font-weight="bold" text-anchor="middle">8.787</text>
+                    <text x="382" y="228" font-size="10" text-anchor="middle">2018</text>
+
+                    <!-- 2019: 8.542 -->
+                    <rect x="415" y="54" width="35" height="156" fill="#c2410c"/>
+                    <text x="432" y="48" font-size="10" font-weight="bold" text-anchor="middle">8.542</text>
+                    <text x="432" y="228" font-size="10" text-anchor="middle">2019</text>
+
+                    <!-- 2020: 8.412 -->
+                    <rect x="465" y="56" width="35" height="154" fill="#4b5563"/>
+                    <text x="482" y="50" font-size="10" font-weight="bold" text-anchor="middle">8.412</text>
+                    <text x="482" y="228" font-size="10" text-anchor="middle">2020</text>
+
+                    <!-- 2021: 8.886 -->
+                    <rect x="515" y="47" width="35" height="163" fill="#b45309"/>
+                    <text x="532" y="41" font-size="10" font-weight="bold" text-anchor="middle">8.886</text>
+                    <text x="532" y="228" font-size="10" text-anchor="middle">2021</text>
+
+                    <!-- 10T/2022: 9.389 -->
+                    <rect x="565" y="38" width="35" height="172" fill="#0369a1"/>
+                    <text x="582" y="32" font-size="10" font-weight="bold" text-anchor="middle">9.389</text>
+                    <text x="582" y="228" font-size="9" text-anchor="middle">10 tháng</text>
+                    <text x="582" y="240" font-size="9" text-anchor="middle">2022</text>
+
+                    <!-- Kỳ vọng 2022: 11.100 -->
+                    <rect x="615" y="30" width="35" height="180" fill="#15803d"/>
+                    <text x="632" y="24" font-size="10" font-weight="bold" text-anchor="middle">11.100</text>
+                    <text x="632" y="228" font-size="9" text-anchor="middle">Kỳ vọng</text>
+                    <text x="632" y="240" font-size="9" text-anchor="middle">2022</text>
+                </svg>
+                <div class="media-caption">Nguồn: Tổng cục Hải quan, Tổng cục Thống kê 2022</div>
+            </div>
+
+            <table class="tf-table">
+                <thead>
+                    <tr>
+                        <th>Phát biểu</th>
+                        <th>Đúng</th>
+                        <th>Sai</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>a) Kim ngạch xuất khẩu thủy sản 10 tháng của năm 2022 đạt 9,5 tỷ USD, cao nhất từ 2000 - 2022.</td>
+                        <td class="tf-check"><input type="radio" name="q2_4_a" value="Đúng"></td>
+                        <td class="tf-check"><input type="radio" name="q2_4_a" value="Sai"></td>
+                    </tr>
+                    <tr>
+                        <td>b) Kim ngạch xuất khẩu thủy sản của Việt Nam tăng liên tục qua từng năm từ năm 2019 đến 2021.</td>
+                        <td class="tf-check"><input type="radio" name="q2_4_b" value="Đúng"></td>
+                        <td class="tf-check"><input type="radio" name="q2_4_b" value="Sai"></td>
+                    </tr>
+                    <tr>
+                        <td>c) Việt Nam tham gia các hiệp định thương mại tự do đã và đang tạo ra lợi thế lớn đối với thủy sản Việt Nam trên thị trường quốc tế, giúp kim ngạch xuất khẩu thủy sản tăng giai đoạn 2000-2022.</td>
+                        <td class="tf-check"><input type="radio" name="q2_4_c" value="Đúng"></td>
+                        <td class="tf-check"><input type="radio" name="q2_4_c" value="Sai"></td>
+                    </tr>
+                    <tr>
+                        <td>d) Việt Nam có diện tích mặt nước lớn, bờ biển dài, tổng diện tích nuôi trồng thủy sản lớn là tiền đề để tăng sản lượng kim ngạch xuất khẩu.</td>
+                        <td class="tf-check"><input type="radio" name="q2_4_d" value="Đúng"></td>
+                        <td class="tf-check"><input type="radio" name="q2_4_d" value="Sai"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="explanation" id="exp_q2_4">Đáp án: a - Sai (10 tháng năm 2022 đạt 9,389 tỷ USD, không phải 9,5 tỷ USD); b - Sai (năm 2019 đạt 8.542 tỷ USD giảm xuống 8.412 tỷ USD năm 2020 nên không tăng liên tục); c - Đúng; d - Đúng.</div>
+        </div>
+    </form>
+
+    <div class="exam-footer">
+        --- HẾT ---<br>
+        Thí sinh không được sử dụng tài liệu. Cán bộ coi thi không giải thích gì thêm.
+    </div>
+</div>
+
+<script>
+    // Correct Answer Key
+    const p1_answers = {
+        q1: 'C', q2: 'C', q3: 'D', q4: 'D', q5: 'A',
+        q6: 'B', q7: 'B', q8: 'D', q9: 'A', q10: 'A',
+        q11: 'C', q12: 'D', q13: 'A', q14: 'D', q15: 'B',
+        q16: 'A', q17: 'B', q18: 'C', q19: 'B', q20: 'B',
+        q21: 'C', q22: 'B', q23: 'A', q24: 'B'
+    };
+
+    const p2_answers = {
+        q2_1_a: 'Đúng', q2_1_b: 'Sai', q2_1_c: 'Đúng', q2_1_d: 'Đúng',
+        q2_2_a: 'Đúng', q2_2_b: 'Sai', q2_2_c: 'Sai', q2_2_d: 'Đúng',
+        q2_3_a: 'Sai', q2_3_b: 'Đúng', q2_3_c: 'Đúng', q2_3_d: 'Sai',
+        q2_4_a: 'Sai', q2_4_b: 'Sai', q2_4_c: 'Đúng', q2_4_d: 'Đúng'
+    };
+
+    function gradeExam() {
+        let p1_score = 0;
+        let p2_score = 0;
+        const form = document.getElementById('examForm');
+
+        // Part I Grading
+        for (let i = 1; i <= 24; i++) {
+            const qName = 'q' + i;
+            const selected = form.elements[qName]?.value;
+            const card = document.getElementById(qName + '_card');
+            const exp = document.getElementById('exp_' + qName);
+
+            if (card) {
+                card.classList.remove('correct', 'incorrect');
+                if (selected === p1_answers[qName]) {
+                    p1_score += 0.25; // 24 câu x 0.25 = 6.0 điểm
+                    card.classList.add('correct');
+                } else if (selected) {
+                    card.classList.add('incorrect');
+                }
+            }
+            if (exp) exp.style.display = 'block';
+        }
+
+        // Part II Grading (4 câu, mỗi câu 4 ý, tổng 4 điểm)
+        const p2_groups = ['q2_1', 'q2_2', 'q2_3', 'q2_4'];
+        const p2_sub = ['a', 'b', 'c', 'd'];
+
+        p2_groups.forEach(g => {
+            let correctCount = 0;
+            p2_sub.forEach(s => {
+                const key = g + '_' + s;
+                const val = form.elements[key]?.value;
+                if (val === p2_answers[key]) {
+                    correctCount++;
+                }
+            });
+            
+            // Grading scale for True/False question
+            if (correctCount === 1) p2_score += 0.1;
+            else if (correctCount === 2) p2_score += 0.25;
+            else if (correctCount === 3) p2_score += 0.5;
+            else if (correctCount === 4) p2_score += 1.0;
+
+            const card = document.getElementById(g + '_card');
+            const exp = document.getElementById('exp_' + g);
+            if (card) {
+                card.classList.remove('correct', 'incorrect');
+                if (correctCount === 4) card.classList.add('correct');
+                else if (correctCount > 0) card.classList.add('incorrect');
+            }
+            if (exp) exp.style.display = 'block';
+        });
+
+        const totalScore = (p1_score + p2_score).toFixed(2);
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        scoreDisplay.innerHTML = `Kết quả: <span style="color:#d97706; font-size:18px;">${totalScore} / 10.0</span> điểm (Phần I: ${p1_score.toFixed(2)}, Phần II: ${p2_score.toFixed(2)})`;
+    }
+
+    function resetForm() {
+        document.getElementById('examForm').reset();
+        document.querySelectorAll('.question-card').forEach(c => c.classList.remove('correct', 'incorrect'));
+        document.querySelectorAll('.explanation').forEach(e => e.style.display = 'none');
+        document.getElementById('scoreDisplay').innerText = 'Trạng thái: Chưa nộp bài';
+    }
+</script>
+
+</body>
+</html>

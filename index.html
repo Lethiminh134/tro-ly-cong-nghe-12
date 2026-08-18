@@ -1,119 +1,127 @@
-<style>
-  .exam-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #fff;
-  }
-  .exam-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    border-bottom: 2px solid #2c3e50;
-    padding-bottom: 15px;
-    margin-bottom: 20px;
-  }
-  .header-left, .header-right {
-    text-align: center;
-  }
-  .header-left h3, .header-right h3 {
-    margin: 2px 0;
-    font-size: 15px;
-    text-transform: uppercase;
-  }
-  .header-left h4, .header-right h4 {
-    margin: 2px 0;
-    font-size: 14px;
-    font-weight: bold;
-  }
-  .exam-title {
-    text-align: center;
-    margin: 20px 0;
-  }
-  .exam-title h2 {
-    color: #1a5276;
-    margin: 5px 0;
-    font-size: 20px;
-  }
-  .student-info {
-    border: 1px dashed #ccc;
-    padding: 10px 15px;
-    margin-bottom: 25px;
-    background-color: #fcfcfc;
-  }
-  .section-title {
-    background-color: #1a5276;
-    color: #fff;
-    padding: 8px 12px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 4px;
-    margin: 25px 0 15px 0;
-  }
-  .question-item {
-    margin-bottom: 20px;
-    padding: 12px 15px;
-    background-color: #f9f9f9;
-    border-left: 4px solid #2980b9;
-    border-radius: 0 4px 4px 0;
-  }
-  .question-text {
-    font-weight: bold;
-    margin-bottom: 8px;
-  }
-  .options-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
-    margin-top: 8px;
-  }
-  .options-grid-2 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 10px;
-    margin-top: 8px;
-  }
-  .options-vertical {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-top: 8px;
-  }
-  .exam-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 12px 0;
-    background-color: #fff;
-  }
-  .exam-table th, .exam-table td {
-    border: 1px solid #ddd;
-    padding: 8px 10px;
-    text-align: center;
-    font-size: 14px;
-  }
-  .exam-table th {
-    background-color: #eaeded;
-    font-weight: bold;
-  }
-  .exam-image {
-    text-align: center;
-    margin: 12px 0;
-  }
-  .exam-image img {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 4px;
-  }
-  .sub-question {
-    margin-left: 15px;
-    margin-top: 6px;
-  }
-</style>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đề Thi Tham Khảo Số 12 - Công Nghệ Nông Nghiệp</title>
+  <style>
+    .exam-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #fff;
+    }
+    .exam-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid #2c3e50;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+    .header-left, .header-right {
+      text-align: center;
+    }
+    .header-left h3, .header-right h3 {
+      margin: 2px 0;
+      font-size: 15px;
+      text-transform: uppercase;
+    }
+    .header-left h4, .header-right h4 {
+      margin: 2px 0;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .exam-title {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .exam-title h2 {
+      color: #1a5276;
+      margin: 5px 0;
+      font-size: 20px;
+    }
+    .student-info {
+      border: 1px dashed #ccc;
+      padding: 10px 15px;
+      margin-bottom: 25px;
+      background-color: #fcfcfc;
+    }
+    .section-title {
+      background-color: #1a5276;
+      color: #fff;
+      padding: 8px 12px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 4px;
+      margin: 25px 0 15px 0;
+    }
+    .question-item {
+      margin-bottom: 20px;
+      padding: 12px 15px;
+      background-color: #f9f9f9;
+      border-left: 4px solid #2980b9;
+      border-radius: 0 4px 4px 0;
+    }
+    .question-text {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .options-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .options-vertical {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .exam-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      background-color: #fff;
+    }
+    .exam-table th, .exam-table td {
+      border: 1px solid #ddd;
+      padding: 8px 10px;
+      text-align: center;
+      font-size: 14px;
+    }
+    .exam-table th {
+      background-color: #eaeded;
+      font-weight: bold;
+    }
+    .exam-image {
+      text-align: center;
+      margin: 12px 0;
+    }
+    .exam-image img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 4px;
+    }
+    .sub-question {
+      margin-left: 15px;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
 
 <div class="exam-container">
   <!-- HEADER ĐỀ THI -->
@@ -572,3 +580,6 @@
     <div class="sub-question">d) Việt Nam có diện tích mặt nước lớn, bờ biển dài, tổng diện tích nuôi trồng thủy sản lớn là tiền đề để tăng sản lượng kim ngạch xuất khẩu.</div>
   </div>
 </div>
+
+</body>
+</html>

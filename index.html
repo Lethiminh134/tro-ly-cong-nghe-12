@@ -3,22 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Đề Thi Tham Khảo Số 12 - Công Nghệ Nông Nghiệp</title>
+  <title>Đề Khảo Sát Chất Lượng 2025-2026 - Công Nghệ Định Hướng Nông Nghiệp</title>
   <style>
+    body {
+      background-color: #f4f6f9;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
     .exam-container {
       max-width: 900px;
       margin: 0 auto;
-      padding: 20px;
-      font-family: Arial, sans-serif;
+      padding: 30px;
       line-height: 1.6;
       color: #333;
       background-color: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-radius: 8px;
     }
     .exam-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      border-bottom: 2px solid #2c3e50;
+      border-bottom: 2px solid #1a5276;
       padding-bottom: 15px;
       margin-bottom: 20px;
     }
@@ -34,26 +41,19 @@
       margin: 2px 0;
       font-size: 14px;
       font-weight: bold;
-    }
-    .exam-title {
-      text-align: center;
-      margin: 20px 0;
-    }
-    .exam-title h2 {
       color: #1a5276;
-      margin: 5px 0;
-      font-size: 20px;
     }
     .student-info {
-      border: 1px dashed #ccc;
-      padding: 10px 15px;
+      border: 1px dashed #bbb;
+      padding: 12px 18px;
       margin-bottom: 25px;
-      background-color: #fcfcfc;
+      background-color: #fafafa;
+      border-radius: 4px;
     }
     .section-title {
       background-color: #1a5276;
       color: #fff;
-      padding: 8px 12px;
+      padding: 8px 14px;
       font-size: 16px;
       font-weight: bold;
       border-radius: 4px;
@@ -61,25 +61,25 @@
     }
     .question-item {
       margin-bottom: 20px;
-      padding: 12px 15px;
-      background-color: #f9f9f9;
+      padding: 14px 18px;
+      background-color: #f9fbfd;
       border-left: 4px solid #2980b9;
-      border-radius: 0 4px 4px 0;
+      border-radius: 0 6px 6px 0;
     }
     .question-text {
       font-weight: bold;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     .options-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 10px;
+      gap: 8px;
       margin-top: 8px;
     }
     .options-grid-2 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 8px;
       margin-top: 8px;
     }
     .options-vertical {
@@ -95,29 +95,26 @@
       background-color: #fff;
     }
     .exam-table th, .exam-table td {
-      border: 1px solid #ddd;
+      border: 1px solid #ccd1d9;
       padding: 8px 10px;
       text-align: center;
       font-size: 14px;
     }
     .exam-table th {
-      background-color: #eaeded;
+      background-color: #ebf5fb;
+      color: #1a5276;
       font-weight: bold;
-    }
-    .exam-image {
-      text-align: center;
-      margin: 12px 0;
-    }
-    .exam-image img {
-      max-width: 100%;
-      height: auto;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      padding: 4px;
     }
     .sub-question {
       margin-left: 15px;
       margin-top: 6px;
+    }
+    .answer-key-section {
+      background-color: #f4f6f7;
+      padding: 20px;
+      border-radius: 6px;
+      margin-top: 40px;
+      border: 1px solid #d5dbdb;
     }
   </style>
 </head>
@@ -127,20 +124,18 @@
   <!-- HEADER ĐỀ THI -->
   <div class="exam-header">
     <div class="header-left">
-      <h3>UBND TỈNH HÀ TĨNH</h3>
-      <h4>SỞ GIÁO DỤC VÀ ĐÀO TẠO</h4>
-      <p style="margin: 5px 0; font-style: italic;">ĐỀ THAM KHẢO SỐ 12<br>(Đề thi có 04 trang)</p>
+      <h3>SỞ GIÁO DỤC VÀ ĐÀO TẠO</h3>
+      <h4>ĐỀ KHẢO SÁT CHẤT LƯỢNG 2025-2026</h4>
+      <p style="margin: 5px 0; font-style: italic; font-size: 13px;">(Đề thi gồm 05 trang)</p>
     </div>
     <div class="header-right">
-      <h3>KỲ THI TỐT NGHIỆP THPT NĂM 2026</h3>
-      <h4>Môn thi: CÔNG NGHỆ NÔNG NGHIỆP</h4>
-      <p style="margin: 5px 0;">Thời gian làm bài: 50 phút<br><em>(không kể thời gian phát đề)</em></p>
-      <p style="margin: 5px 0; font-weight: bold;">Mã đề: 001</p>
+      <h3>MÔN: CÔNG NGHỆ ĐỊNH HƯỚNG NÔNG NGHIỆP</h3>
+      <p style="margin: 5px 0;">Thời gian làm bài: 50 phút<br><em>(Không kể thời gian giao đề)</em></p>
     </div>
   </div>
 
   <div class="student-info">
-    <p style="margin: 0;"><strong>Họ và tên thí sinh:</strong> .................................................................. <strong>Số báo danh:</strong> ..........................................</p>
+    <p style="margin: 0;"><strong>Họ, tên thí sinh:</strong> .................................................................. <strong>SBD:</strong> ..........................................</p>
   </div>
 
   <!-- PHẦN I -->
@@ -151,347 +146,326 @@
 
   <!-- CÂU 1 -->
   <div class="question-item">
-    <div class="question-text">Câu 1. Công nghệ nào sau đây được áp dụng trong hình dưới?</div>
-    <div class="exam-image">
-      <img src="URL_HINH_ANH_CAU_1.jpg" alt="Câu 1 - Công nghệ trồng cây">
-    </div>
+    <div class="question-text">Câu 1. Thành phần nào sau đây có vai trò quyết định tính chất của đất trồng?</div>
     <div class="options-grid">
-      <div>A. Công nghệ thủy canh tĩnh.</div>
-      <div>B. Công nghệ khí canh tĩnh.</div>
-      <div>C. Công nghệ khí canh hồi lưu.</div>
-      <div>D. Công nghệ thủy canh hồi lưu.</div>
+      <div>A. Sinh vật.</div>
+      <div>B. Nước.</div>
+      <div>C. Chất rắn.</div>
+      <div>D. Không khí.</div>
     </div>
   </div>
 
   <!-- CÂU 2 -->
   <div class="question-item">
-    <div class="question-text">Câu 2. Phương thức khai thác trắng không nên áp dụng ở khu vực nào?</div>
-    <div class="options-grid-2">
-      <div>A. Nơi địa hình có độ dốc lớn, lượng mưa ít.</div>
-      <div>B. Nơi địa hình có độ dốc thấp, lượng mưa nhiều.</div>
-      <div>C. Nơi địa hình có độ dốc lớn, lượng mưa nhiều.</div>
-      <div>D. Nơi địa hình có độ dốc thấp, lượng mưa ít.</div>
+    <div class="question-text">Câu 2. Khi sử dụng phân hoá học gây ra hiện tượng nào dưới đây?</div>
+    <div class="options-vertical">
+      <div>A. Bón nhiều phân hoá học làm cho đất trở nên thoáng khí, tạo điều kiện cho hệ vi sinh vật có lợi phát triển.</div>
+      <div>B. Bón nhiều phân hoá học làm cho đất hoá chua, chai cứng, mất khả năng giữ nước.</div>
+      <div>C. Bón nhiều phân hoá học làm cho tầng đất mặt bị mỏng, cây khó hấp thu dinh dưỡng.</div>
+      <div>D. Bón nhiều phân hoá học khiến đất hoá kiềm, không có khả năng hút nước.</div>
     </div>
   </div>
 
   <!-- CÂU 3 -->
   <div class="question-item">
-    <div class="question-text">Câu 3. Đa số các vùng nông thôn hiện nay, về mùa đông lạnh giá, trâu bò thường bị thiếu thức ăn. Để khắc phục thực trạng trên người chăn nuôi nên chuẩn bị sẵn thức ăn nào sau đây?</div>
+    <div class="question-text">Câu 3. Công nghệ nào sau đây không phải là công nghệ cao trong thu hoạch sản phẩm trồng trọt?</div>
     <div class="options-grid">
-      <div>A. Cám cò.</div>
-      <div>B. Cỏ tươi.</div>
-      <div>C. Khoai, sắn.</div>
-      <div>D. Rơm, rạ.</div>
+      <div>A. Tự động hoá.</div>
+      <div>B. Cảm biến.</div>
+      <div>C. Trí tuệ nhân tạo.</div>
+      <div>D. Công nghệ vi sinh.</div>
     </div>
   </div>
 
   <!-- CÂU 4 -->
   <div class="question-item">
-    <div class="question-text">Câu 4. Bệnh thủy sản nào sau đây có thể lây truyền từ thủy sản sang người?</div>
+    <div class="question-text">Câu 4. Trồng cây không dùng đất có ưu điểm nào dưới đây?</div>
     <div class="options-grid-2">
-      <div>A. Bệnh lồi mắt ở cá rô phi.</div>
-      <div>B. Bệnh gan thận mủ ở cá tra.</div>
-      <div>C. Bệnh hoại tử thần kinh trên cá biển.</div>
-      <div>D. Bệnh sán lá gan.</div>
+      <div>A. Chi phí đầu tư lớn.</div>
+      <div>B. Yêu cầu kỹ thuật cao.</div>
+      <div>C. Kiểm soát được môi trường.</div>
+      <div>D. Bệnh hại lây lan nhanh.</div>
     </div>
   </div>
 
   <!-- CÂU 5 -->
   <div class="question-item">
-    <div class="question-text">Câu 5. Bệnh lồi mắt ở cá rô phi là do tác nhân nào sau đây gây ra?</div>
-    <div class="options-vertical">
-      <div>A. Liên cầu khuẩn <em>Streptococcus Agalactiae</em>.</div>
-      <div>B. Virus <em>Betanodavirus</em> có vật chất di truyền RNA.</div>
-      <div>C. Vi khuẩn <em>Edwardsiella ictaluri</em>.</div>
-      <div>D. Virus <em>Baculovirus</em> có vật chất di truyền DNA.</div>
+    <div class="question-text">Câu 5. Khi lai giữa các cá thể khác giống để tạo ra con lai có khả năng sản xuất cao hơn, con lai được dùng làm thương phẩm là đặc điểm của phương pháp lai nào dưới đây?</div>
+    <div class="options-grid">
+      <div>A. Lai xa.</div>
+      <div>B. Lai kinh tế.</div>
+      <div>C. Lai cải tạo.</div>
+      <div>D. Lai cải tiến.</div>
     </div>
   </div>
 
   <!-- CÂU 6 -->
   <div class="question-item">
-    <div class="question-text">Câu 6. Cho bảng số liệu về sản lượng gỗ khai thác trên toàn quốc giai đoạn 2008 – 2020:</div>
-    <table class="exam-table">
-      <thead>
-        <tr>
-          <th rowspan="2">Năm</th>
-          <th colspan="4">Sản lượng gỗ khai thác (m³)</th>
-        </tr>
-        <tr>
-          <th>Từ rừng tự nhiên</th>
-          <th>Từ rừng trồng tập trung</th>
-          <th>Từ cao su, cây phân tán</th>
-          <th>Tổng</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>2008</strong></td>
-          <td>180.000</td>
-          <td>3.562.000</td>
-          <td>-</td>
-          <td>3.742.000</td>
-        </tr>
-        <tr>
-          <td><strong>2015</strong></td>
-          <td>5.500</td>
-          <td>13.000.000</td>
-          <td>6.200.000</td>
-          <td>19.205.500</td>
-        </tr>
-        <tr>
-          <td><strong>2020</strong></td>
-          <td>-</td>
-          <td>20.500.000</td>
-          <td>9.000.000</td>
-          <td>29.500.000</td>
-        </tr>
-      </tbody>
-    </table>
-    <p style="font-size: 13px; font-style: italic; margin-top: 4px;">Nguồn: Nguyễn Bá Ngãi và Nguyễn Quốc Trị (2020)</p>
-    <p><strong>Nhận định nào sau đây không đúng?</strong></p>
+    <div class="question-text">Câu 6. Những nguyên liệu thức ăn nào sau đây được sử dụng để cung cấp protein cho vật nuôi?</div>
     <div class="options-vertical">
-      <div>A. Sản lượng gỗ khai thác từ rừng trồng tập trung tăng trong giai đoạn 2008-2020.</div>
-      <div>B. Sản lượng gỗ khai thác từ rừng tự nhiên tăng trong giai đoạn 2008-2020.</div>
-      <div>C. Sản lượng gỗ khai thác từ rừng tự nhiên giảm trong giai đoạn 2008-2020.</div>
-      <div>D. Sản lượng gỗ khai thác từ cây phân tán tăng trong giai đoạn 2008-2020.</div>
+      <div>A. Các loại rau xanh chứa nhiều nước.</div>
+      <div>B. Cỏ khô, rơm khô, vỏ trấu, thân cây lạc khô, lõi ngô khô.</div>
+      <div>C. Bột cá, bột thịt, đậu tương, khô dầu đậu tương, khô dầu lạc.</div>
+      <div>D. Dầu động vật, mỡ động vật, rỉ mật.</div>
     </div>
   </div>
 
   <!-- CÂU 7 -->
   <div class="question-item">
-    <div class="question-text">Câu 7. Yêu cầu nào sau đây không đúng về quản lý dịch bệnh đối với một trang trại chăn nuôi theo tiêu chuẩn VietGAP?</div>
+    <div class="question-text">Câu 7. Trong quy trình nuôi dưỡng và chăm sóc bò thịt người ta phân chia thành các giai đoạn sinh trưởng nhằm mục đích nào dưới đây?</div>
     <div class="options-vertical">
-      <div>A. Có quy trình phòng bệnh phù hợp với từng đối tượng nuôi.</div>
-      <div>B. Có nguồn cung tài chính từ các công ty lớn cùng ngành.</div>
-      <div>C. Có đầy đủ trang thiết bị và quy trình vệ sinh, tiêu độc, khử trùng.</div>
-      <div>D. Có bác sĩ thú y theo dõi sức khỏe vật nuôi.</div>
+      <div>A. Kiểm soát và điều chỉnh các yếu tố ảnh hưởng đến sức khoẻ của bò.</div>
+      <div>B. Giúp tăng dần lượng thức ăn cho bò.</div>
+      <div>C. Theo dõi và chăm sóc bò hiệu quả hơn trong từng giai đoạn phát triển.</div>
+      <div>D. Xác định thời điểm nuôi đàn kế tiếp.</div>
     </div>
   </div>
 
   <!-- CÂU 8 -->
   <div class="question-item">
-    <div class="question-text">Câu 8. Công nghệ sinh học nào được ứng dụng để phát hiện sớm bệnh thuỷ sản?</div>
+    <div class="question-text">Câu 8. Biện pháp nào sau đây không phải là biện pháp xử lý chất thải chăn nuôi?</div>
     <div class="options-grid-2">
-      <div>A. Công nghệ tạo kháng sinh thảo dược.</div>
-      <div>B. Công nghệ thu mẫu virus.</div>
-      <div>C. Kĩ thuật tách chiết RNA tổng số.</div>
-      <div>D. Kĩ thuật PCR.</div>
+      <div>A. Khí sinh học và hồ sinh học.</div>
+      <div>B. Ủ phân vô cơ.</div>
+      <div>C. Lọc khí thải.</div>
+      <div>D. Xử lý nhiệt.</div>
     </div>
   </div>
 
   <!-- CÂU 9 -->
   <div class="question-item">
-    <div class="question-text">Câu 9. Dưới đây là bảng công thức thức ăn theo nhu cầu dinh dưỡng của lợn con 30-60 ngày tuổi:</div>
-    <table class="exam-table">
-      <thead>
-        <tr>
-          <th>Thành phần</th>
-          <th>Bột gạo</th>
-          <th>Bột ngô</th>
-          <th>Bột cá</th>
-          <th>Đậu tương</th>
-          <th>Đường</th>
-          <th>Bột xương</th>
-          <th>Vitamin</th>
-          <th>Khoáng</th>
-          <th>Muối</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Tỷ lệ (%)</strong></td>
-          <td>26,7%</td>
-          <td>30%</td>
-          <td>20%</td>
-          <td>10%</td>
-          <td>10%</td>
-          <td>2%</td>
-          <td>0,3%</td>
-          <td>0,5%</td>
-          <td>0,5%</td>
-        </tr>
-      </tbody>
-    </table>
-    <p style="font-size: 13px; font-style: italic; margin-top: 4px;">Nguồn: caytrongvatnuoi.com</p>
-    <p><strong>Nhận định nào sau đây là đúng?</strong></p>
-    <div class="options-vertical">
-      <div>A. Giai đoạn lợn con nhu cầu năng lượng và protein cao nhất.</div>
-      <div>B. Giai đoạn lợn con nhu cầu năng lượng và khoáng cao nhất.</div>
-      <div>C. Giai đoạn lợn con nhu cầu protein và khoáng ít nhất.</div>
-      <div>D. Giai đoạn lợn con nhu cầu protein và vitamin ít nhất.</div>
+    <div class="question-text">Câu 9. Bảo vệ rừng tập trung vào một số hoạt động chính sau:</div>
+    <p style="margin: 4px 0 8px 10px;">
+      (a) Phòng chống sâu hại rừng.<br>
+      (b) Cho thuê dịch vụ môi trường rừng.<br>
+      (c) Ngăn chặn những tác động tiêu cực của con người đến rừng.<br>
+      (d) Phòng bệnh hại rừng.<br>
+      (e) Phòng cháy, chữa cháy rừng.
+    </p>
+    <p><strong>Các phát biểu đúng là:</strong></p>
+    <div class="options-grid-2">
+      <div>A. (a), (b), (c), (d).</div>
+      <div>B. (a), (b), (d), (e).</div>
+      <div>C. (b), (c), (d), (e).</div>
+      <div>D. (a), (c), (d), (e).</div>
     </div>
   </div>
 
   <!-- CÂU 10 -->
   <div class="question-item">
-    <div class="question-text">Câu 10. Ao nuôi tôm của bác Nam ở Nghi Xuân – Hà Tĩnh xuất hiện bệnh đốm trắng, cần sử dụng biện pháp nào sau đây để điều trị hạn chế thiệt hại cho người nuôi tôm?</div>
+    <div class="question-text">Câu 10. Những hoạt động nào sau đây đều là hoạt động chăm sóc rừng?</div>
     <div class="options-vertical">
-      <div>A. Khử trùng và cách ly ngay với các ao khác, diệt virus trước khi thải nước.</div>
-      <div>B. Thu hoạch trước những lứa tôm đến tuổi trưởng thành.</div>
-      <div>C. Mua các con giống khác đạt chất lượng bổ sung vào ao nuôi.</div>
-      <div>D. Tháo nước ao tôm bị bệnh ra ngoài tránh lây lan cho ao khác.</div>
+      <div>A. Làm cỏ, chặt bỏ cây dại, tỉa cành, bón phân, tưới nước.</div>
+      <div>B. Làm cỏ, bón phân, phòng trừ sâu hại, phòng chống cháy rừng, tưới nước.</div>
+      <div>C. Làm cỏ, chặt bỏ cây dại, bón phân, tưới nước, khai thác rừng trồng.</div>
+      <div>D. Làm cỏ, làm hàng rào bảo vệ, tỉa cành, bón phân, tưới nước.</div>
     </div>
   </div>
 
   <!-- CÂU 11 -->
   <div class="question-item">
-    <div class="question-text">Câu 11. Biểu đồ dưới đây thể hiện tình hình nuôi trồng thủy sản của Hà Tĩnh trong 11 tháng năm 2025 so với cùng kỳ năm 2024:</div>
-    <div class="exam-image">
-      <img src="URL_HINH_ANH_CAU_11.jpg" alt="Biểu đồ thủy sản Hà Tĩnh 11 tháng năm 2025">
-    </div>
-    <p style="font-size: 13px; font-style: italic; text-align: center;">Nguồn: Cục Thống kê tỉnh Hà Tĩnh, ngày 01/12/2025</p>
-    <p><strong>Nhận định nào sau đây là đúng?</strong></p>
+    <div class="question-text">Câu 11. Cao su là một loại cây công nghiệp lâu năm và đã trở thành một lựa chọn phổ biến trong hoạt động trồng cây công nghiệp có giá trị kinh tế cao. Người dân dùng nhựa mủ, gỗ, lá và hạt của cây cao su để sản xuất đa dạng sản phẩm phục vụ nhu cầu đời sống con người. Ngoài ra rừng cây cao su còn đóng vai trò trong việc bảo vệ môi trường, phủ xanh đất trống, giảm thiểu hậu quả do thiên tai. Theo em cây cao su nên được khai thác vào giai đoạn phát triển nào sau đây để thu được lợi ích cao nhất?</div>
     <div class="options-vertical">
-      <div>A. Tổng sản lượng thủy sản của tỉnh Hà Tĩnh 11 tháng đầu năm 2025 tăng 5,20%.</div>
-      <div>B. Sản lượng nuôi trồng thủy sản của tỉnh Hà Tĩnh 11 tháng đầu năm 2025 tăng 5,32%.</div>
-      <div>C. Sản lượng khai thác thủy sản nhiều hơn sản lượng nuôi trồng là 24.481 tấn.</div>
-      <div>D. Sản lượng khai thác thủy sản ít hơn sản lượng nuôi trồng là 24.481 tấn.</div>
+      <div>A. Giai đoạn gần thành thục, cây cao su cho năng suất và chất lượng nhựa mủ, gỗ, lá, hạt cao nhất.</div>
+      <div>B. Giai đoạn non, cây cao su bắt đầu khép tán thể hiện chức năng bảo vệ môi trường tốt nhất.</div>
+      <div>C. Giai đoạn thành thục, cây cao su cho năng suất và chất lượng nhựa mủ, gỗ, lá, hạt cao nhất.</div>
+      <div>D. Giai đoạn già cỗi, cây cao su cho năng suất và chất lượng nhựa mủ, gỗ, lá, hạt cao nhất.</div>
     </div>
   </div>
 
   <!-- CÂU 12 -->
   <div class="question-item">
-    <div class="question-text">Câu 12. Biện pháp khai thác thủy sản nào sau đây bị nghiêm cấm?</div>
-    <div class="options-grid-2">
-      <div>A. Các dụng cụ đánh bắt thủ công.</div>
-      <div>B. Dùng câu, lưới tay.</div>
-      <div>C. Lưới kéo, lưới vây.</div>
-      <div>D. Dùng thuốc nổ, kích điện.</div>
+    <div class="question-text">Câu 12. Trong kỹ thuật trồng rừng bằng gieo hạt, việc xử lý hạt giống trước khi gieo nhằm mục đích nào sau đây?</div>
+    <div class="options-vertical">
+      <div>A. Tăng khả năng nảy mầm của hạt giống.</div>
+      <div>B. Tăng sức đề kháng của cây con mọc lên từ hạt.</div>
+      <div>C. Lựa chọn hạt giống có chất lượng tốt để đem gieo.</div>
+      <div>D. Tăng khả năng phòng chống sâu, bệnh hại của cây con mọc lên từ hạt.</div>
     </div>
   </div>
 
   <!-- CÂU 13 -->
   <div class="question-item">
-    <div class="question-text">Câu 13. Nội dung nào sau đây là ứng dụng công nghệ sinh học trong chăn nuôi?</div>
+    <div class="question-text">Câu 13. Trong công tác bảo vệ rừng, chủ rừng có nhiệm vụ nào dưới đây?</div>
     <div class="options-vertical">
-      <div>A. Sử dụng công nghệ biogas trong xử lý chất thải chăn nuôi.</div>
-      <div>B. Sử dụng vôi bột khử trùng chuồng nuôi.</div>
-      <div>C. Sử dụng nước xà phòng khử trùng chuồng nuôi.</div>
-      <div>D. Khơi thông cống, rãnh ở khu vực chăn nuôi.</div>
+      <div>A. Tổ chức tuyên truyền, phổ biến, giáo dục pháp luật về bảo vệ và phát triển rừng.</div>
+      <div>B. Thông báo kịp thời cho người dân hoặc cơ quan có thẩm quyền về cháy rừng.</div>
+      <div>C. Xây dựng và thực hiện phương án, biện pháp bảo vệ hệ sinh thái rừng.</div>
+      <div>D. Thông báo kịp thời cho người dân hoặc cơ quan có thẩm quyền về sinh vật gây hại rừng.</div>
     </div>
   </div>
 
   <!-- CÂU 14 -->
   <div class="question-item">
-    <div class="question-text">Câu 14. Loại máy nào sau đây là ứng dụng cơ giới hóa trong thu hoạch cây trồng?</div>
+    <div class="question-text">Câu 14. Loại thủy sản nào dưới đây thuộc nhóm giáp xác?</div>
     <div class="options-grid">
-      <div>A. Máy cày.</div>
-      <div>B. Máy gieo hạt cầm tay.</div>
-      <div>C. Máy xới, vun.</div>
-      <div>D. Máy gặt liên hợp.</div>
+      <div>A. Cá chép, cá mè hoa.</div>
+      <div>B. Cua biển, tôm thẻ chân trắng.</div>
+      <div>C. Vẹm xanh, cá hồi.</div>
+      <div>D. Ốc hương, lươn.</div>
     </div>
   </div>
 
   <!-- CÂU 15 -->
   <div class="question-item">
-    <div class="question-text">Câu 15. Trong các loại cây trồng sau đây, cây nào không cần lên luống để trồng?</div>
-    <div class="options-grid">
-      <div>A. Rau cải, mướp.</div>
-      <div>B. Lúa, rau muống.</div>
-      <div>C. Cà chua, khoai lang.</div>
-      <div>D. Su hào, hoa cúc.</div>
+    <div class="question-text">Câu 15. Khi trong ao nuôi xuất hiện váng màu xanh đậm, cá nổi đầu, bơi lờ đờ. Biện pháp xử lý nào sau đây không phù hợp?</div>
+    <div class="options-vertical">
+      <div>A. Sử dụng đồng thời hoá chất diệt tảo và chế phẩm sinh học để tạo hệ vi sinh vật, đồng thời giảm mật độ tảo.</div>
+      <div>B. Thay nước từ 10-20% liên tục trong 2-3 ngày.</div>
+      <div>C. Loại bỏ thức ăn thừa, phân thải ra khỏi ao.</div>
+      <div>D. Quạt nước, sục khí để tăng hàm lượng oxygen trong nước.</div>
     </div>
   </div>
 
   <!-- CÂU 16 -->
   <div class="question-item">
-    <div class="question-text">Câu 16. Nội dung nào sau đây là vai trò của rừng phòng hộ đầu nguồn?</div>
-    <div class="options-vertical">
-      <div>A. Điều tiết nước, hạn chế lũ lụt, chống xói mòn, bảo vệ đất.</div>
-      <div>B. Chắn cát, chắn sóng, chắn gió, chống xâm nhập mặn.</div>
-      <div>C. Ngăn sóng, bảo vệ công trình ven biển, cố định cát lắng đọng.</div>
-      <div>D. Điều hòa không khí, bảo vệ môi trường sinh thái ở khu dân cư.</div>
+    <div class="question-text">Câu 16. Cho các nhận định sau:</div>
+    <p style="margin: 4px 0 8px 10px;">
+      (a) Hạn chế tối đa việc phải lưu trữ cá đực để bảo tồn dòng thuần.<br>
+      (b) Ngăn cản suy giảm chất lượng di truyền do lai cận huyết trong thủy sản.<br>
+      (c) Chọn lọc được các cá thể mang gene mong muốn như gene kháng bệnh, gene chịu lạnh…<br>
+      (d) Giúp chủ động trong quá trình sản xuất giống nhân tạo, đặc biệt là khi con đực và con cái lệch pha trong sự thành thục sinh sản.<br>
+      (e) Thuận tiện, dễ dàng trong quá trình vận chuyển so với việc phải vận chuyển cá bố để thụ tinh.
+    </p>
+    <p><strong>Số nhận định đúng về ý nghĩa của phương pháp bảo quản lạnh tinh trùng của động vật thủy sản là:</strong></p>
+    <div class="options-grid">
+      <div>A. 2.</div>
+      <div>B. 3.</div>
+      <div>C. 4.</div>
+      <div>D. 5.</div>
     </div>
   </div>
 
   <!-- CÂU 17 -->
   <div class="question-item">
-    <div class="question-text">Câu 17. Khai thác dần là gì?</div>
-    <div class="options-vertical">
-      <div>A. Là chặt toàn bộ cây rừng ở một khu vực nhất định trong một mùa khai thác.</div>
-      <div>B. Là chặt toàn bộ cây rừng ở một khu vực nhất định, chia làm nhiều lần khai thác.</div>
-      <div>C. Là chọn chặt những cây già yếu, có phẩm chất và sức sống kém.</div>
-      <div>D. Là chọn chặt những cây khỏe mạnh đến tuổi thành thục.</div>
+    <div class="question-text">Câu 17. Cho một số loại thức ăn thủy sản đang được sử dụng ở địa phương như bảng sau:</div>
+    <table class="exam-table">
+      <thead>
+        <tr>
+          <th>Phân loại thức ăn</th>
+          <th>Tên các loại thức ăn</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1. Chất bổ sung</td>
+          <td>a. Cám cá (dạng viên)</td>
+        </tr>
+        <tr>
+          <td>2. Thức ăn hỗn hợp</td>
+          <td>b. Khoáng chất</td>
+        </tr>
+        <tr>
+          <td>3. Nguyên liệu</td>
+          <td>c. Giun đất, giun chỉ</td>
+        </tr>
+        <tr>
+          <td>4. Thức ăn tươi sống</td>
+          <td>d. Cám gạo đầu thán</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Hãy ghép phân loại thức ăn với tên các loại thức ăn cho phù hợp:</strong></p>
+    <div class="options-grid-2">
+      <div>A. 1-c, 2-a, 3-d, 4-b.</div>
+      <div>B. 1-b, 2-d, 3-a, 4-c.</div>
+      <div>C. 1-b, 2-a, 3-d, 4-c.</div>
+      <div>D. 1-b, 2-c, 3-d, 4-a.</div>
     </div>
   </div>
 
   <!-- CÂU 18 -->
   <div class="question-item">
-    <div class="question-text">Câu 18. Yêu cầu nào sau đây không đúng khi xây dựng chuồng nuôi theo tiêu chuẩn VietGAP?</div>
-    <div class="options-vertical">
-      <div>A. Sàn và lối đi được làm bằng vật liệu an toàn, không trơn trượt.</div>
-      <div>B. Hệ thống tường, mái, rèm che đảm bảo không bị dột, thấm, gió lùa.</div>
-      <div>C. Hệ thống cung cấp thức ăn và nước uống chung cho các loại vật nuôi.</div>
-      <div>D. Dụng cụ, thiết bị phải đảm bảo an toàn và dễ vệ sinh, khử trùng.</div>
+    <div class="question-text">Câu 18. Cho các phát biểu sau:</div>
+    <p style="margin: 4px 0 8px 10px;">
+      (a) Kiểm soát hoàn toàn chất lượng nước vào và ra.<br>
+      (b) Tăng hàm lượng oxygen và tạo dòng chảy kích thích cá lớn nhanh.<br>
+      (c) Giúp tăng năng suất và hiệu quả sử dụng thức ăn.<br>
+      (d) Tiết kiệm nước, đảm bảo an toàn sinh học.<br>
+      (e) Tăng cường ô nhiễm môi trường.<br>
+      (f) Kiểm soát được an toàn vệ sinh thực phẩm.
+    </p>
+    <p><strong>Số phát biểu đúng khi nói về ưu điểm của hệ thống nuôi thủy sản tuần hoàn là:</strong></p>
+    <div class="options-grid">
+      <div>A. 3.</div>
+      <div>B. 5.</div>
+      <div>C. 4.</div>
+      <div>D. 6.</div>
     </div>
   </div>
 
   <!-- CÂU 19 -->
   <div class="question-item">
-    <div class="question-text">Câu 19. Cua biển ở hình dưới đây thuộc nhóm động vật thủy sản nào?</div>
-    <div class="exam-image">
-      <img src="URL_HINH_ANH_CAU_19.jpg" alt="Hình ảnh cua biển">
-    </div>
-    <div class="options-grid">
-      <div>A. Nhóm cá.</div>
-      <div>B. Nhóm giáp xác.</div>
-      <div>C. Nhóm nhuyễn thể.</div>
-      <div>D. Lưỡng cư.</div>
+    <div class="question-text">Câu 19. Bệnh lồi mắt ở cá rô phi là do tác nhân nào sau đây gây ra?</div>
+    <div class="options-grid-2">
+      <div>A. Liên cầu khuẩn <em>Streptococcus Agalactiae</em>.</div>
+      <div>B. Vi khuẩn <em>Micopacterium</em>.</div>
+      <div>C. Vi khuẩn <em>Vibrio</em>.</div>
+      <div>D. Vi khuẩn <em>Edwardsiella Ictaluri</em>.</div>
     </div>
   </div>
 
   <!-- CÂU 20 -->
   <div class="question-item">
-    <div class="question-text">Câu 20. Màu nước phù hợp cho ao nuôi thủy sản nước ngọt là màu</div>
+    <div class="question-text">Câu 20. Có thể ứng dụng kỹ thuật/công nghệ nào sau đây để phát hiện sớm bệnh thủy sản?</div>
     <div class="options-grid">
-      <div>A. xanh đậm.</div>
-      <div>B. xanh nõn chuối.</div>
-      <div>C. vàng nâu.</div>
-      <div>D. đỏ nâu.</div>
+      <div>A. Công nghệ lên men.</div>
+      <div>B. Công nghệ vi sinh.</div>
+      <div>C. Kỹ thuật chuyển gene.</div>
+      <div>D. Kỹ thuật PCR.</div>
     </div>
   </div>
 
   <!-- CÂU 21 -->
   <div class="question-item">
-    <div class="question-text">Câu 21. Tuổi thành thục sinh dục của tôm phụ thuộc vào yếu tố nào sau đây?</div>
-    <div class="options-grid-2">
-      <div>A. Tuổi và nhiệt độ môi trường.</div>
-      <div>B. Khối lượng cơ thể.</div>
-      <div>C. Tuổi và khối lượng cơ thể.</div>
-      <div>D. Nhiệt độ môi trường.</div>
+    <div class="question-text">Câu 21. Khi độ pH trong ao nuôi thủy sản giảm thấp, biện pháp xử lý nào sau đây không phù hợp?</div>
+    <div class="options-vertical">
+      <div>A. Sử dụng nước vôi trong hoặc nước soda để trung hòa ion H+ trong nước.</div>
+      <div>B. Tăng cường độ sục khí để tạo điều kiện khuếch tán CO2 ra ngoài không khí.</div>
+      <div>C. Quản lý tốt độ trong và mật độ tảo để giảm biến động pH trong nước.</div>
+      <div>D. Bổ sung một số hóa chất có tính acid như citric acid, phèn nhôm.</div>
     </div>
   </div>
 
   <!-- CÂU 22 -->
   <div class="question-item">
-    <div class="question-text">Câu 22. Cho các sản phẩm sau: (1) Sim rừng; (2) Sắn; (3) Gỗ lim; (4) Mật ong rừng; (5) Lúa mì.<br>Sản phẩm nào là của ngành Lâm nghiệp?</div>
+    <div class="question-text">Câu 22. Cỏ tươi, cá tạp, giun quế có thể bảo quản được 3 – 5 ngày trong khoảng nhiệt độ nào dưới đây?</div>
     <div class="options-grid">
-      <div>A. (1), (2), (4).</div>
-      <div>B. (1), (3), (4).</div>
-      <div>C. (2), (3), (4).</div>
-      <div>D. (3), (4), (5).</div>
+      <div>A. Nhiệt độ từ 4 °C đến 8 °C.</div>
+      <div>B. Nhiệt độ từ 15 °C đến 20 °C.</div>
+      <div>C. Nhiệt độ từ –20 °C đến 0 °C.</div>
+      <div>D. Nhiệt độ từ 20 °C đến 30 °C.</div>
     </div>
   </div>
 
   <!-- CÂU 23 -->
   <div class="question-item">
-    <div class="question-text">Câu 23. Trong quy trình ương nuôi cá, giai đoạn từ cá hương lên cá giống, ý nào sau đây không đúng?</div>
+    <div class="question-text">Câu 23. Việc thu gom, xử lý chất thải trong nuôi thủy sản theo tiêu chuẩn VietGAP không có tác dụng nào sau đây?</div>
     <div class="options-vertical">
-      <div>A. Thời gian ương nuôi của giai đoạn này là 4 tháng.</div>
-      <div>B. Mật độ thả cá tùy theo loài và khả năng quản lý của người nuôi.</div>
-      <div>C. Ở miền Nam có thể ương nuôi giai đoạn này quanh năm.</div>
-      <div>D. Ở miền Bắc có 2 vụ chính trong năm để ương nuôi giai đoạn này.</div>
+      <div>A. Giúp giảm thiểu ô nhiễm môi trường, bảo vệ nguồn nước và hệ sinh thái.</div>
+      <div>B. Giúp cải thiện chất lượng nước, tạo môi trường tốt cho con giống nuôi phát triển.</div>
+      <div>C. Nâng cao chất lượng con giống.</div>
+      <div>D. Giúp đảm bảo an toàn thực phẩm, bảo vệ sức khoẻ người tiêu dùng.</div>
     </div>
   </div>
 
   <!-- CÂU 24 -->
   <div class="question-item">
-    <div class="question-text">Câu 24. Vì sao ao nuôi mật độ cao thường có hàm lượng ammonia cao?</div>
-    <div class="options-vertical">
-      <div>A. Vì mật độ nuôi cao nên bị thiếu oxygen.</div>
-      <div>B. Vì chất thải, chất bài tiết của động vật thủy sản.</div>
-      <div>C. Vì nuôi thâm canh đơn giống nên không hấp thụ chất thải.</div>
-      <div>D. Vì thiếu thiết bị sục đáy cho ao nuôi.</div>
+    <div class="question-text">Câu 24. Dưới đây là một số ưu điểm của phương pháp muối các sản phẩm thủy sản:</div>
+    <p style="margin: 4px 0 8px 10px;">
+      (a) Khó áp dụng cho nhiều loại thủy sản.<br>
+      (b) Tăng độ mặn, ảnh hưởng đến hương vị ban đầu của thủy sản.<br>
+      (c) Cần thiết bị chuyên dụng, tốn nhiều năng lượng.<br>
+      (d) Muối có khả năng diệt vi sinh vật nên ảnh hưởng đến chất lượng thủy sản.<br>
+      (e) Có thể bảo quản trong thời gian dài nếu được thực hiện đúng cách.<br>
+      (f) Ảnh hưởng đến độ giòn dai, kết cấu của thủy sản.
+    </p>
+    <p><strong>Số phương án đúng là:</strong></p>
+    <div class="options-grid">
+      <div>A. 5.</div>
+      <div>B. 1.</div>
+      <div>C. 3.</div>
+      <div>D. 6.</div>
     </div>
   </div>
 
@@ -504,80 +478,133 @@
   <!-- CÂU 1 PHẦN II -->
   <div class="question-item">
     <div class="question-text">Câu 1.</div>
-    <p style="text-align: justify; text-indent: 20px;">Nấm hương là lâm sản ngoài gỗ có giá trị dinh dưỡng và kinh tế cao, là đặc sản quý tiêu biểu của rừng Võ Nhai – Thái Nguyên. Nấm Hương được mệnh danh là “hoàng hậu thực vật”, là “vua của các loại rau” vì là loại thực vật giàu protein nhất. Đồng thời, chứa một hàm lượng chất khoáng rất phong phú như kali chiếm tới 64% của toàn bộ chất khoáng, các loại vitamin B2, D, PP, có protein, chất xơ, lipid, polisacarit có tác dụng nâng cao sức đề kháng của cơ thể <em>(Nguồn: Nấm hương khô Võ Nhai)</em>.</p>
-    <div class="sub-question">a) Nấm hương là sản phẩm của lâm nghiệp.</div>
-    <div class="sub-question">b) Nên hái hết kể cả nấm nở to hoặc sắp tàn, để nấm phát triển đợt mới, góp phần bảo vệ và khai thác tài nguyên rừng bền vững.</div>
-    <div class="sub-question">c) Cần tuyên truyền, phổ biến cho người dân để nâng cao ý thức bảo vệ và khai thác hợp lý, tránh làm ảnh hưởng đến môi trường sống của nấm.</div>
-    <div class="sub-question">d) Cần áp dụng các biện pháp, kĩ thuật khai thác phù hợp để đảm bảo hài hòa giữa lợi ích kinh tế với lợi ích bảo vệ môi trường và bảo tồn tài nguyên rừng.</div>
+    <p style="text-align: justify; text-indent: 20px;">Theo báo An Giang với đề mục: “Bảo vệ tài nguyên gắn với phát triển du lịch tại rừng tràm Tân Tuyến - An Giang” ra ngày 07/11/2023 cho hay: Rừng tràm Tân Tuyến (tỉnh An Giang) là khu rừng đặc dụng thuộc hệ sinh thái đất ngập nước điển hình của vùng tứ giác Long Xuyên, có nhiều loài động, thực vật quý hiếm. Thời gian qua, tỉnh An Giang đã triển khai nhiều giải pháp nhằm nâng cao hiệu quả công tác bảo vệ nguồn tài nguyên tại khu vực này, đồng thời phát triển du lịch sinh thái qua đó thúc đẩy kinh tế-xã hội tại địa phương phát triển.</p>
+    <div class="sub-question"><strong>a)</strong> Rừng tràm ở đây là hệ sinh thái đất ngập nước có tính đa dạng sinh học cao.</div>
+    <div class="sub-question"><strong>b)</strong> Để tăng cường tài nguyên động vật quý hiếm cho hệ sinh thái rừng tràm nên bổ sung các loài quý, hiếm khác trên thế giới.</div>
+    <div class="sub-question"><strong>c)</strong> Việc khai thác gỗ tràm và các sản phẩm từ tràm nên bắt đầu từ giai đoạn thành thục.</div>
+    <div class="sub-question"><strong>d)</strong> Khai thác tiềm năng tự nhiên về cảnh quan, môi trường và sự đa dạng về tài nguyên thiên nhiên của hệ sinh thái rừng, đất ngập nước để phát triển du lịch sinh thái, phát triển kinh tế cho người dân địa phương.</div>
   </div>
 
   <!-- CÂU 2 PHẦN II -->
   <div class="question-item">
-    <div class="question-text">Câu 2. Dưới đây là bảng tỉ lệ thành phần dinh dưỡng trong thức ăn của một số loại thủy sản nuôi:</div>
+    <div class="question-text">Câu 2.</div>
+    <p>Theo dõi phản ứng của tôm nuôi ở mô hình ao nuôi thâm canh cao với các nồng độ oxygen hoà tan khác nhau người ta nhận thấy:</p>
     <table class="exam-table">
       <thead>
         <tr>
-          <th rowspan="2">Loại cá</th>
-          <th colspan="4">Tỉ lệ các thành phần dinh dưỡng trong thức ăn (%)</th>
-        </tr>
-        <tr>
-          <th>Protein</th>
-          <th>Lipid</th>
-          <th>Chất xơ thô</th>
-          <th>Chất vô cơ</th>
+          <th>Oxygen hoà tan (mg/L)</th>
+          <th>Phản ứng của tôm</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>Cá rô phi giống</strong></td>
-          <td>35</td>
-          <td>5</td>
-          <td>6</td>
-          <td>12 – 14</td>
+          <td>&lt; 1,0</td>
+          <td>Tôm ngạt rồi chết</td>
         </tr>
         <tr>
-          <td><strong>Tôm thẻ chân trắng</strong></td>
-          <td>40</td>
-          <td>5</td>
-          <td>4</td>
-          <td>–</td>
+          <td>&lt; 2,0</td>
+          <td>Tôm không lớn</td>
         </tr>
         <tr>
-          <td><strong>Cá chim vây vàng</strong></td>
-          <td>43 – 46</td>
-          <td>9 – 10</td>
-          <td>3</td>
-          <td>–</td>
+          <td>&lt; 3,0</td>
+          <td>Tôm rất chậm lớn</td>
+        </tr>
+        <tr>
+          <td>&gt; 3,0</td>
+          <td>Tôm tăng trưởng bình thường và khoẻ mạnh</td>
         </tr>
       </tbody>
     </table>
-    <div class="sub-question">a) Tôm thẻ chân trắng cần bổ sung 40% protein trong thức ăn.</div>
-    <div class="sub-question">b) Cá rô phi giống cần bổ sung 6g chất xơ thô trong thức ăn.</div>
-    <div class="sub-question">c) Cá chim vây vàng không cần bổ sung chất vô cơ trong thành phần thức ăn.</div>
-    <div class="sub-question">d) Protein chiếm tỉ lệ % cao nhất trong thành phần dinh dưỡng trong thức ăn.</div>
+    <div class="sub-question"><strong>a)</strong> Cần nuôi tôm với mật độ phù hợp, quản lý tốt thức ăn và chất thải để đảm bảo nồng độ oxygen hoà tan (&gt; 3,0 mg/L).</div>
+    <div class="sub-question"><strong>b)</strong> Để duy trì sự sống cho tôm trong bể chứa tại các nhà hàng hải sản, người ta thường sử dụng máy bơm sục khí nhằm cung cấp đủ oxygen hoà tan.</div>
+    <div class="sub-question"><strong>c)</strong> Nguồn cung cấp oxygen hoà tan chủ yếu trong ao nuôi tôm được cung cấp nhờ quá trình quang hợp của một số nhóm thực vật thủy sinh và vi khuẩn lam.</div>
+    <div class="sub-question"><strong>d)</strong> Khi nồng độ oxygen hoà tan xuống &lt; 3,0 mg/L, người nuôi tôm có thể gia tăng oxygen hoà tan bằng cách bổ sung thêm vôi bột.</div>
   </div>
 
   <!-- CÂU 3 PHẦN II -->
   <div class="question-item">
     <div class="question-text">Câu 3.</div>
-    <p style="text-align: justify; text-indent: 20px;">Bệnh đốm trắng trên tôm do Baculovirus gây ra, là bệnh đặc biệt nguy hiểm trên tôm nuôi nước mặn, lợ. Virus đốm trắng có thể nhiễm trên nhiều loài giáp xác nuôi như tôm sú, tôm thẻ chân trắng, tôm hùm. Tôm bị bệnh có các biểu hiện như: giảm ăn đột ngột, hoạt động kém, bơi lờ đờ ở mặt nước hoặc dạt vào bờ, vỏ tôm xuất hiện đốm trắng dạng chìm, kích cở 0,5-2 mm, tập trung nhiều ở giáp đầu ngực, thân tôm chuyển màu hơi hồng tím, ruột tôm không có thức ăn. Bệnh bùng phát mạnh vào thời điểm giao mùa trong năm, tôm chết hàng loạt, tỉ lệ chết từ 90 đến 100% sau 3 đến 10 ngày nhiễm bệnh.</p>
-    <div class="sub-question">a) Bệnh đốm trắng trên tôm do vi khuẩn Baculovirus gây ra.</div>
-    <div class="sub-question">b) Bệnh đốm trắng chưa có thuốc đặc trị nên phòng bệnh là biện pháp chủ yếu để hạn chế dịch bệnh.</div>
-    <div class="sub-question">c) Mua tôm giống ở cơ sở uy tín, lựa chọn tôm khoẻ và có chứng nhận kiểm dịch để đảm bảo tôm giống không mang mầm bệnh.</div>
-    <div class="sub-question">d) Khi phát hiện tôm bị bệnh, cần tiêu huỷ tôm chết theo đúng quy định, xả hết nước ao nuôi, khử trùng ao trước khi nuôi lứa mới.</div>
+    <p style="text-align: justify; text-indent: 20px;">Công nghệ nuôi thủy sản tuần hoàn (RAS) và công nghệ biofloc là hai công nghệ tiên tiến được sử dụng trong nuôi trồng thủy sản. Cả hai công nghệ này đều có những ưu điểm và nhược điểm riêng. Khi nhận xét về hai công nghệ này, nhóm học sinh đã đưa ra một số nhận định sau:</p>
+    <div class="sub-question"><strong>a)</strong> Mức độ tái sử dụng nước của công nghệ nuôi thủy sản tuần hoàn (RAS) và công nghệ biofloc là tương đương nhau.</div>
+    <div class="sub-question"><strong>b)</strong> Chi phí đầu tư và vận hành công nghệ nuôi thủy sản tuần hoàn (RAS) cao gấp nhiều lần công nghệ biofloc.</div>
+    <div class="sub-question"><strong>c)</strong> Năng suất thủy sản khi áp dụng công nghệ biofloc cao hơn nhiều mô hình nuôi thủy sản theo công nghệ tuần hoàn (RAS).</div>
+    <div class="sub-question"><strong>d)</strong> Cả hai công nghệ này đều có thể góp phần giảm thiểu được rủi ro do dịch bệnh và giảm ô nhiễm môi trường.</div>
   </div>
 
   <!-- CÂU 4 PHẦN II -->
   <div class="question-item">
-    <div class="question-text">Câu 4. Đồ thị dưới đây thể hiện kim ngạch xuất khẩu thủy sản của Việt Nam từ năm 2000 đến 2022 (đơn vị: Triệu USD):</div>
-    <div class="exam-image">
-      <img src="URL_HINH_ANH_CAU_4_PHAN_2.jpg" alt="Đồ thị kim ngạch xuất khẩu thủy sản Việt Nam">
+    <div class="question-text">Câu 4.</div>
+    <p style="text-align: justify; text-indent: 20px;">Sau khi học bài “Bảo vệ và khai thác nguồn lợi thủy sản", một nhóm học sinh đã đưa ra một số nhận định:</p>
+    <div class="sub-question"><strong>a)</strong> Khai thác thủy sản đúng quy định của pháp luật, thân thiện với môi trường là một trong những biện pháp bảo vệ nguồn lợi thủy sản.</div>
+    <div class="sub-question"><strong>b)</strong> Vào mùa sinh sản, thủy sản thường tập trung tại những khu vực nhất định để sinh sản. Vì vậy, khai thác thủy sản ở những khu vực thủy sản tập trung sinh sản sẽ cho hiệu quả kinh tế cao và góp phần phát triển thủy sản bền vững.</div>
+    <div class="sub-question"><strong>c)</strong> Theo khoản 7 điều 3 Luật Thủy sản 2017, việc thả bổ sung các loài thủy sản quý, hiếm vào các thủy vực tự nhiên giúp chúng tăng số lượng, tăng khả năng sinh sản, nhờ đó làm tăng đa dạng sinh học.</div>
+    <div class="sub-question"><strong>d)</strong> Việc thiết lập các khu bảo tồn biển sẽ làm ảnh hưởng đến môi trường sống của các loài thủy sản quý, hiếm, dẫn đến số lượng sinh vật ở vùng này bị suy giảm.</div>
+  </div>
+
+  <!-- PHẦN BẢNG ĐÁP ÁN -->
+  <div class="answer-key-section">
+    <div class="section-title" style="margin-top: 0;">
+      BẢNG ĐÁP ÁN THAM KHẢO
     </div>
-    <p style="font-size: 13px; font-style: italic; text-align: center;">Nguồn: Tổng cục Hải quan, Tổng cục Thống kê 2022</p>
-    <div class="sub-question">a) Kim ngạch xuất khẩu thủy sản 10 tháng của năm 2022 đạt 9,5 tỷ USD, cao nhất từ 2000 - 2022.</div>
-    <div class="sub-question">b) Kim ngạch xuất khẩu thủy sản của Việt Nam tăng liên tục qua từng năm từ năm 2019 đến 2021.</div>
-    <div class="sub-question">c) Việt Nam tham gia các hiệp định thương mại tự do đã và đang tạo ra lợi thế lớn đối với thủy sản Việt Nam trên thị trường quốc tế, giúp kim ngạch xuất khẩu thủy sản tăng giai đoạn 2000-2022.</div>
-    <div class="sub-question">d) Việt Nam có diện tích mặt nước lớn, bờ biển dài, tổng diện tích nuôi trồng thủy sản lớn là tiền đề để tăng sản lượng kim ngạch xuất khẩu.</div>
+
+    <h4>PHẦN I: TRẮC NGHIỆM NHIỀU LỰA CHỌN</h4>
+    <table class="exam-table">
+      <thead>
+        <tr>
+          <th>Câu</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Đáp án</strong></td>
+          <td>C</td><td>B</td><td>D</td><td>B</td><td>B</td><td>C</td><td>C</td><td>B</td><td>D</td><td>A</td><td>C</td><td>A</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="exam-table">
+      <thead>
+        <tr>
+          <th>Câu</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Đáp án</strong></td>
+          <td>C</td><td>B</td><td>A</td><td>C</td><td>C</td><td>B</td><td>A</td><td>D</td><td>D</td><td>A</td><td>C</td><td>B</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 style="margin-top: 20px;">PHẦN II: TRẮC NGHIỆM ĐÚNG SAI</h4>
+    <table class="exam-table">
+      <thead>
+        <tr>
+          <th>Câu</th>
+          <th>Lệnh hỏi</th>
+          <th>Đáp án</th>
+          <th>Câu</th>
+          <th>Lệnh hỏi</th>
+          <th>Đáp án</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="4"><strong>1</strong></td><td>a</td><td><strong>Đ</strong></td>
+          <td rowspan="4"><strong>3</strong></td><td>a</td><td><strong>S</strong></td>
+        </tr>
+        <tr><td>b</td><td><strong>S</strong></td><td>b</td><td><strong>Đ</strong></td></tr>
+        <tr><td>c</td><td><strong>S</strong></td><td>c</td><td><strong>S</strong></td></tr>
+        <tr><td>d</td><td><strong>Đ</strong></td><td>d</td><td><strong>Đ</strong></td></tr>
+        <tr>
+          <td rowspan="4"><strong>2</strong></td><td>a</td><td><strong>Đ</strong></td>
+          <td rowspan="4"><strong>4</strong></td><td>a</td><td><strong>Đ</strong></td>
+        </tr>
+        <tr><td>b</td><td><strong>Đ</strong></td><td>b</td><td><strong>S</strong></td></tr>
+        <tr><td>c</td><td><strong>S</strong></td><td>c</td><td><strong>Đ</strong></td></tr>
+        <tr><td>d</td><td><strong>S</strong></td><td>d</td><td><strong>S</strong></td></tr>
+      </tbody>
+    </table>
   </div>
 </div>
 

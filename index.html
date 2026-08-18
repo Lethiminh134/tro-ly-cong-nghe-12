@@ -3,610 +3,789 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Đề Khảo Sát Chất Lượng 2025-2026 - Công Nghệ Định Hướng Nông Nghiệp</title>
+  <title>Đề Thi Trắc Nghiệm Online - Công Nghệ Định Hướng Nông Nghiệp</title>
   <style>
     body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f4f6f9;
-      font-family: Arial, sans-serif;
       margin: 0;
       padding: 20px;
-    }
-    .exam-container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 30px;
-      line-height: 1.6;
       color: #333;
-      background-color: #fff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      border-radius: 8px;
     }
-    .exam-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
+    .quiz-container {
+      max-width: 850px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+    .quiz-header {
+      text-align: center;
       border-bottom: 2px solid #1a5276;
       padding-bottom: 15px;
       margin-bottom: 20px;
     }
-    .header-left, .header-right {
-      text-align: center;
-    }
-    .header-left h3, .header-right h3 {
-      margin: 2px 0;
-      font-size: 15px;
-      text-transform: uppercase;
-    }
-    .header-left h4, .header-right h4 {
-      margin: 2px 0;
-      font-size: 14px;
-      font-weight: bold;
+    .quiz-header h2 {
       color: #1a5276;
+      margin: 5px 0;
+      font-size: 22px;
     }
-    .student-info {
-      border: 1px dashed #bbb;
-      padding: 12px 18px;
-      margin-bottom: 25px;
-      background-color: #fafafa;
-      border-radius: 4px;
+    .quiz-header p {
+      margin: 3px 0;
+      color: #555;
+      font-size: 14px;
     }
     .section-title {
-      background-color: #1a5276;
+      background: #1a5276;
       color: #fff;
-      padding: 8px 14px;
-      font-size: 16px;
+      padding: 10px 15px;
+      border-radius: 6px;
       font-weight: bold;
-      border-radius: 4px;
-      margin: 25px 0 15px 0;
+      margin: 25px 0 15px;
     }
-    .question-item {
+    .question-box {
+      background: #f9fbfd;
+      border: 1px solid #e1e8ed;
+      border-left: 5px solid #2980b9;
+      padding: 15px 18px;
       margin-bottom: 20px;
-      padding: 14px 18px;
-      background-color: #f9fbfd;
-      border-left: 4px solid #2980b9;
-      border-radius: 0 6px 6px 0;
+      border-radius: 6px;
     }
-    .question-text {
-      font-weight: bold;
-      margin-bottom: 10px;
+    .question-title {
+      font-weight: 600;
+      margin-bottom: 12px;
+      font-size: 15px;
+      line-height: 1.5;
     }
-    .options-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 8px;
-      margin-top: 8px;
-    }
-    .options-grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 8px;
-      margin-top: 8px;
-    }
-    .options-vertical {
+    .options-list {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      margin-top: 8px;
+      gap: 8px;
+    }
+    .option-label {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      background: #fff;
+      border: 1px solid #ccd1d9;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 14px;
+    }
+    .option-label:hover {
+      background: #ebf5fb;
+      border-color: #2980b9;
+    }
+    .option-label input {
+      margin-right: 12px;
+      accent-color: #1a5276;
+      transform: scale(1.2);
+    }
+    .tf-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      background: #fff;
+    }
+    .tf-table th, .tf-table td {
+      border: 1px solid #ccd1d9;
+      padding: 10px;
+      font-size: 14px;
+    }
+    .tf-table th {
+      background: #ebf5fb;
+      color: #1a5276;
+      text-align: center;
+    }
+    .tf-radio-group {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .tf-radio-group label {
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .submit-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background: #27ae60;
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: background 0.2s;
+    }
+    .submit-btn:hover {
+      background: #219150;
+    }
+    #result-box {
+      display: none;
+      padding: 20px;
+      background: #e8f8f5;
+      border: 2px solid #27ae60;
+      border-radius: 8px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    #result-box h3 {
+      margin: 0 0 10px 0;
+      color: #1e8449;
+    }
+    .correct-ans {
+      background-color: #d4edda !important;
+      border-color: #28a745 !important;
+      color: #155724;
+    }
+    .wrong-ans {
+      background-color: #f8d7da !important;
+      border-color: #dc3545 !important;
+      color: #721c24;
     }
     .exam-table {
       width: 100%;
       border-collapse: collapse;
-      margin: 12px 0;
-      background-color: #fff;
+      margin: 10px 0;
     }
     .exam-table th, .exam-table td {
-      border: 1px solid #ccd1d9;
-      padding: 8px 10px;
+      border: 1px solid #ccc;
+      padding: 6px;
       text-align: center;
-      font-size: 14px;
-    }
-    .exam-table th {
-      background-color: #ebf5fb;
-      color: #1a5276;
-      font-weight: bold;
-    }
-    .sub-question {
-      margin-left: 15px;
-      margin-top: 6px;
-    }
-    .answer-key-section {
-      background-color: #f4f6f7;
-      padding: 20px;
-      border-radius: 6px;
-      margin-top: 40px;
-      border: 1px solid #d5dbdb;
+      font-size: 13px;
     }
   </style>
 </head>
 <body>
 
-<div class="exam-container">
-  <!-- HEADER ĐỀ THI -->
-  <div class="exam-header">
-    <div class="header-left">
-      <h3>SỞ GIÁO DỤC VÀ ĐÀO TẠO</h3>
-      <h4>ĐỀ KHẢO SÁT CHẤT LƯỢNG 2025-2026</h4>
-      <p style="margin: 5px 0; font-style: italic; font-size: 13px;">(Đề thi gồm 05 trang)</p>
-    </div>
-    <div class="header-right">
-      <h3>MÔN: CÔNG NGHỆ ĐỊNH HƯỚNG NÔNG NGHIỆP</h3>
-      <p style="margin: 5px 0;">Thời gian làm bài: 50 phút<br><em>(Không kể thời gian giao đề)</em></p>
-    </div>
+<div class="quiz-container">
+  <div class="quiz-header">
+    <h2>KỲ THI KHẢO SÁT CHẤT LƯỢNG NĂM HỌC 2025-2026</h2>
+    <p><strong>Môn thi: CÔNG NGHỆ ĐỊNH HƯỚNG NÔNG NGHIỆP</strong></p>
+    <p>Thời gian làm bài: 50 phút</p>
   </div>
 
-  <div class="student-info">
-    <p style="margin: 0;"><strong>Họ, tên thí sinh:</strong> .................................................................. <strong>SBD:</strong> ..........................................</p>
+  <!-- KHỐI HIỂN THỊ KẾT QUẢ SAU KHINỘP BÀI -->
+  <div id="result-box">
+    <h3>KẾT QUẢ BÀI THI</h3>
+    <p id="score-text" style="font-size: 20px; font-weight: bold; color: #117a65;"></p>
+    <p id="detail-text"></p>
   </div>
 
-  <!-- PHẦN I -->
-  <div class="section-title">
-    PHẦN I. CÂU TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN
-  </div>
-  <p><em>Thí sinh trả lời từ câu 1 đến câu 24. Mỗi câu hỏi thí sinh chỉ chọn một phương án.</em></p>
-
-  <!-- CÂU 1 -->
-  <div class="question-item">
-    <div class="question-text">Câu 1. Thành phần nào sau đây có vai trò quyết định tính chất của đất trồng?</div>
-    <div class="options-grid">
-      <div>A. Sinh vật.</div>
-      <div>B. Nước.</div>
-      <div>C. Chất rắn.</div>
-      <div>D. Không khí.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 2 -->
-  <div class="question-item">
-    <div class="question-text">Câu 2. Khi sử dụng phân hoá học gây ra hiện tượng nào dưới đây?</div>
-    <div class="options-vertical">
-      <div>A. Bón nhiều phân hoá học làm cho đất trở nên thoáng khí, tạo điều kiện cho hệ vi sinh vật có lợi phát triển.</div>
-      <div>B. Bón nhiều phân hoá học làm cho đất hoá chua, chai cứng, mất khả năng giữ nước.</div>
-      <div>C. Bón nhiều phân hoá học làm cho tầng đất mặt bị mỏng, cây khó hấp thu dinh dưỡng.</div>
-      <div>D. Bón nhiều phân hoá học khiến đất hoá kiềm, không có khả năng hút nước.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 3 -->
-  <div class="question-item">
-    <div class="question-text">Câu 3. Công nghệ nào sau đây không phải là công nghệ cao trong thu hoạch sản phẩm trồng trọt?</div>
-    <div class="options-grid">
-      <div>A. Tự động hoá.</div>
-      <div>B. Cảm biến.</div>
-      <div>C. Trí tuệ nhân tạo.</div>
-      <div>D. Công nghệ vi sinh.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 4 -->
-  <div class="question-item">
-    <div class="question-text">Câu 4. Trồng cây không dùng đất có ưu điểm nào dưới đây?</div>
-    <div class="options-grid-2">
-      <div>A. Chi phí đầu tư lớn.</div>
-      <div>B. Yêu cầu kỹ thuật cao.</div>
-      <div>C. Kiểm soát được môi trường.</div>
-      <div>D. Bệnh hại lây lan nhanh.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 5 -->
-  <div class="question-item">
-    <div class="question-text">Câu 5. Khi lai giữa các cá thể khác giống để tạo ra con lai có khả năng sản xuất cao hơn, con lai được dùng làm thương phẩm là đặc điểm của phương pháp lai nào dưới đây?</div>
-    <div class="options-grid">
-      <div>A. Lai xa.</div>
-      <div>B. Lai kinh tế.</div>
-      <div>C. Lai cải tạo.</div>
-      <div>D. Lai cải tiến.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 6 -->
-  <div class="question-item">
-    <div class="question-text">Câu 6. Những nguyên liệu thức ăn nào sau đây được sử dụng để cung cấp protein cho vật nuôi?</div>
-    <div class="options-vertical">
-      <div>A. Các loại rau xanh chứa nhiều nước.</div>
-      <div>B. Cỏ khô, rơm khô, vỏ trấu, thân cây lạc khô, lõi ngô khô.</div>
-      <div>C. Bột cá, bột thịt, đậu tương, khô dầu đậu tương, khô dầu lạc.</div>
-      <div>D. Dầu động vật, mỡ động vật, rỉ mật.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 7 -->
-  <div class="question-item">
-    <div class="question-text">Câu 7. Trong quy trình nuôi dưỡng và chăm sóc bò thịt người ta phân chia thành các giai đoạn sinh trưởng nhằm mục đích nào dưới đây?</div>
-    <div class="options-vertical">
-      <div>A. Kiểm soát và điều chỉnh các yếu tố ảnh hưởng đến sức khoẻ của bò.</div>
-      <div>B. Giúp tăng dần lượng thức ăn cho bò.</div>
-      <div>C. Theo dõi và chăm sóc bò hiệu quả hơn trong từng giai đoạn phát triển.</div>
-      <div>D. Xác định thời điểm nuôi đàn kế tiếp.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 8 -->
-  <div class="question-item">
-    <div class="question-text">Câu 8. Biện pháp nào sau đây không phải là biện pháp xử lý chất thải chăn nuôi?</div>
-    <div class="options-grid-2">
-      <div>A. Khí sinh học và hồ sinh học.</div>
-      <div>B. Ủ phân vô cơ.</div>
-      <div>C. Lọc khí thải.</div>
-      <div>D. Xử lý nhiệt.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 9 -->
-  <div class="question-item">
-    <div class="question-text">Câu 9. Bảo vệ rừng tập trung vào một số hoạt động chính sau:</div>
-    <p style="margin: 4px 0 8px 10px;">
-      (a) Phòng chống sâu hại rừng.<br>
-      (b) Cho thuê dịch vụ môi trường rừng.<br>
-      (c) Ngăn chặn những tác động tiêu cực của con người đến rừng.<br>
-      (d) Phòng bệnh hại rừng.<br>
-      (e) Phòng cháy, chữa cháy rừng.
-    </p>
-    <p><strong>Các phát biểu đúng là:</strong></p>
-    <div class="options-grid-2">
-      <div>A. (a), (b), (c), (d).</div>
-      <div>B. (a), (b), (d), (e).</div>
-      <div>C. (b), (c), (d), (e).</div>
-      <div>D. (a), (c), (d), (e).</div>
-    </div>
-  </div>
-
-  <!-- CÂU 10 -->
-  <div class="question-item">
-    <div class="question-text">Câu 10. Những hoạt động nào sau đây đều là hoạt động chăm sóc rừng?</div>
-    <div class="options-vertical">
-      <div>A. Làm cỏ, chặt bỏ cây dại, tỉa cành, bón phân, tưới nước.</div>
-      <div>B. Làm cỏ, bón phân, phòng trừ sâu hại, phòng chống cháy rừng, tưới nước.</div>
-      <div>C. Làm cỏ, chặt bỏ cây dại, bón phân, tưới nước, khai thác rừng trồng.</div>
-      <div>D. Làm cỏ, làm hàng rào bảo vệ, tỉa cành, bón phân, tưới nước.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 11 -->
-  <div class="question-item">
-    <div class="question-text">Câu 11. Cao su là một loại cây công nghiệp lâu năm và đã trở thành một lựa chọn phổ biến trong hoạt động trồng cây công nghiệp có giá trị kinh tế cao. Người dân dùng nhựa mủ, gỗ, lá và hạt của cây cao su để sản xuất đa dạng sản phẩm phục vụ nhu cầu đời sống con người. Ngoài ra rừng cây cao su còn đóng vai trò trong việc bảo vệ môi trường, phủ xanh đất trống, giảm thiểu hậu quả do thiên tai. Theo em cây cao su nên được khai thác vào giai đoạn phát triển nào sau đây để thu được lợi ích cao nhất?</div>
-    <div class="options-vertical">
-      <div>A. Giai đoạn gần thành thục, cây cao su cho năng suất và chất lượng nhựa mủ, gỗ, lá, hạt cao nhất.</div>
-      <div>B. Giai đoạn non, cây cao su bắt đầu khép tán thể hiện chức năng bảo vệ môi trường tốt nhất.</div>
-      <div>C. Giai đoạn thành thục, cây cao su cho năng suất và chất lượng nhựa mủ, gỗ, lá, hạt cao nhất.</div>
-      <div>D. Giai đoạn già cỗi, cây cao su cho năng suất và chất lượng nhựa mủ, gỗ, lá, hạt cao nhất.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 12 -->
-  <div class="question-item">
-    <div class="question-text">Câu 12. Trong kỹ thuật trồng rừng bằng gieo hạt, việc xử lý hạt giống trước khi gieo nhằm mục đích nào sau đây?</div>
-    <div class="options-vertical">
-      <div>A. Tăng khả năng nảy mầm của hạt giống.</div>
-      <div>B. Tăng sức đề kháng của cây con mọc lên từ hạt.</div>
-      <div>C. Lựa chọn hạt giống có chất lượng tốt để đem gieo.</div>
-      <div>D. Tăng khả năng phòng chống sâu, bệnh hại của cây con mọc lên từ hạt.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 13 -->
-  <div class="question-item">
-    <div class="question-text">Câu 13. Trong công tác bảo vệ rừng, chủ rừng có nhiệm vụ nào dưới đây?</div>
-    <div class="options-vertical">
-      <div>A. Tổ chức tuyên truyền, phổ biến, giáo dục pháp luật về bảo vệ và phát triển rừng.</div>
-      <div>B. Thông báo kịp thời cho người dân hoặc cơ quan có thẩm quyền về cháy rừng.</div>
-      <div>C. Xây dựng và thực hiện phương án, biện pháp bảo vệ hệ sinh thái rừng.</div>
-      <div>D. Thông báo kịp thời cho người dân hoặc cơ quan có thẩm quyền về sinh vật gây hại rừng.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 14 -->
-  <div class="question-item">
-    <div class="question-text">Câu 14. Loại thủy sản nào dưới đây thuộc nhóm giáp xác?</div>
-    <div class="options-grid">
-      <div>A. Cá chép, cá mè hoa.</div>
-      <div>B. Cua biển, tôm thẻ chân trắng.</div>
-      <div>C. Vẹm xanh, cá hồi.</div>
-      <div>D. Ốc hương, lươn.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 15 -->
-  <div class="question-item">
-    <div class="question-text">Câu 15. Khi trong ao nuôi xuất hiện váng màu xanh đậm, cá nổi đầu, bơi lờ đờ. Biện pháp xử lý nào sau đây không phù hợp?</div>
-    <div class="options-vertical">
-      <div>A. Sử dụng đồng thời hoá chất diệt tảo và chế phẩm sinh học để tạo hệ vi sinh vật, đồng thời giảm mật độ tảo.</div>
-      <div>B. Thay nước từ 10-20% liên tục trong 2-3 ngày.</div>
-      <div>C. Loại bỏ thức ăn thừa, phân thải ra khỏi ao.</div>
-      <div>D. Quạt nước, sục khí để tăng hàm lượng oxygen trong nước.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 16 -->
-  <div class="question-item">
-    <div class="question-text">Câu 16. Cho các nhận định sau:</div>
-    <p style="margin: 4px 0 8px 10px;">
-      (a) Hạn chế tối đa việc phải lưu trữ cá đực để bảo tồn dòng thuần.<br>
-      (b) Ngăn cản suy giảm chất lượng di truyền do lai cận huyết trong thủy sản.<br>
-      (c) Chọn lọc được các cá thể mang gene mong muốn như gene kháng bệnh, gene chịu lạnh…<br>
-      (d) Giúp chủ động trong quá trình sản xuất giống nhân tạo, đặc biệt là khi con đực và con cái lệch pha trong sự thành thục sinh sản.<br>
-      (e) Thuận tiện, dễ dàng trong quá trình vận chuyển so với việc phải vận chuyển cá bố để thụ tinh.
-    </p>
-    <p><strong>Số nhận định đúng về ý nghĩa của phương pháp bảo quản lạnh tinh trùng của động vật thủy sản là:</strong></p>
-    <div class="options-grid">
-      <div>A. 2.</div>
-      <div>B. 3.</div>
-      <div>C. 4.</div>
-      <div>D. 5.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 17 -->
-  <div class="question-item">
-    <div class="question-text">Câu 17. Cho một số loại thức ăn thủy sản đang được sử dụng ở địa phương như bảng sau:</div>
-    <table class="exam-table">
-      <thead>
-        <tr>
-          <th>Phân loại thức ăn</th>
-          <th>Tên các loại thức ăn</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1. Chất bổ sung</td>
-          <td>a. Cám cá (dạng viên)</td>
-        </tr>
-        <tr>
-          <td>2. Thức ăn hỗn hợp</td>
-          <td>b. Khoáng chất</td>
-        </tr>
-        <tr>
-          <td>3. Nguyên liệu</td>
-          <td>c. Giun đất, giun chỉ</td>
-        </tr>
-        <tr>
-          <td>4. Thức ăn tươi sống</td>
-          <td>d. Cám gạo đầu thán</td>
-        </tr>
-      </tbody>
-    </table>
-    <p><strong>Hãy ghép phân loại thức ăn với tên các loại thức ăn cho phù hợp:</strong></p>
-    <div class="options-grid-2">
-      <div>A. 1-c, 2-a, 3-d, 4-b.</div>
-      <div>B. 1-b, 2-d, 3-a, 4-c.</div>
-      <div>C. 1-b, 2-a, 3-d, 4-c.</div>
-      <div>D. 1-b, 2-c, 3-d, 4-a.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 18 -->
-  <div class="question-item">
-    <div class="question-text">Câu 18. Cho các phát biểu sau:</div>
-    <p style="margin: 4px 0 8px 10px;">
-      (a) Kiểm soát hoàn toàn chất lượng nước vào và ra.<br>
-      (b) Tăng hàm lượng oxygen và tạo dòng chảy kích thích cá lớn nhanh.<br>
-      (c) Giúp tăng năng suất và hiệu quả sử dụng thức ăn.<br>
-      (d) Tiết kiệm nước, đảm bảo an toàn sinh học.<br>
-      (e) Tăng cường ô nhiễm môi trường.<br>
-      (f) Kiểm soát được an toàn vệ sinh thực phẩm.
-    </p>
-    <p><strong>Số phát biểu đúng khi nói về ưu điểm của hệ thống nuôi thủy sản tuần hoàn là:</strong></p>
-    <div class="options-grid">
-      <div>A. 3.</div>
-      <div>B. 5.</div>
-      <div>C. 4.</div>
-      <div>D. 6.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 19 -->
-  <div class="question-item">
-    <div class="question-text">Câu 19. Bệnh lồi mắt ở cá rô phi là do tác nhân nào sau đây gây ra?</div>
-    <div class="options-grid-2">
-      <div>A. Liên cầu khuẩn <em>Streptococcus Agalactiae</em>.</div>
-      <div>B. Vi khuẩn <em>Micopacterium</em>.</div>
-      <div>C. Vi khuẩn <em>Vibrio</em>.</div>
-      <div>D. Vi khuẩn <em>Edwardsiella Ictaluri</em>.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 20 -->
-  <div class="question-item">
-    <div class="question-text">Câu 20. Có thể ứng dụng kỹ thuật/công nghệ nào sau đây để phát hiện sớm bệnh thủy sản?</div>
-    <div class="options-grid">
-      <div>A. Công nghệ lên men.</div>
-      <div>B. Công nghệ vi sinh.</div>
-      <div>C. Kỹ thuật chuyển gene.</div>
-      <div>D. Kỹ thuật PCR.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 21 -->
-  <div class="question-item">
-    <div class="question-text">Câu 21. Khi độ pH trong ao nuôi thủy sản giảm thấp, biện pháp xử lý nào sau đây không phù hợp?</div>
-    <div class="options-vertical">
-      <div>A. Sử dụng nước vôi trong hoặc nước soda để trung hòa ion H+ trong nước.</div>
-      <div>B. Tăng cường độ sục khí để tạo điều kiện khuếch tán CO2 ra ngoài không khí.</div>
-      <div>C. Quản lý tốt độ trong và mật độ tảo để giảm biến động pH trong nước.</div>
-      <div>D. Bổ sung một số hóa chất có tính acid như citric acid, phèn nhôm.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 22 -->
-  <div class="question-item">
-    <div class="question-text">Câu 22. Cỏ tươi, cá tạp, giun quế có thể bảo quản được 3 – 5 ngày trong khoảng nhiệt độ nào dưới đây?</div>
-    <div class="options-grid">
-      <div>A. Nhiệt độ từ 4 °C đến 8 °C.</div>
-      <div>B. Nhiệt độ từ 15 °C đến 20 °C.</div>
-      <div>C. Nhiệt độ từ –20 °C đến 0 °C.</div>
-      <div>D. Nhiệt độ từ 20 °C đến 30 °C.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 23 -->
-  <div class="question-item">
-    <div class="question-text">Câu 23. Việc thu gom, xử lý chất thải trong nuôi thủy sản theo tiêu chuẩn VietGAP không có tác dụng nào sau đây?</div>
-    <div class="options-vertical">
-      <div>A. Giúp giảm thiểu ô nhiễm môi trường, bảo vệ nguồn nước và hệ sinh thái.</div>
-      <div>B. Giúp cải thiện chất lượng nước, tạo môi trường tốt cho con giống nuôi phát triển.</div>
-      <div>C. Nâng cao chất lượng con giống.</div>
-      <div>D. Giúp đảm bảo an toàn thực phẩm, bảo vệ sức khoẻ người tiêu dùng.</div>
-    </div>
-  </div>
-
-  <!-- CÂU 24 -->
-  <div class="question-item">
-    <div class="question-text">Câu 24. Dưới đây là một số ưu điểm của phương pháp muối các sản phẩm thủy sản:</div>
-    <p style="margin: 4px 0 8px 10px;">
-      (a) Khó áp dụng cho nhiều loại thủy sản.<br>
-      (b) Tăng độ mặn, ảnh hưởng đến hương vị ban đầu của thủy sản.<br>
-      (c) Cần thiết bị chuyên dụng, tốn nhiều năng lượng.<br>
-      (d) Muối có khả năng diệt vi sinh vật nên ảnh hưởng đến chất lượng thủy sản.<br>
-      (e) Có thể bảo quản trong thời gian dài nếu được thực hiện đúng cách.<br>
-      (f) Ảnh hưởng đến độ giòn dai, kết cấu của thủy sản.
-    </p>
-    <p><strong>Số phương án đúng là:</strong></p>
-    <div class="options-grid">
-      <div>A. 5.</div>
-      <div>B. 1.</div>
-      <div>C. 3.</div>
-      <div>D. 6.</div>
-    </div>
-  </div>
-
-  <!-- PHẦN II -->
-  <div class="section-title">
-    PHẦN II. CÂU TRẮC NGHIỆM ĐÚNG SAI
-  </div>
-  <p><em>Thí sinh trả lời từ câu 1 đến câu 4. Trong mỗi ý a), b), c), d) ở mỗi câu, thí sinh chọn đúng hoặc sai.</em></p>
-
-  <!-- CÂU 1 PHẦN II -->
-  <div class="question-item">
-    <div class="question-text">Câu 1.</div>
-    <p style="text-align: justify; text-indent: 20px;">Theo báo An Giang với đề mục: “Bảo vệ tài nguyên gắn với phát triển du lịch tại rừng tràm Tân Tuyến - An Giang” ra ngày 07/11/2023 cho hay: Rừng tràm Tân Tuyến (tỉnh An Giang) là khu rừng đặc dụng thuộc hệ sinh thái đất ngập nước điển hình của vùng tứ giác Long Xuyên, có nhiều loài động, thực vật quý hiếm. Thời gian qua, tỉnh An Giang đã triển khai nhiều giải pháp nhằm nâng cao hiệu quả công tác bảo vệ nguồn tài nguyên tại khu vực này, đồng thời phát triển du lịch sinh thái qua đó thúc đẩy kinh tế-xã hội tại địa phương phát triển.</p>
-    <div class="sub-question"><strong>a)</strong> Rừng tràm ở đây là hệ sinh thái đất ngập nước có tính đa dạng sinh học cao.</div>
-    <div class="sub-question"><strong>b)</strong> Để tăng cường tài nguyên động vật quý hiếm cho hệ sinh thái rừng tràm nên bổ sung các loài quý, hiếm khác trên thế giới.</div>
-    <div class="sub-question"><strong>c)</strong> Việc khai thác gỗ tràm và các sản phẩm từ tràm nên bắt đầu từ giai đoạn thành thục.</div>
-    <div class="sub-question"><strong>d)</strong> Khai thác tiềm năng tự nhiên về cảnh quan, môi trường và sự đa dạng về tài nguyên thiên nhiên của hệ sinh thái rừng, đất ngập nước để phát triển du lịch sinh thái, phát triển kinh tế cho người dân địa phương.</div>
-  </div>
-
-  <!-- CÂU 2 PHẦN II -->
-  <div class="question-item">
-    <div class="question-text">Câu 2.</div>
-    <p>Theo dõi phản ứng của tôm nuôi ở mô hình ao nuôi thâm canh cao với các nồng độ oxygen hoà tan khác nhau người ta nhận thấy:</p>
-    <table class="exam-table">
-      <thead>
-        <tr>
-          <th>Oxygen hoà tan (mg/L)</th>
-          <th>Phản ứng của tôm</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>&lt; 1,0</td>
-          <td>Tôm ngạt rồi chết</td>
-        </tr>
-        <tr>
-          <td>&lt; 2,0</td>
-          <td>Tôm không lớn</td>
-        </tr>
-        <tr>
-          <td>&lt; 3,0</td>
-          <td>Tôm rất chậm lớn</td>
-        </tr>
-        <tr>
-          <td>&gt; 3,0</td>
-          <td>Tôm tăng trưởng bình thường và khoẻ mạnh</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="sub-question"><strong>a)</strong> Cần nuôi tôm với mật độ phù hợp, quản lý tốt thức ăn và chất thải để đảm bảo nồng độ oxygen hoà tan (&gt; 3,0 mg/L).</div>
-    <div class="sub-question"><strong>b)</strong> Để duy trì sự sống cho tôm trong bể chứa tại các nhà hàng hải sản, người ta thường sử dụng máy bơm sục khí nhằm cung cấp đủ oxygen hoà tan.</div>
-    <div class="sub-question"><strong>c)</strong> Nguồn cung cấp oxygen hoà tan chủ yếu trong ao nuôi tôm được cung cấp nhờ quá trình quang hợp của một số nhóm thực vật thủy sinh và vi khuẩn lam.</div>
-    <div class="sub-question"><strong>d)</strong> Khi nồng độ oxygen hoà tan xuống &lt; 3,0 mg/L, người nuôi tôm có thể gia tăng oxygen hoà tan bằng cách bổ sung thêm vôi bột.</div>
-  </div>
-
-  <!-- CÂU 3 PHẦN II -->
-  <div class="question-item">
-    <div class="question-text">Câu 3.</div>
-    <p style="text-align: justify; text-indent: 20px;">Công nghệ nuôi thủy sản tuần hoàn (RAS) và công nghệ biofloc là hai công nghệ tiên tiến được sử dụng trong nuôi trồng thủy sản. Cả hai công nghệ này đều có những ưu điểm và nhược điểm riêng. Khi nhận xét về hai công nghệ này, nhóm học sinh đã đưa ra một số nhận định sau:</p>
-    <div class="sub-question"><strong>a)</strong> Mức độ tái sử dụng nước của công nghệ nuôi thủy sản tuần hoàn (RAS) và công nghệ biofloc là tương đương nhau.</div>
-    <div class="sub-question"><strong>b)</strong> Chi phí đầu tư và vận hành công nghệ nuôi thủy sản tuần hoàn (RAS) cao gấp nhiều lần công nghệ biofloc.</div>
-    <div class="sub-question"><strong>c)</strong> Năng suất thủy sản khi áp dụng công nghệ biofloc cao hơn nhiều mô hình nuôi thủy sản theo công nghệ tuần hoàn (RAS).</div>
-    <div class="sub-question"><strong>d)</strong> Cả hai công nghệ này đều có thể góp phần giảm thiểu được rủi ro do dịch bệnh và giảm ô nhiễm môi trường.</div>
-  </div>
-
-  <!-- CÂU 4 PHẦN II -->
-  <div class="question-item">
-    <div class="question-text">Câu 4.</div>
-    <p style="text-align: justify; text-indent: 20px;">Sau khi học bài “Bảo vệ và khai thác nguồn lợi thủy sản", một nhóm học sinh đã đưa ra một số nhận định:</p>
-    <div class="sub-question"><strong>a)</strong> Khai thác thủy sản đúng quy định của pháp luật, thân thiện với môi trường là một trong những biện pháp bảo vệ nguồn lợi thủy sản.</div>
-    <div class="sub-question"><strong>b)</strong> Vào mùa sinh sản, thủy sản thường tập trung tại những khu vực nhất định để sinh sản. Vì vậy, khai thác thủy sản ở những khu vực thủy sản tập trung sinh sản sẽ cho hiệu quả kinh tế cao và góp phần phát triển thủy sản bền vững.</div>
-    <div class="sub-question"><strong>c)</strong> Theo khoản 7 điều 3 Luật Thủy sản 2017, việc thả bổ sung các loài thủy sản quý, hiếm vào các thủy vực tự nhiên giúp chúng tăng số lượng, tăng khả năng sinh sản, nhờ đó làm tăng đa dạng sinh học.</div>
-    <div class="sub-question"><strong>d)</strong> Việc thiết lập các khu bảo tồn biển sẽ làm ảnh hưởng đến môi trường sống của các loài thủy sản quý, hiếm, dẫn đến số lượng sinh vật ở vùng này bị suy giảm.</div>
-  </div>
-
-  <!-- PHẦN BẢNG ĐÁP ÁN -->
-  <div class="answer-key-section">
-    <div class="section-title" style="margin-top: 0;">
-      BẢNG ĐÁP ÁN THAM KHẢO
+  <form id="quiz-form">
+    <!-- PHẦN I -->
+    <div class="section-title">
+      PHẦN I. CÂU TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN (24 Câu - 6,0 Điểm)
     </div>
 
-    <h4>PHẦN I: TRẮC NGHIỆM NHIỀU LỰA CHỌN</h4>
-    <table class="exam-table">
-      <thead>
-        <tr>
-          <th>Câu</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Đáp án</strong></td>
-          <td>C</td><td>B</td><td>D</td><td>B</td><td>B</td><td>C</td><td>C</td><td>B</td><td>D</td><td>A</td><td>C</td><td>A</td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- CÂU 1 -->
+    <div class="question-box" id="qbox-1">
+      <div class="question-title">Câu 1. Thành phần nào sau đây có vai trò quyết định tính chất của đất trồng?</div>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q1" value="A"> A. Sinh vật.</label>
+        <label class="option-label"><input type="radio" name="q1" value="B"> B. Nước.</label>
+        <label class="option-label"><input type="radio" name="q1" value="C"> C. Chất rắn.</label>
+        <label class="option-label"><input type="radio" name="q1" value="D"> D. Không khí.</label>
+      </div>
+    </div>
 
-    <table class="exam-table">
-      <thead>
-        <tr>
-          <th>Câu</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Đáp án</strong></td>
-          <td>C</td><td>B</td><td>A</td><td>C</td><td>C</td><td>B</td><td>A</td><td>D</td><td>D</td><td>A</td><td>C</td><td>B</td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- CÂU 2 -->
+    <div class="question-box" id="qbox-2">
+      <div class="question-title">Câu 2. Khi sử dụng phân hoá học gây ra hiện tượng nào dưới đây?</div>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q2" value="A"> A. Bón nhiều phân hoá học làm cho đất trở nên thoáng khí, tạo điều kiện cho hệ vi sinh vật có lợi trong đất phát triển mạnh.</label>
+        <label class="option-label"><input type="radio" name="q2" value="B"> B. Bón nhiều phân hoá học làm cho đất hoá chua, chai cứng, mất khả năng giữ nước.</label>
+        <label class="option-label"><input type="radio" name="q2" value="C"> C. Bón nhiều phân hoá học làm cho tầng đất mặt bị mỏng, cây khó hấp thu dinh dưỡng.</label>
+        <label class="option-label"><input type="radio" name="q2" value="D"> D. Bón nhiều phân hoá học khiến đất hoá kiềm, không có khả năng hút nước.</label>
+      </div>
+    </div>
 
-    <h4 style="margin-top: 20px;">PHẦN II: TRẮC NGHIỆM ĐÚNG SAI</h4>
-    <table class="exam-table">
-      <thead>
-        <tr>
-          <th>Câu</th>
-          <th>Lệnh hỏi</th>
-          <th>Đáp án</th>
-          <th>Câu</th>
-          <th>Lệnh hỏi</th>
-          <th>Đáp án</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td rowspan="4"><strong>1</strong></td><td>a</td><td><strong>Đ</strong></td>
-          <td rowspan="4"><strong>3</strong></td><td>a</td><td><strong>S</strong></td>
-        </tr>
-        <tr><td>b</td><td><strong>S</strong></td><td>b</td><td><strong>Đ</strong></td></tr>
-        <tr><td>c</td><td><strong>S</strong></td><td>c</td><td><strong>S</strong></td></tr>
-        <tr><td>d</td><td><strong>Đ</strong></td><td>d</td><td><strong>Đ</strong></td></tr>
-        <tr>
-          <td rowspan="4"><strong>2</strong></td><td>a</td><td><strong>Đ</strong></td>
-          <td rowspan="4"><strong>4</strong></td><td>a</td><td><strong>Đ</strong></td>
-        </tr>
-        <tr><td>b</td><td><strong>Đ</strong></td><td>b</td><td><strong>S</strong></td></tr>
-        <tr><td>c</td><td><strong>S</strong></td><td>c</td><td><strong>Đ</strong></td></tr>
-        <tr><td>d</td><td><strong>S</strong></td><td>d</td><td><strong>S</strong></td></tr>
-      </tbody>
-    </table>
-  </div>
+    <!-- CÂU 3 -->
+    <div class="question-box" id="qbox-3">
+      <div class="question-title">Câu 3. Công nghệ nào sau đây không phải là công nghệ cao trong thu hoạch sản phẩm trồng trọt?</div>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q3" value="A"> A. Tự động hoá.</label>
+        <label class="option-label"><input type="radio" name="q3" value="B"> B. Cảm biến.</label>
+        <label class="option-label"><input type="radio" name="q3" value="C"> C. Trí tuệ nhân tạo.</label>
+        <label class="option-label"><input type="radio" name="q3" value="D"> D. Công nghệ vi sinh.</label>
+      </div>
+    </div>
+
+    <!-- CÂU 4 -->
+    <div class="question-box" id="qbox-4">
+      <div class="question-title">Câu 4. Trồng cây không dùng đất có ưu điểm nào dưới đây?</div>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q4" value="A"> A. Chi phí đầu tư lớn.</label>
+        <label class="option-label"><input type="radio" name="q4" value="B"> B. Yêu cầu kỹ thuật cao.</label>
+        <label class="option-label"><input type="radio" name="q4" value="C"> C. Kiểm soát được môi trường.</label>
+        <label class="option-label"><input type="radio" name="q4" value="D"> D. Bệnh hại lây lan nhanh.</label>
+      </div>
+    </div>
+
+    <!-- CÂU 5 -->
+    <div class="question-box" id="qbox-5">
+      <div class="question-title">Câu 5. Khi lai giữa các cá thể khác giống để tạo ra con lai có khả năng sản xuất cao hơn, con lai được dùng làm thương phẩm là đặc điểm của phương pháp lai nào dưới đây?</div>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q5" value="A"> A. Lai xa.</label>
+        <label class="option-label"><input type="radio" name="q5" value="B"> B. Lai kinh tế.</label>
+        <label class="option-label"><input type="radio" name="q5" value="C"> C. Lai cải tạo.</label>
+        <label class="option-label"><input type="radio" name="q5" value="D"> D. Lai cải tiến.</label>
+      </div>
+    </div>
+
+    <!-- CÂU 6 -->
+    <div class="question-box" id="qbox-6">
+      <div class="question-title">Câu 6. Những nguyên liệu thức ăn nào sau đây được sử dụng để cung cấp protein cho vật nuôi?</div>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q6" value="A"> A. Các loại rau xanh chứa nhiều nước.</label>
+        <label class="option-label"><input type="radio" name="q6" value="B"> B. Cỏ khô, rơm khô, vỏ trấu, thân cây lạc khô, lõi ngô khô.</label>
+        <label class="option-label"><input type="radio" name="q6" value="C"> C. Bột cá, bột thịt, đậu tương, khô dầu đậu tương, khô dầu lạc.</label>
+        <label class="option-label"><input type="radio" name="q6" value="D"> D. Dầu động vật, mỡ động vật, rỉ mật.</label>
+      </div>
+    </div>
+
+    <!-- CÂU 7 -->
+    <div class="question-box" id="qbox-7">
+      <div class="question-title">Câu 7. Trong quy trình nuôi dưỡng và chăm sóc bò thịt người ta phân chia thành các giai đoạn sinh trưởng nhằm mục đích nào dưới đây?</div>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q7" value="A"> A. Kiểm soát và điều chỉnh các yếu tố ảnh hưởng đến sức khoẻ của bò.</label>
+        <label class="option-label"><input type="radio" name="q7" value="B"> B. Giúp tăng dần lượng thức ăn cho bò.</label>
+        <label class="option-label"><input type="radio" name="q7" value="C"> C. Theo dõi và chăm sóc bò hiệu quả hơn trong từng giai đoạn phát triển.</label>
+        <label class="option-label"><input type="radio" name="q7" value="D"> D. Xác định thời điểm nuôi đàn kế tiếp.</label>
+      </div>
+    </div>
+
+    <!-- CÂU 8 -->
+    <div class="question-box" id="qbox-8">
+      <div class="question-title">Câu 8. Biện pháp nào sau đây không phải là biện pháp xử lý chất thải chăn nuôi?</div>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q8" value="A"> A. Khí sinh học và hồ sinh học.</label>
+        <label class="option-label"><input type="radio" name="q8" value="B"> B. Ủ phân vô cơ.</label>
+        <label class="option-label"><input type="radio" name="q8" value="C"> C. Lọc khí thải.</label>
+        <label class="option-label"><input type="radio" name="q8" value="D"> D. Xử lý nhiệt.</label>
+      </div>
+    </div>
+
+    <!-- CÂU 9 -->
+    <div class="question-box" id="qbox-9">
+      <div class="question-title">Câu 9. Bảo vệ rừng tập trung vào một số hoạt động chính sau:</div>
+      <p style="margin: 4px 0 8px 10px; font-size: 14px;">
+        (a) Phòng chống sâu hại rừng.<br>
+        (b) Cho thuê dịch vụ môi trường rừng.<br>
+        (c) Ngăn chặn những tác động tiêu cực của con người đến rừng.<br>
+        (d) Phòng bệnh hại rừng.<br>
+        (e) Phòng cháy, chữa cháy rừng.
+      </p>
+      <p style="font-weight: bold; margin-bottom: 8px;">Các phát biểu đúng là:</p>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q9" value="A"> A. (a), (b), (c), (d).</label>
+        <label class="option-label"><input type="radio" name="q9" value="B"> B. (a), (b), (d), (e).</label>
+        <label class="option-label"><input type="radio" name="q9" value="C"> C. (b), (c), (d), (e).</label>
+        <label class="option-label"><input type="radio" name="q9" value="D"> D. (a), (c), (d), (e).</label>
+      </div>
+    </div>
+
+    <!-- CÂU 10 -->
+    <div class="question-box" id="qbox-10">
+      <div class="question-title">Câu 10. Những hoạt động nào sau đây đều là hoạt động chăm sóc rừng?</div>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q10" value="A"> A. Làm cỏ, chặt bỏ cây dại, tỉa cành, bón phân, tưới nước.</label>
+        <label class="option-label"><input type="radio" name="q10" value="B"> B. Làm cỏ, bón phân, phòng trừ sâu hại, phòng chống cháy rừng, tưới nước.</label>
+        <label class="option-label"><input type="radio" name="q10" value="C"> C. Làm cỏ, chặt bỏ cây dại, bón phân, tưới nước, khai thác rừng trồng.</label>
+        <label class="option-label"><input type="radio" name="q10" value="D"> D. Làm cỏ, làm hàng rào bảo vệ, tỉa cành, bón phân, tưới nước.</label>
+      </div>
+    </div>
+
+    <!-- CÂU 11 -->
+    <div class="question-box" id="qbox-11">
+      <div class="question-title">Câu 11. Cao su là một loại cây công nghiệp lâu năm và đã trở thành một lựa chọn phổ biến trong hoạt động trồng cây công nghiệp có giá trị kinh tế cao. Người dân dùng nhựa mủ, gỗ, lá và hạt của cây cao su để sản xuất đa dạng sản phẩm phục vụ nhu cầu đời sống con người. Ngoài ra rừng cây cao su còn đóng vai trò trong việc bảo vệ môi trường, phủ xanh đất trống, giảm thiểu hậu quả do thiên tai. Theo em cây cao su nên được khai thác vào giai đoạn phát triển nào sau đây để thu được lợi ích cao nhất?</div>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q11" value="A"> A. Giai đoạn gần thành thục, cây cao su cho năng suất và chất lượng nhựa mủ, gỗ, lá, hạt cao nhất.</label>
+        <label class="option-label"><input type="radio" name="q11" value="B"> B. Giai đoạn non, cây cao su bắt đầu khép tán thể hiện chức năng bảo vệ môi trường tốt nhất.</label>
+        <label class="option-label"><input type="radio" name="q11" value="C"> C. Giai đoạn thành thục, cây cao su cho năng suất và chất lượng nhựa mủ, gỗ, lá, hạt cao nhất.</label>
+        <label class="option-label"><input type="radio" name="q11" value="D"> D. Giai đoạn già cỗi, cây cao su cho năng suất và chất lượng nhựa mủ, gỗ, lá, hạt cao nhất.</label>
+      </div>
+    </div>
+
+    <!-- CÂU 12 -->
+    <div class="question-box" id="qbox-12">
+      <div class="question-title">Câu 12. Trong kỹ thuật trồng rừng bằng gieo hạt, việc xử lý hạt giống trước khi gieo nhằm mục đích nào sau đây?</div>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q12" value="A"> A. Tăng khả năng nảy mầm của hạt giống.</label>
+        <label class="option-label"><input type="radio" name="q12" value="B"> B. Tăng sức đề kháng của cây con mọc lên từ hạt.</label>
+        <label class="option-label"><input type="radio" name="q12" value="C"> C. Lựa chọn hạt giống có chất lượng tốt để đem gieo.</label>
+        <label class="option-label"><input type="radio" name="q12" value="D"> D. Tăng khả năng phòng chống sâu, bệnh hại của cây con mọc lên từ hạt.</label>
+      </div>
+    </div>
+
+    <!-- CÂU 13 -->
+    <div class="question-box" id="qbox-13">
+      <div class="question-title">Câu 13. Trong công tác bảo vệ rừng, chủ rừng có nhiệm vụ nào dưới đây?</div>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q13" value="A"> A. Tổ chức tuyên truyền, phổ biến, giáo dục pháp luật về bảo vệ và phát triển rừng.</label>
+        <label class="option-label"><input type="radio" name="q13" value="B"> B. Thông báo kịp thời cho người dân hoặc cơ quan có thẩm quyền về cháy rừng.</label>
+        <label class="option-label"><input type="radio" name="q13" value="C"> C. Xây dựng và thực hiện phương án, biện pháp bảo vệ hệ sinh thái rừng.</label>
+        <label class="option-label"><input type="radio" name="q13" value="D"> D. Thông báo kịp thời cho người dân hoặc cơ quan có thẩm quyền về sinh vật gây hại rừng.</label>
+      </div>
+    </div>
+
+    <!-- CÂU 14 -->
+    <div class="question-box" id="qbox-14">
+      <div class="question-title">Câu 14. Loại thủy sản nào dưới đây thuộc nhóm giáp xác?</div>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q14" value="A"> A. Cá chép, cá mè hoa.</label>
+        <label class="option-label"><input type="radio" name="q14" value="B"> B. Cua biển, tôm thẻ chân trắng.</label>
+        <label class="option-label"><input type="radio" name="q14" value="C"> C. Vẹm xanh, cá hồi.</label>
+        <label class="option-label"><input type="radio" name="q14" value="D"> D. Ốc hương, lươn.</label>
+      </div>
+    </div>
+
+    <!-- CÂU 15 -->
+    <div class="question-box" id="qbox-15">
+      <div class="question-title">Câu 15. Khi trong ao nuôi xuất hiện váng màu xanh đậm, cá nổi đầu, bơi lờ đờ. Biện pháp xử lý nào sau đây không phù hợp?</div>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q15" value="A"> A. Sử dụng đồng thời hoá chất diệt tảo và chế phẩm sinh học để tạo hệ vi sinh vật, đồng thời giảm mật độ tảo.</label>
+        <label class="option-label"><input type="radio" name="q15" value="B"> B. Thay nước từ 10-20% liên tục trong 2-3 ngày.</label>
+        <label class="option-label"><input type="radio" name="q15" value="C"> C. Loại bỏ thức ăn thừa, phân thải ra khỏi ao.</label>
+        <label class="option-label"><input type="radio" name="q15" value="D"> D. Quạt nước, sục khí để tăng hàm lượng oxygen trong nước.</label>
+      </div>
+    </div>
+
+    <!-- CÂU 16 -->
+    <div class="question-box" id="qbox-16">
+      <div class="question-title">Câu 16. Cho các nhận định sau:</div>
+      <p style="margin: 4px 0 8px 10px; font-size: 14px;">
+        (a) Hạn chế tối đa việc phải lưu trữ cá đực để bảo tồn dòng thuần.<br>
+        (b) Ngăn cản suy giảm chất lượng di truyền do lai cận huyết trong thủy sản.<br>
+        (c) Chọn lọc được các cá thể mang gene mong muốn như gene kháng bệnh, gene chịu lạnh…<br>
+        (d) Giúp chủ động trong quá trình sản xuất giống nhân tạo, đặc biệt là khi con đực và con cái lệch pha trong sự thành thục sinh sản.<br>
+        (e) Thuận tiện, dễ dàng trong quá trình vận chuyển so với việc phải vận chuyển cá bố để thụ tinh.
+      </p>
+      <p style="font-weight: bold; margin-bottom: 8px;">Số nhận định đúng về ý nghĩa của phương pháp bảo quản lạnh tinh trùng của động vật thủy sản là:</p>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q16" value="A"> A. 2.</label>
+        <label class="option-label"><input type="radio" name="q16" value="B"> B. 3.</label>
+        <label class="option-label"><input type="radio" name="q16" value="C"> C. 4.</label>
+        <label class="option-label"><input type="radio" name="q16" value="D"> D. 5.</label>
+      </div>
+    </div>
+
+    <!-- CÂU 17 -->
+    <div class="question-box" id="qbox-17">
+      <div class="question-title">Câu 17. Cho một số loại thức ăn thủy sản đang được sử dụng ở địa phương như bảng sau:</div>
+      <table class="exam-table">
+        <thead>
+          <tr><th>Phân loại thức ăn</th><th>Tên các loại thức ăn</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1. Chất bổ sung</td><td>a. Cám cá (dạng viên)</td></tr>
+          <tr><td>2. Thức ăn hỗn hợp</td><td>b. Khoáng chất</td></tr>
+          <tr><td>3. Nguyên liệu</td><td>c. Giun đất, giun chỉ</td></tr>
+          <tr><td>4. Thức ăn tươi sống</td><td>d. Cám gạo đầu thán</td></tr>
+        </tbody>
+      </table>
+      <p style="font-weight: bold; margin-bottom: 8px;">Hãy ghép phân loại thức ăn với tên các loại thức ăn cho phù hợp:</p>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q17" value="A"> A. 1-c, 2-a, 3-d, 4-b.</label>
+        <label class="option-label"><input type="radio" name="q17" value="B"> B. 1-b, 2-d, 3-a, 4-c.</label>
+        <label class="option-label"><input type="radio" name="q17" value="C"> C. 1-b, 2-a, 3-d, 4-c.</label>
+        <label class="option-label"><input type="radio" name="q17" value="D"> D. 1-b, 2-c, 3-d, 4-a.</label>
+      </div>
+    </div>
+
+    <!-- CÂU 18 -->
+    <div class="question-box" id="qbox-18">
+      <div class="question-title">Câu 18. Cho các phát biểu sau:</div>
+      <p style="margin: 4px 0 8px 10px; font-size: 14px;">
+        (a) Kiểm soát hoàn toàn chất lượng nước vào và ra.<br>
+        (b) Tăng hàm lượng oxygen và tạo dòng chảy kích thích cá lớn nhanh.<br>
+        (c) Giúp tăng năng suất và hiệu quả sử dụng thức ăn.<br>
+        (d) Tiết kiệm nước, đảm bảo an toàn sinh học.<br>
+        (e) Tăng cường ô nhiễm môi trường.<br>
+        (f) Kiểm soát được an toàn vệ sinh thực phẩm.
+      </p>
+      <p style="font-weight: bold; margin-bottom: 8px;">Số phát biểu đúng khi nói về ưu điểm của hệ thống nuôi thủy sản tuần hoàn là:</p>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q18" value="A"> A. 3.</label>
+        <label class="option-label"><input type="radio" name="q18" value="B"> B. 5.</label>
+        <label class="option-label"><input type="radio" name="q18" value="C"> C. 4.</label>
+        <label class="option-label"><input type="radio" name="q18" value="D"> D. 6.</label>
+      </div>
+    </div>
+
+    <!-- CÂU 19 -->
+    <div class="question-box" id="qbox-19">
+      <div class="question-title">Câu 19. Bệnh lồi mắt ở cá rô phi là do tác nhân nào sau đây gây ra?</div>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q19" value="A"> A. Liên cầu khuẩn <em>Streptococcus Agalactiae</em>.</label>
+        <label class="option-label"><input type="radio" name="q19" value="B"> B. Vi khuẩn <em>Micopacterium</em>.</label>
+        <label class="option-label"><input type="radio" name="q19" value="C"> C. Vi khuẩn <em>Vibrio</em>.</label>
+        <label class="option-label"><input type="radio" name="q19" value="D"> D. Vi khuẩn <em>Edwardsiella Ictaluri</em>.</label>
+      </div>
+    </div>
+
+    <!-- CÂU 20 -->
+    <div class="question-box" id="qbox-20">
+      <div class="question-title">Câu 20. Có thể ứng dụng kỹ thuật/công nghệ nào sau đây để phát hiện sớm bệnh thủy sản?</div>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q20" value="A"> A. Công nghệ lên men.</label>
+        <label class="option-label"><input type="radio" name="q20" value="B"> B. Công nghệ vi sinh.</label>
+        <label class="option-label"><input type="radio" name="q20" value="C"> C. Kỹ thuật chuyển gene.</label>
+        <label class="option-label"><input type="radio" name="q20" value="D"> D. Kỹ thuật PCR.</label>
+      </div>
+    </div>
+
+    <!-- CÂU 21 -->
+    <div class="question-box" id="qbox-21">
+      <div class="question-title">Câu 21. Khi độ pH trong ao nuôi thủy sản giảm thấp, biện pháp xử lý nào sau đây không phù hợp?</div>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q21" value="A"> A. Sử dụng nước vôi trong hoặc nước soda để trung hòa ion H+ trong nước.</label>
+        <label class="option-label"><input type="radio" name="q21" value="B"> B. Tăng cường độ sục khí để tạo điều kiện khuếch tán CO2 ra ngoài không khí.</label>
+        <label class="option-label"><input type="radio" name="q21" value="C"> C. Quản lý tốt độ trong và mật độ tảo để giảm biến động pH trong nước.</label>
+        <label class="option-label"><input type="radio" name="q21" value="D"> D. Bổ sung một số hóa chất có tính acid như citric acid, phèn nhôm.</label>
+      </div>
+    </div>
+
+    <!-- CÂU 22 -->
+    <div class="question-box" id="qbox-22">
+      <div class="question-title">Câu 22. Cỏ tươi, cá tạp, giun quế có thể bảo quản được 3 – 5 ngày trong khoảng nhiệt độ nào dưới đây?</div>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q22" value="A"> A. Nhiệt độ từ 4 °C đến 8 °C.</label>
+        <label class="option-label"><input type="radio" name="q22" value="B"> B. Nhiệt độ từ 15 °C đến 20 °C.</label>
+        <label class="option-label"><input type="radio" name="q22" value="C"> C. Nhiệt độ từ –20 °C đến 0 °C.</label>
+        <label class="option-label"><input type="radio" name="q22" value="D"> D. Nhiệt độ từ 20 °C đến 30 °C.</label>
+      </div>
+    </div>
+
+    <!-- CÂU 23 -->
+    <div class="question-box" id="qbox-23">
+      <div class="question-title">Câu 23. Việc thu gom, xử lý chất thải trong nuôi thủy sản theo tiêu chuẩn VietGAP không có tác dụng nào sau đây?</div>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q23" value="A"> A. Giúp giảm thiểu ô nhiễm môi trường, bảo vệ nguồn nước và hệ sinh thái.</label>
+        <label class="option-label"><input type="radio" name="q23" value="B"> B. Giúp cải thiện chất lượng nước, tạo môi trường tốt cho con giống nuôi phát triển.</label>
+        <label class="option-label"><input type="radio" name="q23" value="C"> C. Nâng cao chất lượng con giống.</label>
+        <label class="option-label"><input type="radio" name="q23" value="D"> D. Giúp đảm bảo an toàn thực phẩm, bảo vệ sức khoẻ người tiêu dùng.</label>
+      </div>
+    </div>
+
+    <!-- CÂU 24 -->
+    <div class="question-box" id="qbox-24">
+      <div class="question-title">Câu 24. Dưới đây là một số ưu điểm của phương pháp muối các sản phẩm thủy sản:</div>
+      <p style="margin: 4px 0 8px 10px; font-size: 14px;">
+        (a) Khó áp dụng cho nhiều loại thủy sản.<br>
+        (b) Tăng độ mặn, ảnh hưởng đến hương vị ban đầu của thủy sản.<br>
+        (c) Cần thiết bị chuyên dụng, tốn nhiều năng lượng.<br>
+        (d) Muối có khả năng diệt vi sinh vật nên ảnh hưởng đến chất lượng thủy sản.<br>
+        (e) Có thể bảo quản trong thời gian dài nếu được thực hiện đúng cách.<br>
+        (f) Ảnh hưởng đến độ giòn dai, kết cấu của thủy sản.
+      </p>
+      <p style="font-weight: bold; margin-bottom: 8px;">Số phương án đúng là:</p>
+      <div class="options-list">
+        <label class="option-label"><input type="radio" name="q24" value="A"> A. 5.</label>
+        <label class="option-label"><input type="radio" name="q24" value="B"> B. 1.</label>
+        <label class="option-label"><input type="radio" name="q24" value="C"> C. 3.</label>
+        <label class="option-label"><input type="radio" name="q24" value="D"> D. 6.</label>
+      </div>
+    </div>
+
+    <!-- PHẦN II -->
+    <div class="section-title">
+      PHẦN II. CÂU TRẮC NGHIỆM ĐÚNG SAI (4 Câu - 4,0 Điểm)
+    </div>
+
+    <!-- CÂU 1 PHẦN II -->
+    <div class="question-box" id="qbox-p2-1">
+      <div class="question-title">Câu 1. Đọc đoạn thông tin sau về Rừng tràm Tân Tuyến - An Giang:</div>
+      <p style="font-size: 14px; font-style: italic; background: #fff; padding: 10px; border-radius: 4px; border: 1px solid #ddd;">
+        "Rừng tràm Tân Tuyến (tỉnh An Giang) là khu rừng đặc dụng thuộc hệ sinh thái đất ngập nước điển hình của vùng tứ giác Long Xuyên, có nhiều loài động, thực vật quý hiếm. Thời gian qua, tỉnh An Giang đã triển khai nhiều giải pháp nhằm nâng cao hiệu quả công tác bảo vệ nguồn tài nguyên tại khu vực này, đồng thời phát triển du lịch sinh thái qua đó thúc đẩy kinh tế-xã hội tại địa phương phát triển."
+      </p>
+      <table class="tf-table">
+        <thead>
+          <tr><th>Ý kiến / Nhận định</th><th style="width: 130px;">Chọn</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>a) Rừng tràm ở đây là hệ sinh thái đất ngập nước có tính đa dạng sinh học cao.</td>
+            <td>
+              <div class="tf-radio-group">
+                <label><input type="radio" name="p2_q1_a" value="Đ"> Đúng</label>
+                <label><input type="radio" name="p2_q1_a" value="S"> Sai</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>b) Để tăng cường tài nguyên động vật quý hiếm cho hệ sinh thái rừng tràm nên bổ sung các loài quý, hiếm khác trên thế giới.</td>
+            <td>
+              <div class="tf-radio-group">
+                <label><input type="radio" name="p2_q1_b" value="Đ"> Đúng</label>
+                <label><input type="radio" name="p2_q1_b" value="S"> Sai</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>c) Việc khai thác gỗ tràm và các sản phẩm từ tràm nên bắt đầu từ giai đoạn thành thục.</td>
+            <td>
+              <div class="tf-radio-group">
+                <label><input type="radio" name="p2_q1_c" value="Đ"> Đúng</label>
+                <label><input type="radio" name="p2_q1_c" value="S"> Sai</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>d) Khai thác tiềm năng tự nhiên về cảnh quan, môi trường và sự đa dạng về tài nguyên thiên nhiên của hệ sinh thái rừng, đất ngập nước để phát triển du lịch sinh thái, phát triển kinh tế cho người dân địa phương.</td>
+            <td>
+              <div class="tf-radio-group">
+                <label><input type="radio" name="p2_q1_d" value="Đ"> Đúng</label>
+                <label><input type="radio" name="p2_q1_d" value="S"> Sai</label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CÂU 2 PHẦN II -->
+    <div class="question-box" id="qbox-p2-2">
+      <div class="question-title">Câu 2. Bảng theo dõi phản ứng của tôm nuôi với các nồng độ oxygen hoà tan:</div>
+      <table class="exam-table">
+        <thead>
+          <tr><th>Oxygen hoà tan (mg/L)</th><th>Phản ứng của tôm</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>&lt; 1,0</td><td>Tôm ngạt rồi chết</td></tr>
+          <tr><td>&lt; 2,0</td><td>Tôm không lớn</td></tr>
+          <tr><td>&lt; 3,0</td><td>Tôm rất chậm lớn</td></tr>
+          <tr><td>&gt; 3,0</td><td>Tôm tăng trưởng bình thường và khoẻ mạnh</td></tr>
+        </tbody>
+      </table>
+      <table class="tf-table">
+        <thead>
+          <tr><th>Ý kiến / Nhận định</th><th style="width: 130px;">Chọn</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>a) Cần nuôi tôm với mật độ phù hợp, quản lý tốt thức ăn và chất thải để đảm bảo nồng độ oxygen hoà tan (&gt; 3,0 mg/L).</td>
+            <td>
+              <div class="tf-radio-group">
+                <label><input type="radio" name="p2_q2_a" value="Đ"> Đúng</label>
+                <label><input type="radio" name="p2_q2_a" value="S"> Sai</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>b) Để duy trì sự sống cho tôm trong bể chứa tại các nhà hàng hải sản, người ta thường sử dụng máy bơm sục khí nhằm cung cấp đủ oxygen hoà tan.</td>
+            <td>
+              <div class="tf-radio-group">
+                <label><input type="radio" name="p2_q2_b" value="Đ"> Đúng</label>
+                <label><input type="radio" name="p2_q2_b" value="S"> Sai</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>c) Nguồn cung cấp oxygen hoà tan chủ yếu trong ao nuôi tôm được cung cấp nhờ quá trình quang hợp của một số nhóm thực vật thủy sinh và vi khuẩn lam.</td>
+            <td>
+              <div class="tf-radio-group">
+                <label><input type="radio" name="p2_q2_c" value="Đ"> Đúng</label>
+                <label><input type="radio" name="p2_q2_c" value="S"> Sai</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>d) Khi nồng độ oxygen hoà tan xuống &lt; 3,0 mg/L, người nuôi tôm có thể gia tăng oxygen hoà tan bằng cách bổ sung thêm vôi bột.</td>
+            <td>
+              <div class="tf-radio-group">
+                <label><input type="radio" name="p2_q2_d" value="Đ"> Đúng</label>
+                <label><input type="radio" name="p2_q2_d" value="S"> Sai</label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CÂU 3 PHẦN II -->
+    <div class="question-box" id="qbox-p2-3">
+      <div class="question-title">Câu 3. Khi nhận xét về công nghệ nuôi thủy sản tuần hoàn (RAS) và công nghệ biofloc:</div>
+      <table class="tf-table">
+        <thead>
+          <tr><th>Ý kiến / Nhận định</th><th style="width: 130px;">Chọn</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>a) Mức độ tái sử dụng nước của công nghệ nuôi thủy sản tuần hoàn (RAS) và công nghệ biofloc là tương đương nhau.</td>
+            <td>
+              <div class="tf-radio-group">
+                <label><input type="radio" name="p2_q3_a" value="Đ"> Đúng</label>
+                <label><input type="radio" name="p2_q3_a" value="S"> Sai</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>b) Chi phí đầu tư và vận hành công nghệ nuôi thủy sản tuần hoàn (RAS) cao gấp nhiều lần công nghệ biofloc.</td>
+            <td>
+              <div class="tf-radio-group">
+                <label><input type="radio" name="p2_q3_b" value="Đ"> Đúng</label>
+                <label><input type="radio" name="p2_q3_b" value="S"> Sai</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>c) Năng suất thủy sản khi áp dụng công nghệ biofloc cao hơn nhiều mô hình nuôi thủy sản theo công nghệ tuần hoàn (RAS).</td>
+            <td>
+              <div class="tf-radio-group">
+                <label><input type="radio" name="p2_q3_c" value="Đ"> Đúng</label>
+                <label><input type="radio" name="p2_q3_c" value="S"> Sai</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>d) Cả hai công nghệ này đều có thể góp phần giảm thiểu được rủi ro do dịch bệnh và giảm ô nhiễm môi trường.</td>
+            <td>
+              <div class="tf-radio-group">
+                <label><input type="radio" name="p2_q3_d" value="Đ"> Đúng</label>
+                <label><input type="radio" name="p2_q3_d" value="S"> Sai</label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CÂU 4 PHẦN II -->
+    <div class="question-box" id="qbox-p2-4">
+      <div class="question-title">Câu 4. Sau khi học bài “Bảo vệ và khai thác nguồn lợi thủy sản", các nhận định dưới đây:</div>
+      <table class="tf-table">
+        <thead>
+          <tr><th>Ý kiến / Nhận định</th><th style="width: 130px;">Chọn</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>a) Khai thác thủy sản đúng quy định của pháp luật, thân thiện với môi trường là một trong những biện pháp bảo vệ nguồn lợi thủy sản.</td>
+            <td>
+              <div class="tf-radio-group">
+                <label><input type="radio" name="p2_q4_a" value="Đ"> Đúng</label>
+                <label><input type="radio" name="p2_q4_a" value="S"> Sai</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>b) Vào mùa sinh sản, thủy sản thường tập trung tại những khu vực nhất định để sinh sản. Vì vậy, khai thác thủy sản ở những khu vực thủy sản tập trung sinh sản sẽ cho hiệu quả kinh tế cao và góp phần phát triển thủy sản bền vững.</td>
+            <td>
+              <div class="tf-radio-group">
+                <label><input type="radio" name="p2_q4_b" value="Đ"> Đúng</label>
+                <label><input type="radio" name="p2_q4_b" value="S"> Sai</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>c) Theo khoản 7 điều 3 Luật Thủy sản 2017, việc thả bổ sung các loài thủy sản quý, hiếm vào các thủy vực tự nhiên giúp chúng tăng số lượng, tăng khả năng sinh sản, nhờ đó làm tăng đa dạng sinh học.</td>
+            <td>
+              <div class="tf-radio-group">
+                <label><input type="radio" name="p2_q4_c" value="Đ"> Đúng</label>
+                <label><input type="radio" name="p2_q4_c" value="S"> Sai</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>d) Việc thiết lập các khu bảo tồn biển sẽ làm ảnh hưởng đến môi trường sống của các loài thủy sản quý, hiếm, dẫn đến số lượng sinh vật ở vùng này bị suy giảm.</td>
+            <td>
+              <div class="tf-radio-group">
+                <label><input type="radio" name="p2_q4_d" value="Đ"> Đúng</label>
+                <label><input type="radio" name="p2_q4_d" value="S"> Sai</label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <button type="button" class="submit-btn" onclick="gradeExam()">NỘP BÀI THI</button>
+  </form>
 </div>
+
+<script>
+  // DỮ LIỆU ĐÁP ÁN CHUẨN
+  const keyPart1 = {
+    1: 'C', 2: 'B', 3: 'D', 4: 'B', 5: 'B', 6: 'C',
+    7: 'C', 8: 'B', 9: 'D', 10: 'A', 11: 'C', 12: 'A',
+    13: 'C', 14: 'B', 15: 'A', 16: 'C', 17: 'C', 18: 'B',
+    19: 'A', 20: 'D', 21: 'D', 22: 'A', 23: 'C', 24: 'B'
+  };
+
+  const keyPart2 = {
+    1: { a: 'Đ', b: 'S', c: 'S', d: 'Đ' },
+    2: { a: 'Đ', b: 'Đ', c: 'S', d: 'S' },
+    3: { a: 'S', b: 'Đ', c: 'S', d: 'Đ' },
+    4: { a: 'Đ', b: 'S', c: 'Đ', d: 'S' }
+  };
+
+  function gradeExam() {
+    let scoreP1 = 0;
+    let correctCountP1 = 0;
+
+    // Chấm Phần I
+    for (let i = 1; i <= 24; i++) {
+      const selected = document.querySelector(`input[name="q${i}"]:checked`);
+      const qbox = document.getElementById(`qbox-${i}`);
+      
+      if (selected) {
+        if (selected.value === keyPart1[i]) {
+          scoreP1 += 0.25;
+          correctCountP1++;
+          qbox.style.borderLeftColor = "#28a745";
+          qbox.style.backgroundColor = "#e8f8f5";
+        } else {
+          qbox.style.borderLeftColor = "#dc3545";
+          qbox.style.backgroundColor = "#fdf2e9";
+        }
+      } else {
+        qbox.style.borderLeftColor = "#f39c12";
+      }
+    }
+
+    // Chấm Phần II
+    let scoreP2 = 0;
+    const tfScores = { 1: 0.1, 2: 0.25, 3: 0.5, 4: 1.0 };
+
+    for (let q = 1; q <= 4; q++) {
+      let correctSub = 0;
+      const subKeys = keyPart2[q];
+      
+      for (let sub of ['a', 'b', 'c', 'd']) {
+        const selected = document.querySelector(`input[name="p2_q${q}_${sub}"]:checked`);
+        if (selected && selected.value === subKeys[sub]) {
+          correctSub++;
+        }
+      }
+
+      if (correctSub > 0) {
+        scoreP2 += tfScores[correctSub];
+      }
+    }
+
+    const totalScore = (scoreP1 + scoreP2).toFixed(2);
+
+    // Hiển thị kết quả
+    const resultBox = document.getElementById('result-box');
+    const scoreText = document.getElementById('score-text');
+    const detailText = document.getElementById('detail-text');
+
+    resultBox.style.display = 'block';
+    scoreText.innerText = `ĐIỂM CỦA BẠN: ${totalScore} / 10.0 Điểm`;
+    detailText.innerHTML = `
+      - <strong>Phần I:</strong> Đúng ${correctCountP1}/24 câu (${scoreP1.toFixed(2)} điểm)<br>
+      - <strong>Phần II:</strong> Đạt ${scoreP2.toFixed(2)} / 4.0 điểm
+    `;
+
+    // Cuộn lên xem kết quả
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
 
 </body>
 </html>

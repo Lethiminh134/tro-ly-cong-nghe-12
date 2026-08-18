@@ -3,548 +3,580 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trợ Lý Học Tập Công Nghệ Nông Nghiệp 12</title>
+    <title>Đề Thi Thử Tốt Nghiệp Môn Công Nghệ 12</title>
     <style>
-        /* CSS Variables cho theme */
         :root {
-            --primary-color: #2E7D32; /* Xanh lá cây đậm */
-            --primary-light: #4CAF50;
-            --bg-color: #F1F8E9; /* Xanh nhạt */
-            --card-bg: #FFFFFF;
-            --text-main: #333333;
-            --text-muted: #666666;
-            --border-color: #E0E0E0;
-            --correct-color: #4CAF50;
-            --incorrect-color: #F44336;
+            --primary-color: #2e7d32;
+            --secondary-color: #e8f5e9;
+            --text-color: #2c3e50;
         }
-
-        /* Reset & Base Styles */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 20px;
         }
-
-        /* Header */
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 2rem 1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        /* Main Container */
         .container {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
-
-        /* Tabs Navigation */
-        .tabs {
-            display: flex;
-            background: var(--card-bg);
-            border-radius: 8px 8px 0 0;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            border-bottom: 2px solid var(--primary-color);
-        }
-
-        .tab-btn {
-            flex: 1;
-            padding: 1rem;
-            border: none;
-            background: none;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .tab-btn:hover {
-            background-color: #f9f9f9;
+        h1 {
             color: var(--primary-color);
+            text-align: center;
+            font-size: 24px;
+            text-transform: uppercase;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
         }
-
-        .tab-btn.active {
+        .section-header {
             background-color: var(--primary-color);
             color: white;
-        }
-
-        /* Tab Content */
-        .tab-content {
-            display: none;
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 0 0 8px 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.4s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Topic Cards (Theory) */
-        .topic-card {
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            overflow: hidden;
-        }
-
-        .topic-header {
-            background-color: #E8F5E9;
-            padding: 1rem;
-            cursor: pointer;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: var(--primary-color);
-        }
-
-        .topic-body {
-            padding: 1rem;
-            display: none;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .topic-body p, .topic-body ul {
-            margin-bottom: 1rem;
-        }
-        
-        .topic-body ul {
-            padding-left: 1.5rem;
-        }
-
-        /* Quizzes & Exams */
-        .question-block {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .question-text {
-            font-weight: 600;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .options-list {
-            list-style: none;
-        }
-
-        .option-item {
-            margin-bottom: 0.5rem;
-        }
-
-        .option-label {
-            display: flex;
-            align-items: center;
-            padding: 0.8rem;
-            border: 1px solid var(--border-color);
+            padding: 10px 15px;
             border-radius: 6px;
+            margin-top: 30px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .question {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .question-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+        @media (min-width: 600px) {
+            .options-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        label {
+            display: flex;
+            align-items: center;
             cursor: pointer;
-            transition: all 0.2s;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background 0.2s;
         }
-
-        .option-label:hover {
-            background-color: #f5f5f5;
+        label:hover {
+            background-color: var(--secondary-color);
         }
-
-        .option-label input[type="radio"] {
+        input[type="radio"] {
             margin-right: 10px;
             transform: scale(1.2);
-            accent-color: var(--primary-color);
         }
-
-        /* Buttons */
-        .btn {
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+        .tf-table td {
+            text-align: left;
+        }
+        .tf-table td.center {
+            text-align: center;
+        }
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 15px;
             background-color: var(--primary-color);
             color: white;
+            font-size: 18px;
+            font-weight: bold;
             border: none;
-            padding: 0.8rem 1.5rem;
-            font-size: 1rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
-            display: block;
-            margin: 2rem auto 0;
-            width: 100%;
-            max-width: 300px;
-        }
-
-        .btn:hover {
-            background-color: #1B5E20;
-        }
-
-        /* Select Dropdown */
-        .select-topic {
-            width: 100%;
-            padding: 0.8rem;
-            font-size: 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            margin-bottom: 2rem;
-            outline: none;
-        }
-
-        /* Results Area */
-        .result-box {
-            display: none;
-            text-align: center;
-            padding: 1.5rem;
             border-radius: 8px;
-            margin-top: 2rem;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background 0.3s;
+        }
+        .btn-submit:hover {
+            background-color: #1b5e20;
+        }
+        #result {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e8f5e9;
+            border: 2px solid #2e7d32;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 20px;
             font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .result-box.show {
-            display: block;
-            background-color: #E8F5E9;
-            color: var(--primary-color);
-            border: 1px solid var(--primary-light);
-        }
-
-        .feedback {
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            font-weight: normal;
-        }
-        
-        .correct-ans {
-            color: var(--correct-color);
-            font-weight: bold;
-        }
-        
-        .wrong-ans {
-            color: var(--incorrect-color);
-            text-decoration: line-through;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .tabs {
-                flex-direction: column;
-            }
-            .tab-btn {
-                border-bottom: 1px solid var(--border-color);
-            }
-            .tab-btn.active {
-                border-bottom: none;
-            }
-            .tab-content {
-                padding: 1.5rem 1rem;
-            }
+            color: #1b5e20;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>TRỢ LÝ HỌC TẬP</h1>
-        <p>Môn Công Nghệ 12 - Định Hướng Nông Nghiệp</p>
-    </header>
+<div class="container">
+    <h1>ĐỀ THI THỬ TỐT NGHIỆP MÔN CÔNG NGHỆ 12</h1>
+    <p style="text-align: center; font-style: italic;">Định hướng Nông nghiệp - Lâm nghiệp - Thủy sản</p>
 
-    <div class="container">
-        <!-- Tabs Navigation -->
-        <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('tab-theory', this)">LÝ THUYẾT THEO CHỦ ĐỀ</button>
-            <button class="tab-btn" onclick="switchTab('tab-quiz', this)">CÂU HỎI TRẮC NGHIỆM</button>
-            <button class="tab-btn" onclick="switchTab('tab-exam', this)">ĐỀ THI THỬ TỐT NGHIỆP</button>
-        </div>
+    <form id="quizForm">
+        <!-- PHẦN I -->
+        <div class="section-header">PHẦN I. Câu hỏi trắc nghiệm nhiều lựa chọn (Từ câu 1 đến câu 24)</div>
 
-        <!-- Tab 1: Lý Thuyết -->
-        <div id="tab-theory" class="tab-content active">
-            <h2 style="margin-bottom: 1.5rem; color: var(--primary-color); text-align: center;">Tóm Tắt Lý Thuyết</h2>
-            <div id="theory-container">
-                <!-- Nội dung lý thuyết sẽ được render bằng JS -->
+        <div class="question">
+            <div class="question-title">Câu 1: Vì sao phải kiểm tra chất lượng nước định kỳ trong ao nuôi thủy sản?</div>
+            <div class="options">
+                <label><input type="radio" name="q1" value="A"> A. Để dự đoán thời tiết.</label>
+                <label><input type="radio" name="q1" value="B"> B. Để bổ sung lượng nước trong ao.</label>
+                <label><input type="radio" name="q1" value="C"> C. Để kịp thời phát hiện và xử lý những biến đổi bất lợi ảnh hưởng đến vật nuôi.</label>
+                <label><input type="radio" name="q1" value="D"> D. Để định lượng thức ăn cần bổ sung cho cá.</label>
             </div>
         </div>
 
-        <!-- Tab 2: Trắc nghiệm theo chủ đề -->
-        <div id="tab-quiz" class="tab-content">
-            <h2 style="margin-bottom: 1.5rem; color: var(--primary-color); text-align: center;">Luyện Tập Theo Chủ Đề</h2>
-            <select class="select-topic" id="topic-select" onchange="loadTopicQuiz()">
-                <option value="">-- Chọn chủ đề để luyện tập --</option>
-                <option value="lam-nghiep">Chủ đề 1: Lâm Nghiệp</option>
-                <option value="thuy-san">Chủ đề 2: Thủy Sản</option>
-            </select>
-            
-            <div id="topic-quiz-container">
-                <p style="text-align: center; color: var(--text-muted);">Vui lòng chọn chủ đề ở trên để bắt đầu.</p>
+        <div class="question">
+            <div class="question-title">Câu 2: Phát biểu nào đúng khi nói về vai trò của thủy sản đối với đời sống con người?</div>
+            <div class="options">
+                <label><input type="radio" name="q2" value="A"> A. Cung cấp nguyên liệu cho chế biến và xuất khẩu.</label>
+                <label><input type="radio" name="q2" value="B"> B. Cung cấp nước tưới tiêu cho trồng trọt.</label>
+                <label><input type="radio" name="q2" value="C"> C. Cung cấp thịt, cá, trứng, sữa cho các nhà máy chế biến.</label>
+                <label><input type="radio" name="q2" value="D"> D. Cung cấp nguồn thực phẩm giàu protein cho con người.</label>
             </div>
-            <button id="btn-check-topic" class="btn" style="display: none;" onclick="checkTopicQuiz()">Kiểm tra đáp án</button>
-            <div id="topic-result" class="result-box"></div>
         </div>
 
-        <!-- Tab 3: Đề thi thử tốt nghiệp -->
-        <div id="tab-exam" class="tab-content">
-            <h2 style="margin-bottom: 0.5rem; color: var(--primary-color); text-align: center;">Đề Thi Thử Tốt Nghiệp THPT</h2>
-            <p style="text-align: center; margin-bottom: 2rem; color: var(--text-muted);">Môn: Công Nghệ (Nông Nghiệp) - Thời gian: 15 phút</p>
-            
-            <div id="exam-container">
-                <!-- Đề thi sẽ được render bằng JS -->
+        <div class="question">
+            <div class="question-title">Câu 3: Một trong những biểu hiện khi cá thiếu oxygen là nổi đầu nhiều trên mặt nước. Người nuôi cá nên xử lý như thế nào?</div>
+            <div class="options">
+                <label><input type="radio" name="q3" value="A"> A. Trồng bổ sung các loại rong, tảo.</label>
+                <label><input type="radio" name="q3" value="B"> B. Sử dụng hệ thống nâng nhiệt, chiếu đèn hoặc sục khí.</label>
+                <label><input type="radio" name="q3" value="C"> C. Bổ sung oxygen bằng cách sục khí, quạt nước.</label>
+                <label><input type="radio" name="q3" value="D"> D. Bổ sung oxygen bằng hoà tan H2O2 (oxy già) vào nước để phân huỷ thành O2.</label>
             </div>
-            
-            <button class="btn" onclick="submitExam()">Nộp Bài & Chấm Điểm</button>
-            <div id="exam-result" class="result-box"></div>
         </div>
-    </div>
 
-    <script>
-        // --- DATA LÝ THUYẾT ---
-        const theoryData = [
-            {
-                title: "Chủ đề 1: Giới thiệu chung về Lâm nghiệp",
-                content: `
-                    <p><strong>1. Vai trò của lâm nghiệp:</strong></p>
-                    <ul>
-                        <li>Cung cấp lâm sản cho tiêu dùng và xuất khẩu (gỗ, củi, dược liệu...).</li>
-                        <li>Bảo vệ môi trường sinh thái: Điều hòa khí hậu, bảo vệ nguồn nước, chống xói mòn, giảm thiểu thiên tai.</li>
-                        <li>Tạo việc làm, tăng thu nhập cho người dân miền núi.</li>
-                    </ul>
-                    <p><strong>2. Nhiệm vụ của trồng rừng:</strong></p>
-                    <ul>
-                        <li>Trồng rừng phòng hộ: Chắn gió, chắn cát, bảo vệ đầu nguồn.</li>
-                        <li>Trồng rừng sản xuất: Cung cấp nguyên liệu cho công nghiệp.</li>
-                        <li>Trồng rừng đặc dụng: Bảo tồn thiên nhiên, đa dạng sinh học (Vườn quốc gia).</li>
-                    </ul>`
-            },
-            {
-                title: "Chủ đề 2: Kỹ thuật nuôi trồng Thủy sản",
-                content: `
-                    <p><strong>1. Đặc điểm môi trường nước nuôi thủy sản:</strong></p>
-                    <ul>
-                        <li>Có khả năng hòa tan nhiều chất vô cơ và hữu cơ.</li>
-                        <li>Khả năng điều hòa nhiệt độ tốt hơn không khí.</li>
-                        <li>Thành phần oxy hòa tan thấp hơn nhiều so với không khí (cần sục khí).</li>
-                    </ul>
-                    <p><strong>2. Các loại thức ăn tự nhiên và nhân tạo:</strong></p>
-                    <ul>
-                        <li><strong>Thức ăn tự nhiên:</strong> Thực vật phù du, động vật phù du, động vật đáy.</li>
-                        <li><strong>Thức ăn nhân tạo:</strong> Thức ăn tinh (cám, bột cá), thức ăn xanh, thức ăn hỗn hợp viên.</li>
-                    </ul>`
-            }
-        ];
+        <div class="question">
+            <div class="question-title">Câu 4: Động vật thủy sản nào sau đây thuộc nhóm động vật thân mềm?</div>
+            <div class="options options-grid">
+                <label><input type="radio" name="q4" value="A"> A. Tôm</label>
+                <label><input type="radio" name="q4" value="B"> B. Cá trắm đen</label>
+                <label><input type="radio" name="q4" value="C"> C. Mực nang</label>
+                <label><input type="radio" name="q4" value="D"> D. Cá sấu</label>
+            </div>
+        </div>
 
-        // --- DATA TRẮC NGHIỆM THEO CHỦ ĐỀ ---
-        const topicQuizData = {
-            "lam-nghiep": [
-                { id: "ln1", q: "Rừng phòng hộ có chức năng chính là gì?", options: ["Cung cấp gỗ xuất khẩu", "Bảo vệ nguồn nước, chống xói mòn đất", "Nghiên cứu khoa học", "Bảo tồn nguồn gen quý hiếm"], a: 1 },
-                { id: "ln2", q: "Đâu không phải là nhiệm vụ của lâm nghiệp?", options: ["Khai thác trắng toàn bộ rừng tự nhiên", "Trồng rừng vành đai ven biển", "Bảo vệ và phát triển rừng", "Chế biến lâm sản"], a: 0 }
-            ],
-            "thuy-san": [
-                { id: "ts1", q: "Yếu tố nào sau đây quyết định sự hô hấp của tôm cá?", options: ["Độ pH", "Nhiệt độ nước", "Oxy hòa tan", "Độ mặn"], a: 2 },
-                { id: "ts2", q: "Thức ăn tự nhiên của cá bao gồm:", options: ["Cám gạo, bột bắp", "Thực vật phù du, động vật phù du", "Thức ăn viên nén", "Phế phụ phẩm lò mổ"], a: 1 }
-            ]
+        <div class="question">
+            <div class="question-title">Câu 5: Nếu phát hiện người dân dùng kích điện để khai thác cá trong khu vực bảo tồn, em nên làm gì?</div>
+            <div class="options">
+                <label><input type="radio" name="q5" value="A"> A. Tranh luận trực tiếp với người vi phạm.</label>
+                <label><input type="radio" name="q5" value="B"> B. Quay video để đăng lên mạng xã hội.</label>
+                <label><input type="radio" name="q5" value="C"> C. Bỏ qua vì không liên quan đến mình.</label>
+                <label><input type="radio" name="q5" value="D"> D. Báo cáo chính quyền và cơ quan chức năng địa phương.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 6: Mô hình chăn nuôi nào sử dụng robot vắt sữa bò tự động, khép kín hoàn toàn, sữa không tiếp xúc với không khí?</div>
+            <div class="options">
+                <label><input type="radio" name="q6" value="A"> A. Chăn nuôi theo tiêu chuẩn VietGAP.</label>
+                <label><input type="radio" name="q6" value="B"> B. Chăn nuôi bán công nghiệp.</label>
+                <label><input type="radio" name="q6" value="C"> C. Chăn nuôi công nghiệp.</label>
+                <label><input type="radio" name="q6" value="D"> D. Chăn nuôi công nghệ cao.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 7: Tại sao trồng trọt công nghệ cao lại giúp nâng cao năng suất và chất lượng nông sản?</div>
+            <div class="options">
+                <label><input type="radio" name="q7" value="A"> A. Tăng lượng phân bón sử dụng trong sản xuất.</label>
+                <label><input type="radio" name="q7" value="B"> B. Vì giảm chi phí và nhân công trong sản xuất.</label>
+                <label><input type="radio" name="q7" value="C"> C. Vì chỉ sử dụng phân hóa học mà không dùng phân hữu cơ.</label>
+                <label><input type="radio" name="q7" value="D"> D. Vì kiểm soát được môi trường và điều kiện sinh trưởng.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 8: Thực trạng rừng nào dưới đây đang là vấn đề lo ngại ở nước ta hiện nay?</div>
+            <div class="options">
+                <label><input type="radio" name="q8" value="A"> A. Nạn cháy rừng, phá rừng và khai thác trái phép vẫn diễn ra.</label>
+                <label><input type="radio" name="q8" value="B"> B. Đất rừng ngày càng giảm độ màu mỡ và khô cằn.</label>
+                <label><input type="radio" name="q8" value="C"> C. Tỷ lệ che phủ rừng trồng tăng cao.</label>
+                <label><input type="radio" name="q8" value="D"> D. Rừng đặc dụng đang phát triển nhanh.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 9: Mục đích việc tiêm phòng cho vật nuôi là gì?</div>
+            <div class="options">
+                <label><input type="radio" name="q9" value="A"> A. Giúp vật nuôi tăng năng suất.</label>
+                <label><input type="radio" name="q9" value="B"> B. Tăng trọng lượng cho vật nuôi.</label>
+                <label><input type="radio" name="q9" value="C"> C. Phòng ngừa bệnh truyền nhiễm.</label>
+                <label><input type="radio" name="q9" value="D"> D. Làm vật nuôi dễ thuần hóa.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 10: Những hoạt động nào dưới đây có vai trò bảo vệ tài nguyên rừng?</div>
+            <p style="font-size: 14px; margin-left: 10px;">
+                (1) Phòng chống sâu, bệnh hại rừng.<br>
+                (2) Trồng cây xanh trong các nhà máy, xí nghiệp...<br>
+                (3) Tuyên truyền, giáo dục ý thức chấp hành pháp luật lâm nghiệp.<br>
+                (4) Xây dựng và bảo vệ các khu bảo tồn thiên nhiên.<br>
+                (5) Tăng cường chăn thả gia súc trong rừng phòng hộ.<br>
+                (6) Tăng cường việc khai thác rừng triệt để.
+            </p>
+            <div class="options options-grid">
+                <label><input type="radio" name="q10" value="A"> A. (1), (2), (3), (5)</label>
+                <label><input type="radio" name="q10" value="B"> B. (1), (2), (3), (4)</label>
+                <label><input type="radio" name="q10" value="C"> C. (1), (2), (3), (6)</label>
+                <label><input type="radio" name="q10" value="D"> D. (1), (2), (4), (6)</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 11: Sản phẩm nào dưới đây được chế biến từ sản phẩm trồng trọt?</div>
+            <div class="options options-grid">
+                <label><input type="radio" name="q11" value="A"> A. Tinh bột sắn</label>
+                <label><input type="radio" name="q11" value="B"> B. Sữa chua</label>
+                <label><input type="radio" name="q11" value="C"> C. Ruốc thịt</label>
+                <label><input type="radio" name="q11" value="D"> D. Lông vũ</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 12: Loại cây nào dưới đây thuộc loại cây nông nghiệp hàng năm?</div>
+            <div class="options options-grid">
+                <label><input type="radio" name="q12" value="A"> A. Vải thiều</label>
+                <label><input type="radio" name="q12" value="B"> B. Cao su</label>
+                <label><input type="radio" name="q12" value="C"> C. Lạc</label>
+                <label><input type="radio" name="q12" value="D"> D. Cà phê</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 13: Nhận định nào dưới đây là đúng về quy luật sinh trưởng, phát triển của cây rừng?</div>
+            <div class="options">
+                <label><input type="radio" name="q13" value="A"> A. Cây rừng có khả năng ra hoa kết quả ngay trong giai đoạn non.</label>
+                <label><input type="radio" name="q13" value="B"> B. Cây rừng ra hoa, kết quả đạt số lượng nhiều và chất lượng cao nhất ở giai đoạn gần thành thục.</label>
+                <label><input type="radio" name="q13" value="C"> C. Sinh trưởng chậm lại, tán cây định hình năng suất và chất lượng ổn định, ra hoa đậu quả mạnh nhất ở giai đoạn thành thục.</label>
+                <label><input type="radio" name="q13" value="D"> D. Cây rừng bắt đầu ra hoa kết quả là dấu hiệu giai đoạn thành thục của cây.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 14: Khi độ pH nước ao nhỏ hơn 6, biện pháp xử lý phù hợp là gì?</div>
+            <div class="options">
+                <label><input type="radio" name="q14" value="A"> A. Thay toàn bộ nước trong ao.</label>
+                <label><input type="radio" name="q14" value="B"> B. Thêm phân chuồng vào ao.</label>
+                <label><input type="radio" name="q14" value="C"> C. Thả thêm thực vật thủy sinh trong ao.</label>
+                <label><input type="radio" name="q14" value="D"> D. Bón vôi để nâng độ pH phù hợp.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 15: Vì sao thức ăn thủy sản giữ vai trò quan trọng trong nuôi thủy sản?</div>
+            <div class="options">
+                <label><input type="radio" name="q15" value="A"> A. Giúp nước trong ao nuôi luôn sạch và vệ sinh.</label>
+                <label><input type="radio" name="q15" value="B"> B. Cung cấp dinh dưỡng cho vật nuôi phát triển, ảnh hưởng trực tiếp đến năng suất và chất lượng.</label>
+                <label><input type="radio" name="q15" value="C"> C. Giúp vật nuôi tăng sức đề kháng.</label>
+                <label><input type="radio" name="q15" value="D"> D. Tăng khả năng sinh sản của thủy sản.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 16: Nhận định nào sau đây là đúng khi nói về “Phân loại các nhóm thuỷ sản”?</div>
+            <div class="options">
+                <label><input type="radio" name="q16" value="A"> A. Cá hồi vân, cá tầm, cá chép, cá quả, cá rô phi là nhóm sống ở vùng ôn đới nước lạnh.</label>
+                <label><input type="radio" name="q16" value="B"> B. Dựa vào đặc điểm cấu tạo, phân loại thuỷ sản thành 3 nhóm: cá, bò sát, nhuyễn thể.</label>
+                <label><input type="radio" name="q16" value="C"> C. Những loài thuỷ sản ăn thức ăn là động vật, thực vật và mùn bã thuộc nhóm thuỷ sản ăn thịt.</label>
+                <label><input type="radio" name="q16" value="D"> D. Thuỷ sản bản địa là những loài thuỷ sản có nguồn gốc và phân bố trong môi trường tự nhiên ở khu vực địa lí xác định.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 17: Nhiệm vụ hàng đầu trong công tác bảo vệ rừng là gì?</div>
+            <div class="options">
+                <label><input type="radio" name="q17" value="A"> A. Xây dựng đội ngũ quản lí rừng phù hợp.</label>
+                <label><input type="radio" name="q17" value="B"> B. Khai thác gỗ hợp lý.</label>
+                <label><input type="radio" name="q17" value="C"> C. Ngăn chặn cháy rừng và khai thác rừng trái phép.</label>
+                <label><input type="radio" name="q17" value="D"> D. Tuyên truyền, bảo vệ động vật quý hiếm trong rừng.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 18: Loại thức ăn nào sau đây thuộc nhóm thức ăn thô khô?</div>
+            <div class="options options-grid">
+                <label><input type="radio" name="q18" value="A"> A. Bột cá</label>
+                <label><input type="radio" name="q18" value="B"> B. Cám gạo</label>
+                <label><input type="radio" name="q18" value="C"> C. Rơm</label>
+                <label><input type="radio" name="q18" value="D"> D. Cỏ voi</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 19: Một ao nuôi cá có diện tích 1 ha, thả cá rô phi mật độ 20.000 con/ha. Sau 6 tháng nuôi, tỷ lệ sống là 85%. Số lượng cá sống còn lại trong ao là bao nhiêu?</div>
+            <div class="options options-grid">
+                <label><input type="radio" name="q19" value="A"> A. 17.500 con</label>
+                <label><input type="radio" name="q19" value="B"> B. 17.000 con</label>
+                <label><input type="radio" name="q19" value="C"> C. 19.000 con</label>
+                <label><input type="radio" name="q19" value="D"> D. 17.200 con</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 20: Phát biểu nào sai khi nói về xu hướng phát triển của thuỷ sản ở Việt Nam và trên thế giới?</div>
+            <div class="options">
+                <label><input type="radio" name="q20" value="A"> A. Áp dụng công nghệ cao để phát triển bền vững.</label>
+                <label><input type="radio" name="q20" value="B"> B. Phát triển bền vững gắn với bảo vệ nguồn lợi thủy sản.</label>
+                <label><input type="radio" name="q20" value="C"> C. Hướng tới nuôi trồng theo tiêu chuẩn VietGAP.</label>
+                <label><input type="radio" name="q20" value="D"> D. Phát triển thủy sản bền vững cần giảm tỷ lệ nuôi, tăng tỷ lệ khai thác thủy sản.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 21: Vì sao phải chọn giống tốt trong nuôi thủy sản?</div>
+            <div class="options">
+                <label><input type="radio" name="q21" value="A"> A. Để rút ngắn thời gian nuôi và tăng hiệu quả kinh tế.</label>
+                <label><input type="radio" name="q21" value="B"> B. Để giảm số lượng thủy sản trong ao nuôi.</label>
+                <label><input type="radio" name="q21" value="C"> C. Để giảm chi phí đầu tư trong nuôi thủy sản.</label>
+                <label><input type="radio" name="q21" value="D"> D. Để giảm số lượng nước trong ao nuôi.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 22: Biện pháp nào sau đây không phải là kĩ thuật chăm sóc rừng sau khi trồng?</div>
+            <div class="options options-grid">
+                <label><input type="radio" name="q22" value="A"> A. Tỉa cành</label>
+                <label><input type="radio" name="q22" value="B"> B. Chặt phá rừng</label>
+                <label><input type="radio" name="q22" value="C"> C. Làm cỏ</label>
+                <label><input type="radio" name="q22" value="D"> D. Bón phân</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 23: Dựa vào biểu đồ diện tích trồng rừng giai đoạn 2007 - 2022, hãy lựa chọn biện pháp để phát triển rừng bền vững?</div>
+            <div style="text-align: center; margin: 10px 0;">
+                <p style="font-size: 13px; color: #666;">(Biểu đồ thể hiện diện tích Rừng đặc dụng, Rừng phòng hộ, Rừng sản xuất)</p>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q23" value="A"> A. Tiếp tục duy trì tình trạng trồng rừng sản xuất như biểu đồ trên.</label>
+                <label><input type="radio" name="q23" value="B"> B. Cần chú trọng trồng để tăng diện tích rừng đặc dụng và rừng phòng hộ.</label>
+                <label><input type="radio" name="q23" value="C"> C. Không cần tăng cường trồng rừng đặc dụng vì giai đoạn 2007 - 2022 đã hợp lý.</label>
+                <label><input type="radio" name="q23" value="D"> D. Chỉ cần chú trọng trồng rừng sản xuất để cung cấp lâm sản.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 24: Vì sao nuôi thuỷ sản ven biển, hải đảo lại góp phần đảm bảo chủ quyền và an ninh Quốc gia?</div>
+            <div class="options">
+                <label><input type="radio" name="q24" value="A"> A. Vì người dân có thể nuôi trồng, đánh bắt thuỷ sản ngoài phạm vi lãnh thổ Quốc gia mình.</label>
+                <label><input type="radio" name="q24" value="B"> B. Vì người dân chỉ được nuôi trồng, đánh bắt thủy sản trong phạm vi lãnh thổ của Quốc gia mình.</label>
+                <label><input type="radio" name="q24" value="C"> C. Vì người dân không thể nuôi trồng, đánh bắt thuỷ sản trong phạm vi lãnh thổ Quốc gia mình.</label>
+                <label><input type="radio" name="q24" value="D"> D. Vì người dân có thể nuôi trồng, đánh bắt thuỷ sản trong lẫn ngoài phạm vi lãnh thổ Quốc gia mình.</label>
+            </div>
+        </div>
+
+        <!-- PHẦN II -->
+        <div class="section-header">PHẦN II. Câu hỏi Đúng/Sai (Từ câu 1 đến câu 4)</div>
+
+        <div class="question">
+            <div class="question-title">Câu 1: Để cây rừng sinh trưởng phát triển tốt cần phải có biện pháp cơ bản.</div>
+            <table class="tf-table">
+                <tr><th>Ý</th><th>Nội dung</th><th>Đúng</th><th>Sai</th></tr>
+                <tr>
+                    <td class="center">a</td>
+                    <td>Chọn giống phù hợp với từng vùng sinh thái ở từng địa phương.</td>
+                    <td class="center"><input type="radio" name="q21_a" value="D"></td>
+                    <td class="center"><input type="radio" name="q21_a" value="S"></td>
+                </tr>
+                <tr>
+                    <td class="center">b</td>
+                    <td>Trồng cây với mật độ càng dày càng tốt.</td>
+                    <td class="center"><input type="radio" name="q21_b" value="D"></td>
+                    <td class="center"><input type="radio" name="q21_b" value="S"></td>
+                </tr>
+                <tr>
+                    <td class="center">c</td>
+                    <td>Làm đất kỹ thuật trước khi trồng rừng.</td>
+                    <td class="center"><input type="radio" name="q21_c" value="D"></td>
+                    <td class="center"><input type="radio" name="q21_c" value="S"></td>
+                </tr>
+                <tr>
+                    <td class="center">d</td>
+                    <td>Không cần chăm sóc sau khi trồng rừng.</td>
+                    <td class="center"><input type="radio" name="q21_d" value="D"></td>
+                    <td class="center"><input type="radio" name="q21_d" value="S"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 2: Bác A quan sát ao cá Rô phi thấy cá lờ đờ, bỏ ăn, lồi mắt, xuất huyết gốc vây.</div>
+            <table class="tf-table">
+                <tr><th>Ý</th><th>Nội dung</th><th>Đúng</th><th>Sai</th></tr>
+                <tr>
+                    <td class="center">a</td>
+                    <td>Bệnh do liên cầu khuẩn Gram dương Streptococcus agalactiae gây ra.</td>
+                    <td class="center"><input type="radio" name="q22_a" value="D"></td>
+                    <td class="center"><input type="radio" name="q22_a" value="S"></td>
+                </tr>
+                <tr>
+                    <td class="center">b</td>
+                    <td>Tỉ lệ chết của cá nhiễm bệnh có thể từ 30% - 70%, có trường hợp 100%.</td>
+                    <td class="center"><input type="radio" name="q22_b" value="D"></td>
+                    <td class="center"><input type="radio" name="q22_b" value="S"></td>
+                </tr>
+                <tr>
+                    <td class="center">c</td>
+                    <td>Cá chết do nhiễm bệnh không phải thu gom và xử lí theo quy định vì tốn kém.</td>
+                    <td class="center"><input type="radio" name="q22_c" value="D"></td>
+                    <td class="center"><input type="radio" name="q22_c" value="S"></td>
+                </tr>
+                <tr>
+                    <td class="center">d</td>
+                    <td>Thời điểm nắng nóng cần cho cá ăn bổ sung Betaglucan, Vitamin C để giảm stress.</td>
+                    <td class="center"><input type="radio" name="q22_d" value="D"></td>
+                    <td class="center"><input type="radio" name="q22_d" value="S"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 3: Lợi ích của nuôi thuỷ sản theo tiêu chuẩn VietGAP đối với cơ sở nuôi là:</div>
+            <table class="tf-table">
+                <tr><th>Ý</th><th>Nội dung</th><th>Đúng</th><th>Sai</th></tr>
+                <tr>
+                    <td class="center">a</td>
+                    <td>Tăng chi phí sản xuất đầu tư trong nuôi trồng thủy sản.</td>
+                    <td class="center"><input type="radio" name="q23_a" value="D"></td>
+                    <td class="center"><input type="radio" name="q23_a" value="S"></td>
+                </tr>
+                <tr>
+                    <td class="center">b</td>
+                    <td>Làm việc trong môi trường an toàn đảm bảo vệ sinh, nâng cao kĩ năng lao động.</td>
+                    <td class="center"><input type="radio" name="q23_b" value="D"></td>
+                    <td class="center"><input type="radio" name="q23_b" value="S"></td>
+                </tr>
+                <tr>
+                    <td class="center">c</td>
+                    <td>Biết rõ nguồn gốc thực phẩm, công bằng trong việc lựa chọn thực phẩm an toàn.</td>
+                    <td class="center"><input type="radio" name="q23_c" value="D"></td>
+                    <td class="center"><input type="radio" name="q23_c" value="S"></td>
+                </tr>
+                <tr>
+                    <td class="center">d</td>
+                    <td>Có nguồn nguyên liệu đảm bảo, giảm chi phí kiểm tra, có cơ hội xuất khẩu.</td>
+                    <td class="center"><input type="radio" name="q23_d" value="D"></td>
+                    <td class="center"><input type="radio" name="q23_d" value="S"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="question">
+            <div class="question-title">Câu 4: Căn cứ vào bảng yêu cầu nhiệt độ nước nuôi các loài động vật thủy sản:</div>
+            <table>
+                <tr><th>STT</th><th>Loài thủy sản</th><th>Nhiệt giới hạn (°C)</th><th>Nhiệt thích hợp (°C)</th></tr>
+                <tr><td>1</td><td>Cá rô phi</td><td>10 – 39</td><td>25 – 30</td></tr>
+                <tr><td>2</td><td>Cá chép</td><td>4 – 35</td><td>23 – 28</td></tr>
+                <tr><td>3</td><td>Cá tầm</td><td>5 – 31</td><td>18 – 25</td></tr>
+                <tr><td>4</td><td>Tôm càng xanh</td><td>22 – 33</td><td>28 – 30</td></tr>
+                <tr><td>5</td><td>Cua biển</td><td>18 – 32</td><td>25 – 29</td></tr>
+            </table>
+            <table class="tf-table">
+                <tr><th>Ý</th><th>Nội dung</th><th>Đúng</th><th>Sai</th></tr>
+                <tr>
+                    <td class="center">a</td>
+                    <td>Cá rô phi sinh trưởng phù hợp ở nhiệt độ từ 25°C đến 30°C.</td>
+                    <td class="center"><input type="radio" name="q24_a" value="D"></td>
+                    <td class="center"><input type="radio" name="q24_a" value="S"></td>
+                </tr>
+                <tr>
+                    <td class="center">b</td>
+                    <td>Cá tầm chịu lạnh tốt hơn tôm càng xanh.</td>
+                    <td class="center"><input type="radio" name="q24_b" value="D"></td>
+                    <td class="center"><input type="radio" name="q24_b" value="S"></td>
+                </tr>
+                <tr>
+                    <td class="center">c</td>
+                    <td>Hầu hết các loài động vật nuôi thủy sản là động vật hằng nhiệt.</td>
+                    <td class="center"><input type="radio" name="q24_c" value="D"></td>
+                    <td class="center"><input type="radio" name="q24_c" value="S"></td>
+                </tr>
+                <tr>
+                    <td class="center">d</td>
+                    <td>Các loài thủy sản đều yêu cầu nhiệt độ giống nhau.</td>
+                    <td class="center"><input type="radio" name="q24_d" value="D"></td>
+                    <td class="center"><input type="radio" name="q24_d" value="S"></td>
+                </tr>
+            </table>
+        </div>
+
+        <button type="button" class="btn-submit" onclick="chamDiem()">NỘP BÀI VÀ XEM KẾT QUẢ</button>
+    </form>
+
+    <div id="result"></div>
+</div>
+
+<script>
+    function chamDiem() {
+        // Đáp án Phần 1 (24 câu)
+        const keyPart1 = {
+            q1: 'C', q2: 'D', q3: 'C', q4: 'C', q5: 'D', q6: 'D',
+            q7: 'D', q8: 'A', q9: 'C', q10: 'B', q11: 'A', q12: 'C',
+            q13: 'C', q14: 'D', q15: 'B', q16: 'D', q17: 'C', q18: 'C',
+            q19: 'B', q20: 'D', q21: 'A', q22: 'B', q23: 'B', q24: 'D'
         };
 
-        // --- DATA ĐỀ THI THỬ TỐT NGHIỆP ---
-        const examData = [
-            { id: "ex1", q: "Hoạt động nào sau đây thuộc lĩnh vực lâm nghiệp?", options: ["Nuôi cá tra xuất khẩu", "Trồng cao su lấy mủ", "Trồng rừng ngập mặn chắn sóng", "Chế biến nước mắm"], a: 2 },
-            { id: "ex2", q: "Để cải tạo môi trường ao nuôi thủy sản bị chua (pH thấp), người ta thường dùng biện pháp nào?", options: ["Bón phân chuồng", "Bón vôi bột (CaO)", "Sục khí liên tục", "Che lưới cản nắng"], a: 1 },
-            { id: "ex3", q: "Vườn quốc gia Cúc Phương thuộc loại rừng nào?", options: ["Rừng sản xuất", "Rừng phòng hộ", "Rừng đặc dụng", "Rừng ngập mặn"], a: 2 },
-            { id: "ex4", q: "Bệnh đóng rong ở tôm thường do nguyên nhân chính nào gây ra?", options: ["Thiếu thức ăn", "Nước ao ô nhiễm, nhiều chất hữu cơ", "Nhiệt độ nước quá thấp", "Độ mặn quá cao"], a: 1 },
-            { id: "ex5", q: "Mục đích của việc ương cá giống là gì?", options: ["Cho cá sinh sản", "Chế biến thành thực phẩm", "Nuôi cá từ giai đoạn bột lên hương và giống", "Tiêu diệt mầm bệnh trong ao"], a: 2 }
-        ];
-
-        // --- CHUYỂN TAB ---
-        function switchTab(tabId, element) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            
-            document.getElementById(tabId).classList.add('active');
-            element.classList.add('active');
-        }
-
-        // --- RENDER LÝ THUYẾT ---
-        function renderTheory() {
-            const container = document.getElementById('theory-container');
-            let html = '';
-            theoryData.forEach((item, index) => {
-                html += `
-                    <div class="topic-card">
-                        <div class="topic-header" onclick="toggleTheory(${index})">
-                            <span>${item.title}</span>
-                            <span id="icon-${index}">▼</span>
-                        </div>
-                        <div class="topic-body" id="theory-body-${index}">
-                            ${item.content}
-                        </div>
-                    </div>
-                `;
-            });
-            container.innerHTML = html;
-        }
-
-        function toggleTheory(index) {
-            const body = document.getElementById(`theory-body-${index}`);
-            const icon = document.getElementById(`icon-${index}`);
-            if (body.style.display === 'block') {
-                body.style.display = 'none';
-                icon.innerText = '▼';
-            } else {
-                body.style.display = 'block';
-                icon.innerText = '▲';
-            }
-        }
-
-        // --- RENDER CÂU HỎI DẠNG CHUNG ---
-        function generateQuizHTML(questions, prefix) {
-            let html = '';
-            questions.forEach((q, index) => {
-                html += `
-                    <div class="question-block" id="block-${prefix}-${index}">
-                        <div class="question-text">Câu ${index + 1}: ${q.q}</div>
-                        <ul class="options-list">
-                            ${q.options.map((opt, optIndex) => `
-                                <li class="option-item">
-                                    <label class="option-label">
-                                        <input type="radio" name="${prefix}-q${index}" value="${optIndex}">
-                                        ${opt}
-                                    </label>
-                                </li>
-                            `).join('')}
-                        </ul>
-                        <div id="feedback-${prefix}-${index}" class="feedback"></div>
-                    </div>
-                `;
-            });
-            return html;
-        }
-
-        // --- XỬ LÝ TRẮC NGHIỆM CHỦ ĐỀ ---
-        let currentTopicQuestions = [];
-        
-        function loadTopicQuiz() {
-            const topic = document.getElementById('topic-select').value;
-            const container = document.getElementById('topic-quiz-container');
-            const btn = document.getElementById('btn-check-topic');
-            const resultBox = document.getElementById('topic-result');
-            
-            resultBox.classList.remove('show');
-
-            if (!topic) {
-                container.innerHTML = '<p style="text-align: center; color: var(--text-muted);">Vui lòng chọn chủ đề ở trên để bắt đầu.</p>';
-                btn.style.display = 'none';
-                currentTopicQuestions = [];
-                return;
-            }
-
-            currentTopicQuestions = topicQuizData[topic];
-            container.innerHTML = generateQuizHTML(currentTopicQuestions, 'topic');
-            btn.style.display = 'block';
-        }
-
-        function checkTopicQuiz() {
-            let score = 0;
-            currentTopicQuestions.forEach((q, index) => {
-                const selected = document.querySelector(`input[name="topic-q${index}"]:checked`);
-                const feedbackEl = document.getElementById(`feedback-topic-${index}`);
-                
-                if (selected && parseInt(selected.value) === q.a) {
-                    score++;
-                    feedbackEl.innerHTML = `<span class="correct-ans">✓ Chính xác!</span>`;
-                } else {
-                    const correctText = q.options[q.a];
-                    feedbackEl.innerHTML = `<span class="wrong-ans">✗ Sai.</span> <span style="color:var(--text-muted); font-size: 0.9em;">Đáp án đúng là: <b>${correctText}</b></span>`;
-                }
-            });
-
-            const resultBox = document.getElementById('topic-result');
-            resultBox.innerHTML = `Bạn trả lời đúng ${score}/${currentTopicQuestions.length} câu.`;
-            resultBox.classList.add('show');
-        }
-
-        // --- XỬ LÝ ĐỀ THI THỬ ---
-        function renderExam() {
-            const container = document.getElementById('exam-container');
-            container.innerHTML = generateQuizHTML(examData, 'exam');
-        }
-
-        function submitExam() {
-            let score = 0;
-            const total = examData.length;
-            let unAnswered = 0;
-
-            examData.forEach((q, index) => {
-                const selected = document.querySelector(`input[name="exam-q${index}"]:checked`);
-                if(!selected) unAnswered++;
-            });
-
-            if(unAnswered > 0) {
-                const confirmSubmit = confirm(`Bạn còn ${unAnswered} câu chưa làm. Bạn có chắc chắn muốn nộp bài?`);
-                if(!confirmSubmit) return;
-            }
-
-            examData.forEach((q, index) => {
-                const selected = document.querySelector(`input[name="exam-q${index}"]:checked`);
-                const feedbackEl = document.getElementById(`feedback-exam-${index}`);
-                
-                // Disable inputs after submit
-                document.querySelectorAll(`input[name="exam-q${index}"]`).forEach(input => input.disabled = true);
-
-                if (selected && parseInt(selected.value) === q.a) {
-                    score++;
-                    feedbackEl.innerHTML = `<span class="correct-ans">✓ Đúng</span>`;
-                } else {
-                    const correctText = q.options[q.a];
-                    feedbackEl.innerHTML = `<span class="wrong-ans">✗ Sai</span>. <span style="color:var(--text-muted); font-size: 0.9em;">Đáp án đúng: <b>${correctText}</b></span>`;
-                }
-            });
-
-            const resultBox = document.getElementById('exam-result');
-            const scoreIn10 = ((score / total) * 10).toFixed(1);
-            
-            let message = "";
-            if(scoreIn10 >= 8) message = "Rất xuất sắc! Chúc mừng bạn.";
-            else if (scoreIn10 >= 5) message = "Khá tốt, hãy ôn tập thêm nhé.";
-            else message = "Bạn cần xem lại phần lý thuyết kỹ hơn.";
-
-            resultBox.innerHTML = `
-                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">Điểm của bạn: <span style="color: #E53935; font-size: 2rem;">${scoreIn10}</span> / 10</div>
-                <div style="font-size: 1rem; color: var(--text-muted);">Số câu đúng: ${score}/${total}</div>
-                <div style="margin-top: 1rem; font-weight: normal;">${message}</div>
-            `;
-            resultBox.classList.add('show');
-            
-            // Cuộn xuống kết quả
-            resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-
-        // --- KHỞI TẠO ỨNG DỤNG ---
-        window.onload = function() {
-            renderTheory();
-            renderExam();
+        // Đáp án Phần 2 (4 câu)
+        const keyPart2 = {
+            q21_a: 'D', q21_b: 'S', q21_c: 'D', q21_d: 'S',
+            q22_a: 'D', q22_b: 'D', q22_c: 'S', q22_d: 'D',
+            q23_a: 'S', q23_b: 'D', q23_c: 'S', q23_d: 'D',
+            q24_a: 'D', q24_b: 'D', q24_c: 'S', q24_d: 'S'
         };
-    </script>
+
+        let scorePart1 = 0;
+        let scorePart2 = 0;
+
+        // Chấm Phần 1 (0.25đ / câu)
+        for (let q in keyPart1) {
+            let selected = document.querySelector(`input[name="${q}"]:checked`);
+            if (selected && selected.value === keyPart1[q]) {
+                scorePart1 += 0.25;
+            }
+        }
+
+        // Chấm Phần 2 (0.25đ / ý đúng)
+        for (let q in keyPart2) {
+            let selected = document.querySelector(`input[name="${q}"]:checked`);
+            if (selected && selected.value === keyPart2[q]) {
+                scorePart2 += 0.25;
+            }
+        }
+
+        let totalScore = scorePart1 + scorePart2;
+
+        let resultDiv = document.getElementById('result');
+        resultDiv.style.display = 'block';
+        resultDiv.innerHTML = `🎉 BẠN ĐÃ HOÀN THÀNH BÀI THI!<br>Tổng điểm của bạn: <span style="color: #d32f2f; font-size: 28px;">${totalScore.toFixed(2)} / 10 điểm</span>`;
+        resultDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
 </body>
 </html>
